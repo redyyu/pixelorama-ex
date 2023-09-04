@@ -1,5 +1,5 @@
 class_name RegionUnpacker
-extends Reference
+extends RefCounted
 
 # THIS CLASS TAKES INSPIRATION FROM PIXELORAMA'S FLOOD FILL
 # AND HAS BEEN MODIFIED FOR OPTIMIZATION
@@ -28,7 +28,7 @@ func get_used_rects(image: Image) -> Dictionary:
 		# If Thread model is set to "Multi-Threaded" in project settings>threads>thread model
 		if slice_thread.is_active():
 			slice_thread.wait_to_finish()
-		var error = slice_thread.start(self, "get_rects", image)
+		var error = slice_thread.start(Callable(self, "get_rects").bind(image))
 		if error == OK:
 			return slice_thread.wait_to_finish()
 		else:
@@ -47,7 +47,7 @@ func get_rects(image: Image) -> Dictionary:
 	# prepare a bitmap to keep track of previous places
 	var scanned_area := BitMap.new()
 	scanned_area.create(test_image.get_size())
-	test_image.lock()
+	false # test_image.lock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 	# Scan the image
 	var rects = []
 	var frame_size = Vector2.ZERO
@@ -60,9 +60,9 @@ func get_rects(image: Image) -> Dictionary:
 					scanned_area.set_bit_rect(rect, true)
 					rect.position += used_rect.position
 					rects.append(rect)
-	test_image.unlock()
+	false # test_image.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 	var rects_info = clean_rects(rects)
-	rects_info["rects"].sort_custom(self, "sort_rects")
+	rects_info["rects"].sort_custom(Callable(self, "sort_rects"))
 	return rects_info
 
 
@@ -110,9 +110,9 @@ func sort_rects(rect_a: Rect2, rect_b: Rect2) -> bool:
 func _estimate_rect(image: Image, position: Vector2) -> Rect2:
 	var cel_image := Image.new()
 	cel_image.copy_from(image)
-	cel_image.lock()
+	false # cel_image.lock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 	var small_rect: Rect2 = _flood_fill(position, cel_image)
-	cel_image.unlock()
+	false # cel_image.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 	return small_rect
 
 
@@ -210,10 +210,10 @@ func _flood_fill(position: Vector2, image: Image) -> Rect2:
 
 	var final_image = Image.new()
 	final_image.copy_from(image)
-	final_image.fill(Color.transparent)
-	final_image.lock()
+	final_image.fill(Color.TRANSPARENT)
+	false # final_image.lock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 	_select_segments(final_image)
-	final_image.unlock()
+	false # final_image.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 
 	return final_image.get_used_rect()
 
@@ -248,4 +248,4 @@ func _select_segments(map: Image) -> void:
 		var rect = Rect2()
 		rect.position = Vector2(p.left_position, p.y)
 		rect.end = Vector2(p.right_position + 1, p.y + 1)
-		map.fill_rect(rect, Color.white)
+		map.fill_rect(rect, Color.WHITE)

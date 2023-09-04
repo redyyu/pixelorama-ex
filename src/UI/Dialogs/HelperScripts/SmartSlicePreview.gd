@@ -10,11 +10,11 @@ var _offset: Vector2
 func show_preview(sliced_rects: Array) -> void:
 	var image = get_parent().texture.get_data()
 	if image.get_size().x > image.get_size().y:
-		_stretch_amount = rect_size.x / image.get_size().x
+		_stretch_amount = size.x / image.get_size().x
 	else:
-		_stretch_amount = rect_size.y / image.get_size().y
+		_stretch_amount = size.y / image.get_size().y
 	_sliced_rects = sliced_rects.duplicate()
-	_offset = (0.5 * (rect_size - (image.get_size() * _stretch_amount))).floor()
+	_offset = (0.5 * (size - (image.get_size() * _stretch_amount))).floor()
 	update()
 
 

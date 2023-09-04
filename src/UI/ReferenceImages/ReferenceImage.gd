@@ -1,5 +1,5 @@
 class_name ReferenceImage
-extends Sprite
+extends Sprite2D
 # A class describing a reference image
 
 signal properties_changed
@@ -65,14 +65,14 @@ func deserialize(d: Dictionary) -> void:
 		if img.load(image_path) == OK:
 			var itex := ImageTexture.new()
 			# don't do FLAG_REPEAT - it could cause visual issues
-			itex.create_from_image(img, Texture.FLAG_MIPMAPS)
+			itex.create_from_image(img) #,Texture2D.FLAG_MIPMAPS
 			texture = itex
 		# Apply the silhouette shader
 		var mat = ShaderMaterial.new()
-		mat.shader = shader
+		mat.gdshader = shader
 		# TODO: Lsbt - Add a option in prefrences to customize the color
 		# This color is almost black because it is less harsh
-		mat.set_shader_param("silhouette_color", Color(0.069, 0.069326, 0.074219))
+		mat.set_shader_parameter("silhouette_color", Color(0.069, 0.069326, 0.074219))
 		set_material(mat)
 
 	# Now that the image may have been established...
@@ -96,7 +96,7 @@ func deserialize(d: Dictionary) -> void:
 	if d.has("filter"):
 		filter = d["filter"]
 	if d.has("silhouette"):
-		get_material().set_shader_param("show_silhouette", d["silhouette"])
+		get_material().set_shader_parameter("show_silhouette", d["silhouette"])
 	change_properties()
 
 
@@ -104,6 +104,6 @@ func deserialize(d: Dictionary) -> void:
 func create_from_image(image: Image) -> void:
 	var itex := ImageTexture.new()
 	# don't do FLAG_REPEAT - it could cause visual issues
-	itex.create_from_image(image, Texture.FLAG_MIPMAPS | Texture.FLAG_FILTER)
+	itex.create_from_image(image) #,Texture2D.FLAG_MIPMAPS | Texture2D.FLAG_FILTER
 	texture = itex
 	position_reset()

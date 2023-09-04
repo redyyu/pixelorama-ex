@@ -1,5 +1,7 @@
 <p align="center">
     <h1 align = "center">Pixelorama - pixelate your dreams!</h1>
+    <h2>EX, made by godot 4.1</h2>
+    <caption>refact by Raven.R</caption>
 </p>
 <p align="center">
     Pixelorama is a free and open source pixel art editor, proudly created with the Godot Engine, by Orama Interactive. Whether you want to make animated pixel art, game graphics, tiles and any kind of pixel art you want, Pixelorama has you covered with its variety of tools and features. Free to use for everyone, forever!

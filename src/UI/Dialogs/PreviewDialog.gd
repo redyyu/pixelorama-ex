@@ -26,28 +26,28 @@ var brush_type: int = BrushTypes.FILE
 var opened_once = false
 var is_master: bool = false
 var hiding: bool = false
-var _content_offset = rect_size - get_child(0).rect_size  # A workaround for a pixelorama bug
+var _content_offset = size - get_child(0).size  # A workaround for a pixelorama bug
 
-onready var texture_rect: TextureRect = $VBoxContainer/CenterContainer/TextureRect
-onready var image_size_label: Label = $VBoxContainer/SizeContainer/ImageSizeLabel
-onready var frame_size_label: Label = $VBoxContainer/SizeContainer/FrameSizeLabel
-onready var smart_slice_checkbox = $VBoxContainer/HBoxContainer/SpritesheetTabOptions/SmartSlice
-onready var merge_threshold = $VBoxContainer/HBoxContainer/SpritesheetTabOptions/Smart/Threshold
+@onready var texture_rect: TextureRect = $VBoxContainer/CenterContainer/TextureRect
+@onready var image_size_label: Label = $VBoxContainer/SizeContainer/ImageSizeLabel
+@onready var frame_size_label: Label = $VBoxContainer/SizeContainer/FrameSizeLabel
+@onready var smart_slice_checkbox = $VBoxContainer/HBoxContainer/SpritesheetTabOptions/SmartSlice
+@onready var merge_threshold = $VBoxContainer/HBoxContainer/SpritesheetTabOptions/Smart/Threshold
 # gdlint: ignore=max-line-length
-onready var merge_dist: TextureProgress = $VBoxContainer/HBoxContainer/SpritesheetTabOptions/Smart/MergeDist
+@onready var merge_dist: TextureProgressBar = $VBoxContainer/HBoxContainer/SpritesheetTabOptions/Smart/MergeDist
 # gdlint: ignore=max-line-length
-onready var spritesheet_manual_tab_options = $VBoxContainer/HBoxContainer/SpritesheetTabOptions/Manual
-onready var spritesheet_smart_tab_options = $VBoxContainer/HBoxContainer/SpritesheetTabOptions/Smart
-onready var spritesheet_tab_options = spritesheet_smart_tab_options.get_parent()
-onready var spritesheet_lay_opt = $VBoxContainer/HBoxContainer/SpritesheetLayerOptions
-onready var new_frame_options = $VBoxContainer/HBoxContainer/NewFrameOptions
-onready var replace_cel_options = $VBoxContainer/HBoxContainer/ReplaceCelOptions
-onready var new_layer_options = $VBoxContainer/HBoxContainer/NewLayerOptions
-onready var new_brush_options = $VBoxContainer/HBoxContainer/NewBrushOptions
-onready var new_brush_name = $VBoxContainer/HBoxContainer/NewBrushOptions/BrushName
+@onready var spritesheet_manual_tab_options = $VBoxContainer/HBoxContainer/SpritesheetTabOptions/Manual
+@onready var spritesheet_smart_tab_options = $VBoxContainer/HBoxContainer/SpritesheetTabOptions/Smart
+@onready var spritesheet_tab_options = spritesheet_smart_tab_options.get_parent()
+@onready var spritesheet_lay_opt = $VBoxContainer/HBoxContainer/SpritesheetLayerOptions
+@onready var new_frame_options = $VBoxContainer/HBoxContainer/NewFrameOptions
+@onready var replace_cel_options = $VBoxContainer/HBoxContainer/ReplaceCelOptions
+@onready var new_layer_options = $VBoxContainer/HBoxContainer/NewLayerOptions
+@onready var new_brush_options = $VBoxContainer/HBoxContainer/NewBrushOptions
+@onready var new_brush_name = $VBoxContainer/HBoxContainer/NewBrushOptions/BrushName
 
-onready var import_options: OptionButton = $VBoxContainer/HBoxContainer/ImportOption
-onready var apply_all: CheckBox = $VBoxContainer/ApplyAll
+@onready var import_options: OptionButton = $VBoxContainer/HBoxContainer/ImportOption
+@onready var apply_all: CheckBox = $VBoxContainer/ApplyAll
 
 
 func _on_PreviewDialog_about_to_show() -> void:
@@ -71,7 +71,7 @@ func _on_PreviewDialog_about_to_show() -> void:
 	import_options.emit_signal("item_selected", OpenSave.last_dialog_option)
 
 	var img_texture := ImageTexture.new()
-	img_texture.create_from_image(image, 0)
+	img_texture.create_from_image(image) #,0
 	texture_rect.texture = img_texture
 	spritesheet_manual_tab_options.get_node("HorizontalFrames").max_value = min(
 		spritesheet_manual_tab_options.get_node("HorizontalFrames").max_value, image.get_size().x
@@ -193,18 +193,18 @@ func _on_PreviewDialog_confirmed() -> void:
 			Global.patterns_popup.add(image, file_name)
 
 			# Copy the image file into the "pixelorama/Patterns" directory
-			var location := "Patterns".plus_file(file_name_ext)
-			var dir = Directory.new()
-			dir.copy(path, Global.directory_module.xdg_data_home.plus_file(location))
+			var location := "Patterns".path_join(file_name_ext)
+			var dir = DirAccess.new()
+			dir.copy(path, Global.directory_module.xdg_data_home.path_join(location))
 
 
 func _on_ApplyAll_toggled(pressed) -> void:
 	is_master = pressed
 	# below 4 (and the last) line is needed for correct popup placement
 	var old_rect = get_rect()
-	disconnect("popup_hide", self, "_on_PreviewDialog_popup_hide")
+	disconnect("popup_hide", Callable(self, "_on_PreviewDialog_popup_hide"))
 	hide()
-	connect("popup_hide", self, "_on_PreviewDialog_popup_hide")
+	connect("popup_hide", Callable(self, "_on_PreviewDialog_popup_hide"))
 	for child in Global.control.get_children():
 		if child != self and "PreviewDialog" in child.name:
 			child.hiding = pressed
@@ -272,7 +272,7 @@ func synchronize() -> void:
 func _on_ImportOption_item_selected(id: int) -> void:
 	current_import_option = id
 	OpenSave.last_dialog_option = current_import_option
-	smart_slice_checkbox.pressed = false
+	smart_slice_checkbox.button_pressed = false
 	apply_all.disabled = false
 	smart_slice = false
 	smart_slice_checkbox.visible = false
@@ -340,7 +340,7 @@ func _on_ImportOption_item_selected(id: int) -> void:
 	elif id == ImageImportOptions.BRUSH:
 		new_brush_options.visible = true
 
-	rect_size = get_child(0).rect_size + _content_offset
+	size = get_child(0).size + _content_offset
 	update()
 
 
@@ -352,7 +352,7 @@ func setup_smart_slice(enabled: bool) -> void:
 	spritesheet_smart_tab_options.visible = enabled
 	spritesheet_manual_tab_options.visible = !enabled
 	if is_master:  # disable apply all (the algorithm is not fast enough for this)
-		apply_all.pressed = false
+		apply_all.button_pressed = false
 	apply_all.disabled = enabled
 	smart_slice = enabled
 	if !recycle_last_slice_result and enabled:
@@ -421,9 +421,9 @@ func add_brush() -> void:
 		Brushes.add_file_brush([image], file_name)
 
 		# Copy the image file into the "pixelorama/Brushes" directory
-		var location := "Brushes".plus_file(file_name_ext)
-		var dir = Directory.new()
-		dir.copy(path, Global.directory_module.xdg_data_home.plus_file(location))
+		var location := "Brushes".path_join(file_name_ext)
+		var dir = DirAccess.new()
+		dir.copy(path, Global.directory_module.xdg_data_home.path_join(location))
 
 	elif brush_type == BrushTypes.PROJECT:
 		var file_name: String = path.get_file().get_basename()
@@ -434,14 +434,14 @@ func add_brush() -> void:
 		var brush_name = new_brush_name.get_node("BrushNameLineEdit").text.to_lower()
 		if !brush_name.is_valid_filename():
 			return
-		var dir := Directory.new()
-		dir.open(Global.directory_module.xdg_data_home.plus_file("Brushes"))
+		var dir := DirAccess.new()
+		dir.open(Global.directory_module.xdg_data_home.path_join("Brushes"))
 		if !dir.dir_exists(brush_name):
 			dir.make_dir(brush_name)
 
-		dir.open(Global.directory_module.xdg_data_home.plus_file("Brushes").plus_file(brush_name))
+		dir.open(Global.directory_module.xdg_data_home.path_join("Brushes").path_join(brush_name))
 		var random_brushes := []
-		dir.list_dir_begin()
+		dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		var curr_file := dir.get_next()
 		while curr_file != "":
 			if curr_file.begins_with("~") and brush_name in curr_file:
@@ -452,8 +452,8 @@ func add_brush() -> void:
 		var file_ext: String = path.get_file().get_extension()
 		var index: int = random_brushes.size() + 1
 		var file_name = "~" + brush_name + str(index) + "." + file_ext
-		var location := "Brushes".plus_file(brush_name).plus_file(file_name)
-		dir.copy(path, Global.directory_module.xdg_data_home.plus_file(location))
+		var location := "Brushes".path_join(brush_name).path_join(file_name)
+		dir.copy(path, Global.directory_module.xdg_data_home.path_join(location))
 
 
 # Checks if the file already exists
@@ -463,8 +463,8 @@ func file_name_replace(name: String, folder: String) -> String:
 	var i := 1
 	var file_ext = name.get_extension()
 	var temp_name := name
-	var dir := Directory.new()
-	dir.open(Global.directory_module.xdg_data_home.plus_file(folder))
+	var dir := DirAccess.new()
+	dir.open(Global.directory_module.xdg_data_home.path_join(folder))
 	while dir.file_exists(temp_name):
 		i += 1
 		temp_name = name.get_basename() + " (%s)" % i

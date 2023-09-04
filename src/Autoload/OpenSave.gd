@@ -8,14 +8,14 @@ var preview_dialog_tscn = preload("res://src/UI/Dialogs/PreviewDialog.tscn")
 var preview_dialogs := []  # Array of preview dialogs
 var last_dialog_option: int = 0
 
-onready var autosave_timer: Timer
+@onready var autosave_timer: Timer
 
 
 func _ready() -> void:
 	autosave_timer = Timer.new()
 	autosave_timer.one_shot = false
-	autosave_timer.process_mode = Timer.TIMER_PROCESS_IDLE
-	autosave_timer.connect("timeout", self, "_on_Autosave_timeout")
+	autosave_timer.process_callback = Timer.TIMER_PROCESS_IDLE
+	autosave_timer.connect("timeout", Callable(self, "_on_Autosave_timeout"))
 	add_child(autosave_timer)
 	update_autosave()
 
@@ -47,7 +47,7 @@ func handle_loading_file(file: String) -> void:
 		if !shader is Shader:
 			return
 		var file_name: String = file.get_file().get_basename()
-		Global.control.find_node("ShaderEffect").change_shader(shader, file_name)
+		Global.control.find_child("ShaderEffect").change_shader(shader, file_name)
 
 	else:  # Image files
 		# Attempt to load as APNG.
@@ -76,7 +76,7 @@ func handle_loading_file(file: String) -> void:
 
 
 func handle_loading_image(file: String, image: Image) -> void:
-	var preview_dialog: ConfirmationDialog = preview_dialog_tscn.instance()
+	var preview_dialog: ConfirmationDialog = preview_dialog_tscn.instantiate()
 	preview_dialogs.append(preview_dialog)
 	preview_dialog.path = file
 	preview_dialog.image = image
@@ -117,14 +117,14 @@ func handle_loading_aimg(path: String, frames: Array) -> void:
 
 
 func open_pxo_file(path: String, untitled_backup: bool = false, replace_empty: bool = true) -> void:
-	var file := File.new()
-	var err := file.open_compressed(path, File.READ, File.COMPRESSION_ZSTD)
-	if err == ERR_FILE_UNRECOGNIZED:
-		err = file.open(path, File.READ)  # If the file is not compressed open it raw (pre-v0.7)
+	var file = FileAccess.open_compressed(path, FileAccess.READ, FileAccess.COMPRESSION_ZSTD)
+	if file == ERR_FILE_UNRECOGNIZED:
+		file = FileAccess.open(path, FileAccess.READ)  # If the file is not compressed open it raw (pre-v0.7)
 
-	if err != OK:
+	if not file:
+		var err_msg = FileAccess.get_open_error()
 		Global.error_dialog.set_text(
-			tr("File failed to open. Error code %s") % str(err, ErrorManager.parse(err, " (", ")"))
+			tr("File failed to open. Error code %s") % str(err_msg, ErrorManager.parse(err_msg, " (", ")"))
 		)
 		Global.error_dialog.popup_centered()
 		Global.dialog_open(true)
@@ -143,7 +143,9 @@ func open_pxo_file(path: String, untitled_backup: bool = false, replace_empty: b
 		new_project = Project.new([], path.get_file())
 
 	var first_line := file.get_line()
-	var dict := JSON.parse(first_line)
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(first_line)
+	var dict = test_json_conv.get_data()
 	if dict.error != OK:
 		print("Error, corrupt pxo file")
 		file.close()
@@ -164,8 +166,7 @@ func open_pxo_file(path: String, untitled_backup: bool = false, replace_empty: b
 				var b_width = brush.size_x
 				var b_height = brush.size_y
 				var buffer := file.get_buffer(b_width * b_height * 4)
-				var image := Image.new()
-				image.create_from_data(b_width, b_height, false, Image.FORMAT_RGBA8, buffer)
+				var image = Image.create_from_data(b_width, b_height, false, Image.FORMAT_RGBA8, buffer)
 				new_project.brushes.append(image)
 				Brushes.add_project_brush(image)
 
@@ -174,8 +175,7 @@ func open_pxo_file(path: String, untitled_backup: bool = false, replace_empty: b
 				var t_width = dict.result.tile_mask.size_x
 				var t_height = dict.result.tile_mask.size_y
 				var buffer := file.get_buffer(t_width * t_height * 4)
-				var image := Image.new()
-				image.create_from_data(t_width, t_height, false, Image.FORMAT_RGBA8, buffer)
+				var image = Image.create_from_data(t_width, t_height, false, Image.FORMAT_RGBA8, buffer)
 				new_project.tiles.tile_mask = image
 			else:
 				new_project.tiles.reset_mask()
@@ -225,7 +225,7 @@ func save_pxo_file(
 		Global.error_dialog.popup_centered()
 		Global.dialog_open(true)
 		return
-	var to_save := JSON.print(serialized_data)
+	var to_save := JSON.stringify(serialized_data)
 	if !to_save:
 		Global.error_dialog.set_text(
 			tr("File failed to save. Converting dictionary to JSON failed.")
@@ -236,23 +236,23 @@ func save_pxo_file(
 
 	# Check if a file with the same name exists. If it does, rename the new file temporarily.
 	# Needed in case of a crash, so that the old file won't be replaced with an empty one.
-	var temp_path := path
-	var dir := Directory.new()
-	if dir.file_exists(path):
+	var temp_path = path
+
+	if FileAccess.file_exists(path):
 		temp_path = path + "1"
 
-	var file := File.new()
-	var err: int
+	var file = null
 	if use_zstd_compression:
-		err = file.open_compressed(temp_path, File.WRITE, File.COMPRESSION_ZSTD)
+		file = FileAccess.open_compressed(temp_path, FileAccess.WRITE, FileAccess.COMPRESSION_ZSTD)
 	else:
-		err = file.open(temp_path, File.WRITE)
+		file = FileAccess.open(temp_path, FileAccess.WRITE)
 
-	if err != OK:
+	if not file:
 		if temp_path.is_valid_filename():
-			return
+			return 
+		var err_msg = FileAccess.get_open_error()
 		Global.error_dialog.set_text(
-			tr("File failed to save. Error code %s") % str(err, ErrorManager.parse(err, " (", ")"))
+			tr("File failed to save. Error code %s") % str(err_msg, ErrorManager.parse(err_msg, " (", ")"))
 		)
 		Global.error_dialog.popup_centered()
 		Global.dialog_open(true)
@@ -275,17 +275,18 @@ func save_pxo_file(
 
 	if temp_path != path:
 		# Rename the new file to its proper name and remove the old file, if it exists.
-		dir.rename(temp_path, path)
+		file.rename(temp_path, path)
 
 	if OS.get_name() == "HTML5" and OS.has_feature("JavaScript") and !autosave:
-		err = file.open(path, File.READ)
-		if err == OK:
-			var file_data := Array(file.get_buffer(file.get_len()))
-			JavaScript.download_buffer(file_data, path.get_file())
-		file.close()
+		var json_file = FileAccess.open(path, FileAccess.READ)
+		if json_file:
+			var file_data := Array(json_file.get_buffer(json_file.get_length()))
+			JavaScriptBridge.download_buffer(file_data, path.get_file())
+		json_file.close()
 		# Remove the .pxo file from memory, as we don't need it anymore
-		var browser_dir := Directory.new()
-		browser_dir.remove(path)
+		var browser_dir = DirAccess.open(path)
+		if browser_dir:
+			browser_dir.remove(path)
 
 	if autosave:
 		Global.notification_label("File autosaved")
@@ -335,8 +336,7 @@ func open_image_as_spritesheet_tab_smart(
 	for rect in sliced_rects:
 		var offset: Vector2 = (0.5 * (frame_size - rect.size)).floor()
 		var frame := Frame.new()
-		var cropped_image := Image.new()
-		cropped_image.create(frame_size.x, frame_size.y, false, Image.FORMAT_RGBA8)
+		var cropped_image = Image.create(frame_size.x, frame_size.y, false, Image.FORMAT_RGBA8)
 		cropped_image.blit_rect(image, rect, offset)
 		cropped_image.convert(Image.FORMAT_RGBA8)
 		frame.cels.append(PixelCel.new(cropped_image, 1))
@@ -347,8 +347,8 @@ func open_image_as_spritesheet_tab_smart(
 func open_image_as_spritesheet_tab(path: String, image: Image, horiz: int, vert: int) -> void:
 	horiz = min(horiz, image.get_size().x)
 	vert = min(vert, image.get_size().y)
-	var frame_width := image.get_size().x / horiz
-	var frame_height := image.get_size().y / vert
+	var frame_width :int = image.get_size().x / float(horiz)
+	var frame_height :int = image.get_size().y / float(vert)
 	var project := Project.new([], path.get_file(), Vector2(frame_width, frame_height))
 	project.layers.append(PixelLayer.new(project))
 	Global.projects.append(project)
@@ -403,10 +403,10 @@ func open_image_as_spritesheet_layer_smart(
 					if prev_cel.link_set == null:
 						prev_cel.link_set = {}
 						project.undo_redo.add_do_method(
-							project.layers[l], "link_cel", prev_cel, prev_cel.link_set
+							project.layers[l].link_cel.bind(prev_cel, prev_cel.link_set)
 						)
 						project.undo_redo.add_undo_method(
-							project.layers[l], "link_cel", prev_cel, null
+							project.layers[l].link_cel.bind(prev_cel, null)
 						)
 					new_frame.cels[l].set_content(prev_cel.get_content(), prev_cel.image_texture)
 					new_frame.cels[l].link_set = prev_cel.link_set
@@ -420,26 +420,25 @@ func open_image_as_spritesheet_layer_smart(
 			# Slice spritesheet
 			var offset: Vector2 = (0.5 * (frame_size - sliced_rects[f - start_frame].size)).floor()
 			image.convert(Image.FORMAT_RGBA8)
-			var cropped_image := Image.new()
-			cropped_image.create(project_width, project_height, false, Image.FORMAT_RGBA8)
+			var cropped_image := Image.create(project_width, project_height, false, Image.FORMAT_RGBA8)
 			cropped_image.blit_rect(image, sliced_rects[f - start_frame], offset)
 			cels.append(PixelCel.new(cropped_image))
 		else:
 			cels.append(layer.new_empty_cel())
 
-	project.undo_redo.add_do_method(project, "add_frames", frames, frame_indices)
-	project.undo_redo.add_do_method(project, "add_layers", [layer], [project.layers.size()], [cels])
+	project.undo_redo.add_do_method(project.add_frames.bind(frames, frame_indices))
+	project.undo_redo.add_do_method(project.add_layers.bind([layer], [project.layers.size()], [cels]))
 	project.undo_redo.add_do_method(
-		project, "change_cel", new_frames_size - 1, project.layers.size()
+		project.change_cel.bind(new_frames_size - 1, project.layers.size())
 	)
-	project.undo_redo.add_do_method(Global, "undo_or_redo", false)
+	project.undo_redo.add_do_method(Global.undo_or_redo.bind(false))
 
-	project.undo_redo.add_undo_method(project, "remove_layers", [project.layers.size()])
-	project.undo_redo.add_undo_method(project, "remove_frames", frame_indices)
+	project.undo_redo.add_undo_method(project.remove_layers.bind([project.layers.size()]))
+	project.undo_redo.add_undo_method(project.remove_frames.bind(frame_indices))
 	project.undo_redo.add_undo_method(
-		project, "change_cel", project.current_frame, project.current_layer
+		project.change_cel.bind(project.current_frame, project.current_layer)
 	)
-	project.undo_redo.add_undo_method(Global, "undo_or_redo", true)
+	project.undo_redo.add_undo_method(Global.undo_or_redo.bind(true))
 	project.undo_redo.commit_action()
 
 
@@ -449,8 +448,8 @@ func open_image_as_spritesheet_layer(
 	# Data needed to slice images
 	horizontal = min(horizontal, image.get_size().x)
 	vertical = min(vertical, image.get_size().y)
-	var frame_width := image.get_size().x / horizontal
-	var frame_height := image.get_size().y / vertical
+	var frame_width :int = image.get_size().x / float(horizontal)
+	var frame_height :int = (image.get_size().y / float(vertical))
 
 	# Resize canvas to if "frame_width" or "frame_height" is too large
 	var project: Project = Global.current_project
@@ -481,10 +480,10 @@ func open_image_as_spritesheet_layer(
 					if prev_cel.link_set == null:
 						prev_cel.link_set = {}
 						project.undo_redo.add_do_method(
-							project.layers[l], "link_cel", prev_cel, prev_cel.link_set
+							project.layers[l].link_cel.bind(prev_cel, prev_cel.link_set)
 						)
 						project.undo_redo.add_undo_method(
-							project.layers[l], "link_cel", prev_cel, null
+							project.layers[l].link_cel.bind(prev_cel, null)
 						)
 					new_frame.cels[l].set_content(prev_cel.get_content(), prev_cel.image_texture)
 					new_frame.cels[l].link_set = prev_cel.link_set
@@ -499,8 +498,7 @@ func open_image_as_spritesheet_layer(
 			var xx: int = (f - start_frame) % horizontal
 			var yy: int = (f - start_frame) / horizontal
 			image.convert(Image.FORMAT_RGBA8)
-			var cropped_image := Image.new()
-			cropped_image.create(project_width, project_height, false, Image.FORMAT_RGBA8)
+			var cropped_image := Image.create(project_width, project_height, false, Image.FORMAT_RGBA8)
 			cropped_image.blit_rect(
 				image,
 				Rect2(frame_width * xx, frame_height * yy, frame_width, frame_height),
@@ -510,19 +508,19 @@ func open_image_as_spritesheet_layer(
 		else:
 			cels.append(layer.new_empty_cel())
 
-	project.undo_redo.add_do_method(project, "add_frames", frames, frame_indices)
-	project.undo_redo.add_do_method(project, "add_layers", [layer], [project.layers.size()], [cels])
+	project.undo_redo.add_do_method(project.add_frames.bind(frames, frame_indices))
+	project.undo_redo.add_do_method(project.add_layers.bind([layer], [project.layers.size()], [cels]))
 	project.undo_redo.add_do_method(
-		project, "change_cel", new_frames_size - 1, project.layers.size()
+		project.change_cel.bind(new_frames_size - 1, project.layers.size())
 	)
-	project.undo_redo.add_do_method(Global, "undo_or_redo", false)
+	project.undo_redo.add_do_method(Global.undo_or_redo.bind(false))
 
-	project.undo_redo.add_undo_method(project, "remove_layers", [project.layers.size()])
-	project.undo_redo.add_undo_method(project, "remove_frames", frame_indices)
+	project.undo_redo.add_undo_method(project.remove_layers.bind([project.layers.size()]))
+	project.undo_redo.add_undo_method(project.remove_frames.bind(frame_indices))
 	project.undo_redo.add_undo_method(
-		project, "change_cel", project.current_frame, project.current_layer
+		project.change_cel.bind(project.current_frame, project.current_layer)
 	)
-	project.undo_redo.add_undo_method(Global, "undo_or_redo", true)
+	project.undo_redo.add_undo_method(Global.undo_or_redo.bind(true))
 	project.undo_redo.commit_action()
 
 
@@ -538,22 +536,21 @@ func open_image_at_cel(image: Image, layer_index := 0, frame_index := 0) -> void
 	for i in project.frames.size():
 		if i == frame_index:
 			image.convert(Image.FORMAT_RGBA8)
-			var cel_image = Image.new()
-			cel_image.create(project_width, project_height, false, Image.FORMAT_RGBA8)
+			var cel_image = Image.create(project_width, project_height, false, Image.FORMAT_RGBA8)
 			cel_image.blit_rect(image, Rect2(Vector2.ZERO, image.get_size()), Vector2.ZERO)
 			var cel: PixelCel = project.frames[i].cels[layer_index]
 			project.undo_redo.add_do_property(cel, "image", cel_image)
 			project.undo_redo.add_undo_property(cel, "image", cel.image)
 
 	project.undo_redo.add_do_property(project, "selected_cels", [])
-	project.undo_redo.add_do_method(project, "change_cel", frame_index, layer_index)
-	project.undo_redo.add_do_method(Global, "undo_or_redo", false)
+	project.undo_redo.add_do_method(project.change_cel.bind(frame_index, layer_index))
+	project.undo_redo.add_do_method(Global.undo_or_redo.bind(false))
 
 	project.undo_redo.add_undo_property(project, "selected_cels", [])
 	project.undo_redo.add_undo_method(
-		project, "change_cel", project.current_frame, project.current_layer
+		project.change_cel.bind(project.current_frame, project.current_layer)
 	)
-	project.undo_redo.add_undo_method(Global, "undo_or_redo", true)
+	project.undo_redo.add_undo_method(Global.undo_or_redo.bind(true))
 	project.undo_redo.commit_action()
 
 
@@ -568,8 +565,7 @@ func open_image_as_new_frame(image: Image, layer_index := 0) -> void:
 	for i in project.layers.size():
 		if i == layer_index:
 			image.convert(Image.FORMAT_RGBA8)
-			var cel_image = Image.new()
-			cel_image.create(project_width, project_height, false, Image.FORMAT_RGBA8)
+			var cel_image = Image.create(project_width, project_height, false, Image.FORMAT_RGBA8)
 			cel_image.blit_rect(image, Rect2(Vector2.ZERO, image.get_size()), Vector2.ZERO)
 			frame.cels.append(PixelCel.new(cel_image, 1))
 		else:
@@ -577,14 +573,14 @@ func open_image_as_new_frame(image: Image, layer_index := 0) -> void:
 
 	project.undos += 1
 	project.undo_redo.create_action("Add Frame")
-	project.undo_redo.add_do_method(Global, "undo_or_redo", false)
-	project.undo_redo.add_do_method(project, "add_frames", [frame], [project.frames.size()])
-	project.undo_redo.add_do_method(project, "change_cel", project.frames.size(), layer_index)
+	project.undo_redo.add_do_method(Global.undo_or_redo.bind(false))
+	project.undo_redo.add_do_method(project.add_frames.bind([frame], [project.frames.size()]))
+	project.undo_redo.add_do_method(project.change_cel.bind(project.frames.size(), layer_index))
 
-	project.undo_redo.add_undo_method(Global, "undo_or_redo", true)
-	project.undo_redo.add_undo_method(project, "remove_frames", [project.frames.size()])
+	project.undo_redo.add_undo_method(Global.undo_or_redo.bind(true))
+	project.undo_redo.add_undo_method(project.remove_frames.bind([project.frames.size()]))
 	project.undo_redo.add_undo_method(
-		project, "change_cel", project.current_frame, project.current_layer
+		project.change_cel.bind(project.current_frame, project.current_layer)
 	)
 	project.undo_redo.commit_action()
 
@@ -603,23 +599,22 @@ func open_image_as_new_layer(image: Image, file_name: String, frame_index := 0) 
 	for i in project.frames.size():
 		if i == frame_index:
 			image.convert(Image.FORMAT_RGBA8)
-			var cel_image = Image.new()
-			cel_image.create(project_width, project_height, false, Image.FORMAT_RGBA8)
+			var cel_image = Image.create(project_width, project_height, false, Image.FORMAT_RGBA8)
 			cel_image.blit_rect(image, Rect2(Vector2.ZERO, image.get_size()), Vector2.ZERO)
 			cels.append(PixelCel.new(cel_image, 1))
 		else:
 			cels.append(layer.new_empty_cel())
 
-	project.undo_redo.add_do_method(project, "add_layers", [layer], [project.layers.size()], [cels])
-	project.undo_redo.add_do_method(project, "change_cel", frame_index, project.layers.size())
+	project.undo_redo.add_do_method(project.add_layers.bind([layer], [project.layers.size()], [cels]))
+	project.undo_redo.add_do_method(project.change_cel.bind(frame_index, project.layers.size()))
 
-	project.undo_redo.add_undo_method(project, "remove_layers", [project.layers.size()])
+	project.undo_redo.add_undo_method(project.remove_layers.bind([project.layers.size()]))
 	project.undo_redo.add_undo_method(
-		project, "change_cel", project.current_frame, project.current_layer
+		project.change_cel.bind(project.current_frame, project.current_layer)
 	)
 
-	project.undo_redo.add_undo_method(Global, "undo_or_redo", true)
-	project.undo_redo.add_do_method(Global, "undo_or_redo", false)
+	project.undo_redo.add_undo_method(Global.undo_or_redo.bind(true))
+	project.undo_redo.add_do_method(Global.undo_or_redo.bind(false))
 	project.undo_redo.commit_action()
 
 
@@ -682,7 +677,7 @@ func _on_Autosave_timeout() -> void:
 	for i in range(backup_save_paths.size()):
 		if backup_save_paths[i] == "":
 			# Create a new backup file if it doesn't exist yet
-			backup_save_paths[i] = "user://backup-" + String(OS.get_unix_time()) + "-%s" % i
+			backup_save_paths[i] = "user://backup-" + str(Time.get_unix_time_from_system()) + "-%s" % i
 
 		store_backup_path(i)
 		save_pxo_file(backup_save_paths[i], true, true, Global.projects[i])
@@ -716,7 +711,7 @@ func remove_backup(i: int) -> void:
 
 
 func remove_backup_by_path(project_path: String, backup_path: String) -> void:
-	Directory.new().remove(backup_path)
+	DirAccess.remove_absolute(backup_path)
 	if Global.config_cache.has_section_key("backups", project_path):
 		Global.config_cache.erase_section_key("backups", project_path)
 	elif Global.config_cache.has_section_key("backups", backup_path):
@@ -728,7 +723,7 @@ func reload_backup_file(project_paths: Array, backup_paths: Array) -> void:
 	assert(project_paths.size() == backup_paths.size())
 	# Clear non-existent backups
 	var existing_backups_count := 0
-	var dir := Directory.new()
+	var dir = DirAccess.open("user://")
 	for i in range(backup_paths.size()):
 		if dir.file_exists(backup_paths[i]):
 			project_paths[existing_backups_count] = project_paths[i]

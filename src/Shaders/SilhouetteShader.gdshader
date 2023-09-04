@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform vec4 silhouette_color: hint_color;
+uniform vec4 silhouette_color: source_color;
 uniform bool show_silhouette;
 
 void fragment() {

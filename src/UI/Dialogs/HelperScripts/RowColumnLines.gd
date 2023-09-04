@@ -14,8 +14,8 @@ func show_preview(spritesheet_vertical, spritesheet_horizontal) -> void:
 func _draw() -> void:
 	var texture_rect: TextureRect = get_parent()
 	var image = texture_rect.texture.get_data()
-	var image_size_y = texture_rect.rect_size.y
-	var image_size_x = texture_rect.rect_size.x
+	var image_size_y = texture_rect.size.y
+	var image_size_x = texture_rect.size.x
 	if image.get_size().x > image.get_size().y:
 		var scale_ratio = image.get_size().x / image_size_x
 		image_size_y = image.get_size().y / scale_ratio
@@ -23,8 +23,8 @@ func _draw() -> void:
 		var scale_ratio = image.get_size().y / image_size_y
 		image_size_x = image.get_size().x / scale_ratio
 
-	var offset_x = (texture_rect.rect_size.x - image_size_x) / 2
-	var offset_y = (texture_rect.rect_size.y - image_size_y) / 2
+	var offset_x = (texture_rect.size.x - image_size_x) / 2
+	var offset_y = (texture_rect.size.y - image_size_y) / 2
 
 	var line_distance_vertical = image_size_y / _spritesheet_vertical
 	var line_distance_horizontal = image_size_x / _spritesheet_horizontal
