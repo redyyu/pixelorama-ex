@@ -21,10 +21,7 @@ var _spacing_offset := Vector2i.ZERO  ## The initial error between position and 
 
 func _ready() -> void:
 	kname = name.replace(" ", "_").to_lower()
-	if tool_slot.name == "Left tool":
-		color_rect.color = Global.left_tool_color
-	else:
-		color_rect.color = Global.right_tool_color
+	color_rect.color = Global.mouse_tool_color
 	$Label.text = Tools.tools[name].display_name
 	load_config()
 
@@ -110,9 +107,9 @@ func _get_spacing_offset(pos: Vector2i) -> Vector2i:
 	return pos - pos.snapped(spacing_factor)
 
 
-func draw_indicator(left: bool) -> void:
+func draw_indicator() -> void:
 	var rect := Rect2(_cursor, Vector2.ONE)
-	var color := Global.left_tool_color if left else Global.right_tool_color
+	var color = Global.mouse_tool_color
 	Global.canvas.indicators.draw_rect(rect, color, false)
 
 

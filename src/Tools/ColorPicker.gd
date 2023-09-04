@@ -84,5 +84,4 @@ func _pick_color(pos: Vector2i) -> void:
 						break
 		CURRENT_LAYER:
 			color = image.get_pixelv(pos)
-	var button := MOUSE_BUTTON_LEFT if _color_slot == 0 else MOUSE_BUTTON_RIGHT
-	Tools.assign_color(color, button, false)
+	Tools.assign_color(color, MOUSE_BUTTON_LEFT, false)

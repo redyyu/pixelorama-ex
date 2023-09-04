@@ -466,8 +466,8 @@ func remove_unselected_parts_of_brush(brush: Image, dst: Vector2i) -> Image:
 	return new_brush
 
 
-func draw_indicator(left: bool) -> void:
-	var color := Global.left_tool_color if left else Global.right_tool_color
+func draw_indicator() -> void:
+	var color = Global.mouse_tool_color
 	draw_indicator_at(snap_position(_cursor), Vector2i.ZERO, color)
 	if (
 		Global.current_project.has_selection

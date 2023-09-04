@@ -371,8 +371,8 @@ func _create_image_indicator(image: Image) -> BitMap:
 	return bitmap
 
 
-func draw_indicator(left: bool) -> void:
-	var color := Global.left_tool_color if left else Global.right_tool_color
+func draw_indicator() -> void:
+	var color := Global.mouse_tool_color
 	draw_indicator_at(_cursor, Vector2i.ZERO, color)
 
 

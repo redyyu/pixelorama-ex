@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ubyatap3sylf" path="res://src/Tools/Draw.tscn" id="1"]
 [ext_resource type="Script" path="res://src/Tools/Shading.gd" id="2"]
-[ext_resource type="PackedScene" path="res://src/UI/Nodes/ValueSlider.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://yjhp0ssng2mp" path="res://src/UI/Nodes/ValueSlider.tscn" id="3"]
 
 [node name="ToolOptions" instance=ExtResource("1")]
 script = ExtResource("2")
@@ -31,8 +31,6 @@ popup/item_1/id = 1
 [node name="AmountSlider" parent="." index="6" instance=ExtResource("3")]
 layout_mode = 2
 tooltip_text = "Lighten/Darken amount"
-focus_mode = 2
-theme_type_variation = &"ValueSlider"
 value = 10.0
 prefix = "Amount:"
 
@@ -42,23 +40,17 @@ layout_mode = 2
 
 [node name="HueSlider" parent="HueShiftingOptions" index="0" instance=ExtResource("3")]
 layout_mode = 2
-focus_mode = 2
-theme_type_variation = &"ValueSlider"
 max_value = 180.0
 value = 10.0
 prefix = "Hue:"
 
 [node name="SatSlider" parent="HueShiftingOptions" index="1" instance=ExtResource("3")]
 layout_mode = 2
-focus_mode = 2
-theme_type_variation = &"ValueSlider"
 value = 10.0
 prefix = "Saturation:"
 
 [node name="ValueSlider" parent="HueShiftingOptions" index="2" instance=ExtResource("3")]
 layout_mode = 2
-focus_mode = 2
-theme_type_variation = &"ValueSlider"
 value = 10.0
 prefix = "Value:"
 

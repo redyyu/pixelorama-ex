@@ -129,20 +129,14 @@ var tool_button_size := ButtonSize.SMALL:
 	set(value):
 		tool_button_size = value
 		Tools.set_button_size(tool_button_size)
-var left_tool_color := Color("0086cf"):
+var mouse_tool_color := Color("0086cf"):
 	set(value):
-		left_tool_color = value
+		mouse_tool_color = value
 		for child in Tools._tool_buttons.get_children():
-			var background: NinePatchRect = child.get_node("BackgroundLeft")
+			var background: NinePatchRect = child.get_node("Background")
 			background.modulate = value
 		Tools._slots[MOUSE_BUTTON_LEFT].tool_node.color_rect.color = value
-var right_tool_color := Color("fd6d14"):
-	set(value):
-		right_tool_color = value
-		for child in Tools._tool_buttons.get_children():
-			var background: NinePatchRect = child.get_node("BackgroundRight")
-			background.modulate = value
-		Tools._slots[MOUSE_BUTTON_RIGHT].tool_node.color_rect.color = value
+
 
 var default_width := 64
 var default_height := 64

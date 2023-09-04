@@ -518,4 +518,4 @@ func _pick_color(pos: Vector2i) -> void:
 		if Tools._slots[MOUSE_BUTTON_LEFT].tool_node == self
 		else MOUSE_BUTTON_RIGHT
 	)
-	Tools.assign_color(color, button, false)
+	Tools.assign_color(color, MOUSE_BUTTON_LEFT, false)

@@ -11,6 +11,7 @@
 
 [node name="PreferencesDialog" type="AcceptDialog"]
 title = "Preferences"
+position = Vector2i(0, 36)
 size = Vector2i(800, 500)
 exclusive = false
 script = ExtResource("1")
@@ -157,6 +158,15 @@ mouse_default_cursor_shape = 2
 button_pressed = true
 text = "On"
 
+[node name="NativeCursorsLabel" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/InterfaceOptions"]
+layout_mode = 2
+text = "Use native mouse cursors"
+
+[node name="NativeCursorsCheckbox" type="CheckBox" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/InterfaceOptions"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "On"
+
 [node name="ThemesHeader" type="HBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface"]
 layout_mode = 2
 theme_override_constants/separation = 0
@@ -206,7 +216,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 columns = 3
 
-[node name="Label" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/ButtonOptions"]
+[node name="ToolButtonSizeOptionLabel" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/ButtonOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Tool button size:"
@@ -222,7 +232,7 @@ popup/item_0/id = 0
 popup/item_1/text = "Big"
 popup/item_1/id = 1
 
-[node name="Label2" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/ButtonOptions"]
+[node name="IconColorOptionLabel" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/ButtonOptions"]
 layout_mode = 2
 text = "Icon color from:"
 
@@ -236,7 +246,7 @@ popup/item_0/id = 0
 popup/item_1/text = "Custom"
 popup/item_1/id = 1
 
-[node name="Label3" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/ButtonOptions"]
+[node name="IconColorLabel" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/ButtonOptions"]
 layout_mode = 2
 text = "Icon color:"
 
@@ -246,25 +256,15 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 color = Color(0.75, 0.75, 0.75, 1)
 
-[node name="Label4" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/ButtonOptions"]
+[node name="ToolColorLabel" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/ButtonOptions"]
 layout_mode = 2
-text = "Left tool color:"
+text = "Tool color:"
 
-[node name="LeftToolColorButton" type="ColorPickerButton" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/ButtonOptions"]
+[node name="ToolColorButton" type="ColorPickerButton" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/ButtonOptions"]
 custom_minimum_size = Vector2(64, 20)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 color = Color(0, 0.52549, 0.811765, 1)
-
-[node name="Label5" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/ButtonOptions"]
-layout_mode = 2
-text = "Right tool color:"
-
-[node name="RightToolColorButton" type="ColorPickerButton" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/ButtonOptions"]
-custom_minimum_size = Vector2(64, 20)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-color = Color(0.992157, 0.427451, 0.0784314, 1)
 
 [node name="Canvas" type="VBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide"]
 visible = false
@@ -879,7 +879,6 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="Performance" type="VBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide"]
-visible = false
 layout_mode = 2
 
 [node name="PerformanceHeader" type="HBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Performance"]
@@ -927,151 +926,19 @@ mouse_default_cursor_shape = 2
 button_pressed = true
 text = "On"
 
-[node name="Drivers" type="VBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide"]
-visible = false
-layout_mode = 2
-
-[node name="DriversHeader" type="HBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Drivers"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Drivers/DriversHeader"]
-layout_mode = 2
-theme_type_variation = &"HeaderSmall"
-text = "Drivers"
-
-[node name="HSeparator" type="HSeparator" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Drivers/DriversHeader"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DriversContainer" type="GridContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Drivers"]
-layout_mode = 2
-columns = 3
-
-[node name="RendererLabel" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Drivers/DriversContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 0
-text = "Renderer:"
-
-[node name="Renderer" type="OptionButton" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Drivers/DriversContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Specifies the renderer/video driver being used. GLES2 is better for older and low-end devices, but GLES3 may offer more features."
-mouse_default_cursor_shape = 2
-disabled = true
-item_count = 2
-selected = 0
-popup/item_0/text = "OpenGL"
-popup/item_0/id = 0
-popup/item_1/text = "Vulkan"
-popup/item_1/id = 1
-
-[node name="TabletDriverLabel" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Drivers/DriversContainer"]
+[node name="TabletDriverLabel" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Performance/PerformanceContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 text = "Tablet driver:"
 
-[node name="TabletDriver" type="OptionButton" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Drivers/DriversContainer"]
+[node name="TabletDriver" type="OptionButton" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Performance/PerformanceContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Specifies the tablet driver being used on Windows. If you have Windows Ink enabled, select winink."
 mouse_default_cursor_shape = 2
-
-[node name="Cursors" type="VBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide"]
-layout_mode = 2
-
-[node name="CursorsHeader" type="HBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsHeader"]
-layout_mode = 2
-theme_type_variation = &"HeaderSmall"
-text = "Cursors"
-
-[node name="HSeparator" type="HSeparator" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsHeader"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CursorsContainer" type="GridContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors"]
-layout_mode = 2
-theme_override_constants/h_separation = 4
-theme_override_constants/v_separation = 4
-columns = 3
-
-[node name="Label" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Left pixel indicator"
-
-[node name="LeftIndicatorCheckbox" type="CheckBox" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Show left mouse pixel indicator or brush on the canvas when drawing"
-mouse_default_cursor_shape = 2
-button_pressed = true
-text = "On"
-
-[node name="Label2" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsContainer"]
-layout_mode = 2
-text = "Right pixel indicator"
-
-[node name="RightIndicatorCheckbox" type="CheckBox" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Show right mouse pixel indicator or brush on the canvas when drawing"
-mouse_default_cursor_shape = 2
-button_pressed = true
-text = "On"
-
-[node name="Label3" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsContainer"]
-layout_mode = 2
-text = "Show left tool icon"
-
-[node name="LeftToolIconCheckbox" type="CheckBox" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Displays an icon of the selected left tool next to the cursor on the canvas"
-mouse_default_cursor_shape = 2
-button_pressed = true
-text = "On"
-
-[node name="Label4" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsContainer"]
-layout_mode = 2
-text = "Show right tool icon"
-
-[node name="RightToolIconCheckbox" type="CheckBox" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Displays an icon of the selected right tool next to the cursor on the canvas"
-mouse_default_cursor_shape = 2
-button_pressed = true
-text = "On"
-
-[node name="Label5" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsContainer"]
-layout_mode = 2
-text = "Use native mouse cursors"
-
-[node name="NativeCursorsCheckbox" type="CheckBox" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsContainer"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "On"
-
-[node name="Label6" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsContainer"]
-layout_mode = 2
-text = "Use cross cursor for the canvas"
-
-[node name="CrossCursorCheckbox" type="CheckBox" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors/CursorsContainer"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-button_pressed = true
-text = "On"
 
 [node name="Image" type="VBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide"]
 visible = false

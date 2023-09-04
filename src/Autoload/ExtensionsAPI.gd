@@ -336,7 +336,6 @@ class ToolAPI:
 	func remove_tool(tool_name: String) -> void:
 		# Re-assigning the tools in case the tool to be removed is also active
 		Tools.assign_tool("Pencil", MOUSE_BUTTON_LEFT)
-		Tools.assign_tool("Eraser", MOUSE_BUTTON_RIGHT)
 		var tool_class: Tools.Tool = Tools.tools[tool_name]
 		if tool_class:
 			Tools.remove_tool(tool_class)

@@ -43,6 +43,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Dialogs" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 mouse_filter = 2
 

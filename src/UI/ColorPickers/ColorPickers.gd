@@ -16,18 +16,14 @@ func _on_ColorSwitch_pressed() -> void:
 	Tools.swap_color()
 
 
-func _on_ColorPickerButton_color_changed(color: Color, right: bool):
-	var button := MOUSE_BUTTON_RIGHT if right else MOUSE_BUTTON_LEFT
+func _on_ColorPickerButton_color_changed(color: Color):
+	var button := MOUSE_BUTTON_LEFT
 	Tools.assign_color(color, button)
 	_average(left_picker.color, right_picker.color)
 
 
 func _on_ToLeft_pressed():
 	Tools.assign_color(average_color.color, MOUSE_BUTTON_LEFT)
-
-
-func _on_ToRight_pressed():
-	Tools.assign_color(average_color.color, MOUSE_BUTTON_RIGHT)
 
 
 func _on_ColorPickerButton_pressed() -> void:

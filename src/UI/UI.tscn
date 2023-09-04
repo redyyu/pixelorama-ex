@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://c8dsi6ggkqa7a"]
+[gd_scene load_steps=49 format=3 uid="uid://c8dsi6ggkqa7a"]
 
 [ext_resource type="PackedScene" uid="uid://byu3rtoipuvoc" path="res://src/UI/Tools/Tools.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://c546tskdu53j1" path="res://src/UI/Canvas/CanvasPreview.tscn" id="2"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://wo0hqxkst808" path="res://src/UI/GlobalToolOptions/GlobalToolOptions.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://b75xk2ix8xxml" path="res://src/UI/ReferenceImages/ReferencesPanel.tscn" id="11"]
 [ext_resource type="PackedScene" uid="uid://cap1bhavhi33g" path="res://src/UI/PerspectiveEditor/PerspectiveEditor.tscn" id="12"]
-[ext_resource type="PackedScene" uid="uid://dl6ook010q86o" path="res://src/UI/Recorder/Recorder.tscn" id="13"]
 [ext_resource type="Script" path="res://addons/dockable_container/layout.gd" id="14"]
 [ext_resource type="PackedScene" uid="uid://ccsihk3yxwei5" path="res://src/UI/CanvasPreviewContainer/CanvasPreviewContainer.tscn" id="16"]
 [ext_resource type="PackedScene" uid="uid://c3vcvhh4d8hd7" path="res://src/UI/ColorPickers/ColorPickers.tscn" id="17"]
@@ -105,27 +104,13 @@ script = ExtResource("36")
 names = PackedStringArray("Global Tool Options")
 current_tab = 0
 
-[sub_resource type="Resource" id="Resource_56tpw"]
-resource_name = "Tabs"
-script = ExtResource("36")
-names = PackedStringArray("Recorder")
-current_tab = 0
-
-[sub_resource type="Resource" id="Resource_fhmn0"]
-resource_name = "Split"
-script = ExtResource("27")
-direction = 1
-percent = 0.5
-first = SubResource("Resource_c7hpy")
-second = SubResource("Resource_56tpw")
-
 [sub_resource type="Resource" id="Resource_u1u2a"]
 resource_name = "Split"
 script = ExtResource("27")
 direction = 1
 percent = 0.5
 first = SubResource("Resource_fcw5v")
-second = SubResource("Resource_fhmn0")
+second = SubResource("Resource_c7hpy")
 
 [sub_resource type="Resource" id="Resource_6eonw"]
 resource_name = "Split"
@@ -138,22 +123,8 @@ second = SubResource("Resource_u1u2a")
 [sub_resource type="Resource" id="Resource_6pwxm"]
 resource_name = "Tabs"
 script = ExtResource("36")
-names = PackedStringArray("Left Tool Options")
+names = PackedStringArray("Current Tool Options")
 current_tab = 0
-
-[sub_resource type="Resource" id="Resource_24rfh"]
-resource_name = "Tabs"
-script = ExtResource("36")
-names = PackedStringArray("Right Tool Options")
-current_tab = 0
-
-[sub_resource type="Resource" id="Resource_tcb26"]
-resource_name = "Split"
-script = ExtResource("27")
-direction = 0
-percent = 0.5
-first = SubResource("Resource_6pwxm")
-second = SubResource("Resource_24rfh")
 
 [sub_resource type="Resource" id="Resource_ugja0"]
 resource_name = "Tabs"
@@ -166,7 +137,7 @@ resource_name = "Split"
 script = ExtResource("27")
 direction = 1
 percent = 0.692661
-first = SubResource("Resource_tcb26")
+first = SubResource("Resource_6pwxm")
 second = SubResource("Resource_ugja0")
 
 [sub_resource type="Resource" id="Resource_l8roh"]
@@ -306,7 +277,7 @@ camera_path = NodePath("SubViewport/Camera2D")
 [node name="SubViewport" type="SubViewport" parent="DockableContainer/Main Canvas/ViewportandVerticalRuler/SubViewportContainer"]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(867, 515)
+size = Vector2i(299, 246)
 render_target_update_mode = 4
 
 [node name="TransparentChecker" parent="DockableContainer/Main Canvas/ViewportandVerticalRuler/SubViewportContainer/SubViewport" instance=ExtResource("5")]
@@ -368,21 +339,11 @@ layout_mode = 2
 [node name="Global Tool Options" parent="DockableContainer" instance=ExtResource("10")]
 layout_mode = 2
 
-[node name="Left Tool Options" type="ScrollContainer" parent="DockableContainer"]
+[node name="Current Tool Options" type="ScrollContainer" parent="DockableContainer"]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 
-[node name="LeftPanelContainer" type="PanelContainer" parent="DockableContainer/Left Tool Options"]
-custom_minimum_size = Vector2(130, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Right Tool Options" type="ScrollContainer" parent="DockableContainer"]
-custom_minimum_size = Vector2(72, 72)
-layout_mode = 2
-
-[node name="RightPanelContainer" type="PanelContainer" parent="DockableContainer/Right Tool Options"]
+[node name="ToolPanelContainer" type="PanelContainer" parent="DockableContainer/Current Tool Options"]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -396,10 +357,6 @@ visible = false
 layout_mode = 2
 
 [node name="Perspective Editor" parent="DockableContainer" instance=ExtResource("12")]
-visible = false
-layout_mode = 2
-
-[node name="Recorder" parent="DockableContainer" instance=ExtResource("13")]
 visible = false
 layout_mode = 2
 

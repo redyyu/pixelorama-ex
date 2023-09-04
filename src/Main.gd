@@ -317,7 +317,7 @@ func _exit_tree() -> void:
 	Global.config_cache.set_value("view_menu", "show_mouse_guides", Global.show_mouse_guides)
 	Global.config_cache.save("user://cache.ini")
 
-	var i := 0
+	var _i := 0
 	for project in Global.projects:
 		project.remove()
-		i += 1
+		_i += 1
