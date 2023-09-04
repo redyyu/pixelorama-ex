@@ -11,22 +11,20 @@ func _init(_project, _name := "") -> void:
 
 
 func blend_children(frame: Frame, origin := Vector2.ZERO) -> Image:
-	var image := Image.new()
-	image.create(project.size.x, project.size.y, false, Image.FORMAT_RGBA8)
+	var image := Image.create(project.size.x, project.size.y, false, Image.FORMAT_RGBA8)
 	var children := get_children(false)
 	var blend_rect := Rect2(Vector2.ZERO, project.size)
 	for layer in children:
 		if not layer.is_visible_in_hierarchy():
 			continue
 		# Checks if layer is GroupLayer, cannot define this due to cyclic reference error
-		if layer is get_script():
+		if layer is GroupLayer:
 			image.blend_rect(layer.blend_children(frame, origin), blend_rect, origin)
 		else:
 			var cel: BaseCel = frame.cels[layer.index]
 			var cel_image := Image.new()
 			cel_image.copy_from(cel.get_image())
 			if cel.opacity < 1:  # If we have cel transparency
-				false # cel_image.lock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 				for xx in cel_image.get_size().x:
 					for yy in cel_image.get_size().y:
 						var pixel_color := cel_image.get_pixel(xx, yy)
@@ -34,7 +32,6 @@ func blend_children(frame: Frame, origin := Vector2.ZERO) -> Image:
 						cel_image.set_pixel(
 							xx, yy, Color(pixel_color.r, pixel_color.g, pixel_color.b, alpha)
 						)
-				false # cel_image.unlock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 			image.blend_rect(cel_image, blend_rect, origin)
 	return image
 

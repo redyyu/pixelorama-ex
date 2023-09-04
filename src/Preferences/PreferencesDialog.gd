@@ -87,7 +87,7 @@ var restore_default_button_tcsn := preload("res://src/Preferences/RestoreDefault
 @onready var shrink_slider: ValueSlider = $"%ShrinkSlider"
 @onready var themes: BoxContainer = right_side.get_node("Interface/Themes")
 @onready var shortcuts: Control = right_side.get_node("Shortcuts/ShortcutEdit")
-@onready var tablet_driver_label: Label = $"%TabletDriverLabel"
+
 @onready var tablet_driver: OptionButton = $"%TabletDriver"
 @onready var extensions: BoxContainer = right_side.get_node("Extensions")
 @onready var must_restart: BoxContainer = $"%MustRestart"
@@ -136,12 +136,6 @@ func _ready() -> void:
 		right_side.get_node("Startup").queue_free()
 		right_side.get_node("Language").visible = true
 		Global.open_last_project = false
-	elif OS.get_name() == "Windows":
-		tablet_driver_label.visible = true
-		tablet_driver.visible = true
-		for driver in DisplayServer.tablet_get_driver_count():
-			var driver_name := DisplayServer.tablet_get_driver_name(driver)
-			tablet_driver.add_item(driver_name, driver)
 
 	for pref in preferences:
 		var node: Node = right_side.get_node(pref.node_path)
@@ -164,29 +158,23 @@ func _ready() -> void:
 		match pref.value_type:
 			"pressed":
 				node.connect(
-					"toggled", self, "_on_Preference_value_changed", [pref, restore_default_button]
+					"toggled", _on_Preference_value_changed.bind([pref, restore_default_button])
 				)
 			"value":
 				node.connect(
 					"value_changed",
-					self,
-					"_on_Preference_value_changed",
-					[pref, restore_default_button]
+					_on_Preference_value_changed.bind([pref, restore_default_button])
 				)
 			"color":
 				node.get_picker().presets_visible = false
 				node.connect(
 					"color_changed",
-					self,
-					"_on_Preference_value_changed",
-					[pref, restore_default_button]
+					_on_Preference_value_changed.bind([pref, restore_default_button])
 				)
 			"selected":
 				node.connect(
 					"item_selected",
-					self,
-					"_on_Preference_value_changed",
-					[pref, restore_default_button]
+					_on_Preference_value_changed.bind([pref, restore_default_button])
 				)
 
 		var global_value = Global.get(pref.prop_name)
@@ -257,7 +245,7 @@ func preference_update(prop: String, require_restart := false) -> void:
 				guide.default_color = Global.guide_color
 
 	elif prop in ["fps_limit"]:
-		Engine.set_target_fps(Global.fps_limit)
+		Engine.max_fps = Global.fps_limit
 
 	elif "selection" in prop:
 		var marching_ants: Sprite2D = Global.canvas.selection.marching_ants_outline
@@ -348,12 +336,10 @@ func _on_List_item_selected(index: int) -> void:
 
 
 func _on_ShrinkApplyButton_pressed() -> void:
-	get_tree().set_screen_stretch(
-		SceneTree.STRETCH_MODE_DISABLED,
-		SceneTree.STRETCH_ASPECT_IGNORE,
-		Vector2(1024, 576),
-		Global.shrink
-	)
+	get_tree().root.content_scale_factor = Global.shrink
+	get_tree().root.content_scale_aspect = CONTENT_SCALE_ASPECT_IGNORE
+	get_tree().root.content_scale_size = Vector2i(1024, 576)
+
 	Global.control.set_custom_cursor()
 	hide()
 	popup_centered(Vector2(600, 400))

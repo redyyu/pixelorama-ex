@@ -59,7 +59,7 @@ func _init(_frames := [], _name := tr("untitled"), _size := Vector2(64, 64)) -> 
 	name = _name
 	size = _size
 	tiles = Tiles.new(size)
-	selection_map.create(size.x, size.y, false, Image.FORMAT_LA8)
+	selection_map = SelectionMap.create(size.x, size.y, false, Image.FORMAT_LA8)
 
 	Global.tabs.add_tab(name)
 	OpenSave.current_save_paths.append("")
@@ -143,10 +143,10 @@ func get_current_cel() -> BaseCel:
 
 
 func selection_map_changed() -> void:
-	var image_texture := ImageTexture.new()
+	var image_texture = null
 	has_selection = !selection_map.is_invisible()
 	if has_selection:
-		image_texture.create_from_image(selection_map) #,0
+		image_texture = ImageTexture.create_from_image(selection_map)
 	Global.canvas.selection.marching_ants_outline.texture = image_texture
 	var edit_menu_popup: PopupMenu = Global.top_menu_container.edit_menu_button.get_popup()
 	edit_menu_popup.set_item_disabled(Global.EditMenu.NEW_BRUSH, !has_selection)
@@ -246,14 +246,12 @@ func change_project() -> void:
 		if camera == Global.camera_preview:
 			Global.preview_zoom_slider.disconnect(
 				"value_changed",
-				Global.canvas_preview_container,
-				"_on_PreviewZoomSlider_value_changed"
+				Global.canvas_preview_container._on_PreviewZoomSlider_value_changed
 			)
 			Global.preview_zoom_slider.min_value = -camera.zoom_max.x
 			Global.preview_zoom_slider.connect(
 				"value_changed",
-				Global.canvas_preview_container,
-				"_on_PreviewZoomSlider_value_changed"
+				Global.canvas_preview_container._on_PreviewZoomSlider_value_changed
 			)
 
 		if camera == Global.camera:
@@ -686,7 +684,7 @@ func remove_frames(indices: Array) -> void:  # indices should be in ascending or
 				if cel.link_set["cels"].is_empty():
 					layers[l].cel_link_sets.erase(cel.link_set)
 		# Remove frame
-		frames.remove(indices[i] - i)
+		frames.remove_at(indices[i] - i)
 		Global.animation_timeline.project_frame_removed(indices[i] - i)
 	_update_frame_ui()
 
@@ -695,7 +693,7 @@ func move_frame(from_index: int, to_index: int) -> void:
 	Global.canvas.selection.transform_content_confirm()
 	selected_cels.clear()
 	var frame = frames[from_index]
-	frames.remove(from_index)
+	frames.remove_at(from_index)
 	Global.animation_timeline.project_frame_removed(from_index)
 	frames.insert(to_index, frame)
 	Global.animation_timeline.project_frame_added(to_index)
@@ -717,8 +715,8 @@ func swap_frame(a_index: int, b_index: int) -> void:
 
 func reverse_frames(frame_indices: Array) -> void:
 	Global.canvas.selection.transform_content_confirm()
-# warning-ignore:integer_division
-	for i in frame_indices.size() / 2:
+
+	for i in int(float(frame_indices.size()) / 2):
 		var index: int = frame_indices[i]
 		var reverse_index: int = frame_indices[-i - 1]
 		var temp: Frame = frames[index]
@@ -749,7 +747,7 @@ func remove_layers(indices: Array) -> void:
 	selected_cels.clear()
 	for i in indices.size():
 		# With each removed index, future indices need to be lowered, so subtract by i
-		layers.remove(indices[i] - i)
+		layers.remove_at(indices[i] - i)
 		for frame in frames:
 			frame.cels[indices[i] - i].on_remove()
 			frame.cels.remove(indices[i] - i)
