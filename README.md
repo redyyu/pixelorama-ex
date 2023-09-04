@@ -1,7 +1,5 @@
 <p align="center">
     <h1 align = "center">Pixelorama - pixelate your dreams!</h1>
-    <h2>EX, made by godot 4.1</h2>
-    <caption>refact by Raven.R</caption>
 </p>
 <p align="center">
     Pixelorama is a free and open source pixel art editor, proudly created with the Godot Engine, by Orama Interactive. Whether you want to make animated pixel art, game graphics, tiles and any kind of pixel art you want, Pixelorama has you covered with its variety of tools and features. Free to use for everyone, forever!
@@ -63,7 +61,7 @@ You can find Online Documentation for Pixelorama here: https://orama-interactive
 It's still work in progress so there are some pages missing. If you want to contribute, you can do so in [Pixelorama-Docs' GitHub Repository](https://github.com/Orama-Interactive/Pixelorama-Docs).
 
 ## Cloning Instructions
-Pixelorama uses Godot 3.5, so you will need to have it in order to run the project. Older versions may not work.
+Pixelorama uses Godot 4.1, so you will need to have it in order to run the project. Older versions will not work.
 As of right now, most of the code is written using GDScript, so the mono version of Godot is not required, but Pixelorama should also work with it.
 
 ## Current features:

@@ -1,0 +1,194 @@
+[gd_scene load_steps=12 format=3 uid="uid://wplk62pbgih4"]
+
+[ext_resource type="PackedScene" uid="uid://c0p84w7umxwt1" path="res://src/Palette/EditPaletteDialog.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://biyn51upnlxle" path="res://assets/graphics/palette/edit.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b7ydn1tt37rcl" path="res://assets/graphics/palette/add.png" id="3"]
+[ext_resource type="PackedScene" uid="uid://68aakj2l6ee1" path="res://src/Palette/CreatePaletteDialog.tscn" id="4"]
+[ext_resource type="Script" path="res://src/Palette/PaletteGrid.gd" id="5"]
+[ext_resource type="Script" path="res://src/Palette/PaletteScroll.gd" id="6"]
+[ext_resource type="Script" path="res://src/Palette/PalettePanel.gd" id="8"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_4n3yg"]
+action = &"edit_palette"
+
+[sub_resource type="Shortcut" id="Shortcut_jl8vt"]
+events = [SubResource("InputEventAction_4n3yg")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_mdfjt"]
+action = &"new_palette"
+
+[sub_resource type="Shortcut" id="Shortcut_6f4gc"]
+events = [SubResource("InputEventAction_mdfjt")]
+
+[node name="PalettePanel" type="PanelContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("8")
+
+[node name="PaletteVBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PaletteButtons" type="HBoxContainer" parent="PaletteVBoxContainer"]
+layout_mode = 2
+
+[node name="PaletteSelect" type="OptionButton" parent="PaletteVBoxContainer/PaletteButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Choose a palette"
+mouse_default_cursor_shape = 2
+clip_text = true
+
+[node name="EditPalette" type="Button" parent="PaletteVBoxContainer/PaletteButtons" groups=["UIButtons"]]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+tooltip_text = "Edit currently selected palette"
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_jl8vt")
+
+[node name="TextureRect" type="TextureRect" parent="PaletteVBoxContainer/PaletteButtons/EditPalette"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("2")
+
+[node name="AddPalette" type="Button" parent="PaletteVBoxContainer/PaletteButtons" groups=["UIButtons"]]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+tooltip_text = "Create a new palette"
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_6f4gc")
+
+[node name="TextureRect" type="TextureRect" parent="PaletteVBoxContainer/PaletteButtons/AddPalette"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("3")
+
+[node name="HSeparator" type="HSeparator" parent="PaletteVBoxContainer"]
+layout_mode = 2
+
+[node name="SwatchesContainer" type="HBoxContainer" parent="PaletteVBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorButtons" type="VBoxContainer" parent="PaletteVBoxContainer/SwatchesContainer"]
+layout_mode = 2
+
+[node name="AddColor" type="Button" parent="PaletteVBoxContainer/SwatchesContainer/ColorButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+tooltip_text = "Add a new color"
+mouse_default_cursor_shape = 2
+text = "+"
+
+[node name="DeleteColor" type="Button" parent="PaletteVBoxContainer/SwatchesContainer/ColorButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+tooltip_text = "Remove a selected color"
+mouse_default_cursor_shape = 2
+text = "-"
+
+[node name="PaletteScroll" type="VBoxContainer" parent="PaletteVBoxContainer/SwatchesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PaletteVBoxContainer/SwatchesContainer/PaletteScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PaletteVBoxContainer/SwatchesContainer/PaletteScroll/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PaletteVBoxContainer/SwatchesContainer/PaletteScroll/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PaletteGrid" type="GridContainer" parent="PaletteVBoxContainer/SwatchesContainer/PaletteScroll/HBoxContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 3
+script = ExtResource("5")
+
+[node name="HScrollBar" type="HScrollBar" parent="PaletteVBoxContainer/SwatchesContainer/PaletteScroll/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+step = 1.0
+page = 8.0
+custom_step = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PaletteVBoxContainer/SwatchesContainer/PaletteScroll/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 15
+
+[node name="VScrollBar" type="VScrollBar" parent="PaletteVBoxContainer/SwatchesContainer/PaletteScroll/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+step = 1.0
+page = 8.0
+custom_step = 1.0
+
+[node name="EditPaletteDialog" parent="." instance=ExtResource("1")]
+unique_name_in_owner = true
+
+[node name="CreatePaletteDialog" parent="." instance=ExtResource("4")]
+unique_name_in_owner = true
+
+[node name="HiddenColorPickerButton" type="ColorPickerButton" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[connection signal="item_selected" from="PaletteVBoxContainer/PaletteButtons/PaletteSelect" to="." method="_on_PaletteSelect_item_selected"]
+[connection signal="pressed" from="PaletteVBoxContainer/PaletteButtons/EditPalette" to="." method="_on_EditPalette_pressed"]
+[connection signal="pressed" from="PaletteVBoxContainer/PaletteButtons/AddPalette" to="." method="_on_AddPalette_pressed"]
+[connection signal="gui_input" from="PaletteVBoxContainer/SwatchesContainer/ColorButtons/AddColor" to="." method="_on_AddColor_gui_input"]
+[connection signal="gui_input" from="PaletteVBoxContainer/SwatchesContainer/ColorButtons/DeleteColor" to="." method="_on_DeleteColor_gui_input"]
+[connection signal="gui_input" from="PaletteVBoxContainer/SwatchesContainer/PaletteScroll" to="PaletteVBoxContainer/SwatchesContainer/PaletteScroll" method="_on_PaletteScroll_gui_input"]
+[connection signal="resized" from="PaletteVBoxContainer/SwatchesContainer/PaletteScroll" to="PaletteVBoxContainer/SwatchesContainer/PaletteScroll" method="_on_PaletteScroll_resized"]
+[connection signal="gui_input" from="PaletteVBoxContainer/SwatchesContainer/PaletteScroll/HBoxContainer/VBoxContainer/ScrollContainer/PaletteGrid" to="PaletteVBoxContainer/SwatchesContainer/PaletteScroll" method="_on_PaletteGrid_gui_input"]
+[connection signal="swatch_double_clicked" from="PaletteVBoxContainer/SwatchesContainer/PaletteScroll/HBoxContainer/VBoxContainer/ScrollContainer/PaletteGrid" to="." method="_on_PaletteGrid_swatch_double_clicked"]
+[connection signal="swatch_dropped" from="PaletteVBoxContainer/SwatchesContainer/PaletteScroll/HBoxContainer/VBoxContainer/ScrollContainer/PaletteGrid" to="." method="_on_PaletteGrid_swatch_dropped"]
+[connection signal="swatch_pressed" from="PaletteVBoxContainer/SwatchesContainer/PaletteScroll/HBoxContainer/VBoxContainer/ScrollContainer/PaletteGrid" to="." method="_on_PaletteGrid_swatch_pressed"]
+[connection signal="value_changed" from="PaletteVBoxContainer/SwatchesContainer/PaletteScroll/HBoxContainer/VBoxContainer/HScrollBar" to="PaletteVBoxContainer/SwatchesContainer/PaletteScroll" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="PaletteVBoxContainer/SwatchesContainer/PaletteScroll/HBoxContainer/MarginContainer/VScrollBar" to="PaletteVBoxContainer/SwatchesContainer/PaletteScroll" method="_on_VSlider_value_changed"]
+[connection signal="deleted" from="EditPaletteDialog" to="." method="_on_EditPaletteDialog_deleted"]
+[connection signal="saved" from="EditPaletteDialog" to="." method="_on_EditPaletteDialog_saved"]
+[connection signal="saved" from="CreatePaletteDialog" to="." method="_on_CreatePaletteDialog_saved"]
+[connection signal="color_changed" from="HiddenColorPickerButton" to="." method="_on_ColorPicker_color_changed"]
+[connection signal="popup_closed" from="HiddenColorPickerButton" to="." method="_on_HiddenColorPickerButton_popup_closed"]

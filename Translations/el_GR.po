@@ -1,0 +1,2698 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: pixelorama\n"
+"X-Crowdin-Project-ID: 385497\n"
+"X-Crowdin-Language: el\n"
+"X-Crowdin-File: /master/Translations/Translations.pot\n"
+"X-Crowdin-File-ID: 5\n"
+"Project-Id-Version: pixelorama\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: Greek\n"
+"Language: el_GR\n"
+"PO-Revision-Date: 2023-08-29 12:29\n"
+
+msgid "OK"
+msgstr "Εντάξει"
+
+msgid "Cancel"
+msgstr "Άκυρο"
+
+msgid "Open"
+msgstr "Άνοιγμα"
+
+msgid "Save"
+msgstr "Αποθήκευση"
+
+msgid "Please Confirm..."
+msgstr "Παρακαλώ επιβεβαιώστε..."
+
+msgid "File Name:"
+msgstr "Όνομα αρχείου:"
+
+msgid "Project Name:"
+msgstr "Όνομα έργου:"
+
+msgid "Image Size"
+msgstr "Μέγεθος εικόνας"
+
+msgid "Canvas Size"
+msgstr "Μέγεθος Καμβά"
+
+msgid "Frame Size"
+msgstr "Μέγεθος Καρέ"
+
+msgid "Size:"
+msgstr "Μέγεθος:"
+
+msgid "Width:"
+msgstr "Πλάτος:"
+
+msgid "Height:"
+msgstr "Ύψος:"
+
+msgid "Center"
+msgstr "Κέντρο"
+
+msgid "File"
+msgstr "Αρχείο"
+
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+msgid "Select"
+msgstr "Επιλογή"
+
+msgid "View"
+msgstr "Προβολή"
+
+msgid "Window"
+msgstr "Παράθυρο"
+
+msgid "Image"
+msgstr "Εικόνα"
+
+msgid "Effects"
+msgstr "Εφέ"
+
+msgid "Help"
+msgstr "Βοήθεια"
+
+msgid "New"
+msgstr "Νέο"
+
+msgid "New..."
+msgstr "Νέο..."
+
+msgid "Open..."
+msgstr "Άνοιγμα..."
+
+msgid "Save..."
+msgstr "Αποθήκευση..."
+
+msgid "Save as..."
+msgstr "Αποθήκευση ως..."
+
+msgid "Use ZSTD Compression"
+msgstr "Χρήση συμπίεσης ZSTD"
+
+msgid "Import"
+msgstr "Εισαγωγή"
+
+msgid "Export"
+msgstr "Εξαγωγή"
+
+msgid "Overwrite"
+msgstr "Αντικατάσταση"
+
+msgid "Export..."
+msgstr "Εξαγωγή..."
+
+msgid "Export as..."
+msgstr "Εξαγωγή ως..."
+
+msgid "Export PNG..."
+msgstr "Εξαγωγή PNG..."
+
+msgid "Export PNG as..."
+msgstr "Εξαγωγή PNG ως..."
+
+msgid "Quit"
+msgstr "Έξοδος"
+
+msgid "Undo"
+msgstr "Αναίρεση"
+
+msgid "Redo"
+msgstr "Ακύρωση αναίρεσης"
+
+msgid "Copy"
+msgstr "Αντιγραφή"
+
+msgid "Cut"
+msgstr "Αποκοπή"
+
+msgid "Paste"
+msgstr "Επικόλληση"
+
+msgid "Paste in Place"
+msgstr "Επιτόπια επικόλληση"
+
+msgid "Delete"
+msgstr "Διαγραφή"
+
+msgid "New Brush"
+msgstr "Νέο πινέλο"
+
+msgid "Scale Image"
+msgstr "Κλιμάκωση εικόνας"
+
+msgid "Pixels"
+msgstr "Εικονοστοιχεία"
+
+msgid "Percentage"
+msgstr "Ποσοστό"
+
+msgid "Crop Image"
+msgstr "Περικοπή"
+
+msgid "Resize Canvas"
+msgstr "Αλλαγή μεγέθους καμβά"
+
+msgid "Offset Image"
+msgstr "Μετατόπιση Εικόνας"
+
+msgid "Offset:"
+msgstr "Μετατόπιση:"
+
+#. Found in the Offset Image dialog. It's a checkbox that, if enabled, wraps around the image if pixels go out of canvas bounds.
+msgid "Wrap around:"
+msgstr "Αναδίπλωση:"
+
+#. Found in the menu that appears when you right click a frame button. Center is a verb, it is used to place the content of the frame to the center of the canvas.
+msgid "Center Frames"
+msgstr "Κεντράρισμα Καρέ"
+
+msgid "Rotate Image"
+msgstr "Περιστροφή εικόνας"
+
+msgid "Pivot x:"
+msgstr "Άξονας x:"
+
+msgid "Pivot y:"
+msgstr "Άξονας y:"
+
+msgid "Smear options:"
+msgstr "Επιλογές απλώματος:"
+
+msgid "Tolerance:"
+msgstr "Ανοχή:"
+
+msgid "Initial angle:"
+msgstr "Αρχική γωνία:"
+
+msgid "Clear"
+msgstr "Εκκαθάριση"
+
+msgid "Invert"
+msgstr "Αντιστροφή"
+
+msgid "Grayscale View"
+msgstr "Προβολή σε κλίμακα γκρι"
+
+msgid "Mirror Image"
+msgstr "Αναστροφή εικόνας"
+
+msgid "Flip Horizontal"
+msgstr "Οριζόντια αναστροφή"
+
+msgid "Flip Vertical"
+msgstr "Κάθετη αναστροφή"
+
+msgid "Preferences"
+msgstr "Προτιμήσεις"
+
+msgid "Tile Mode"
+msgstr "Λειτουργία μοτίβου"
+
+msgid "Tile Mode Offsets"
+msgstr "Μετατόπιση λειτουργίας μοτίβου"
+
+msgid "X-basis x:"
+msgstr "Χ-βάση x:"
+
+msgid "X-basis y:"
+msgstr "Χ-βάση y:"
+
+msgid "Y-basis x:"
+msgstr "Y-βάση x:"
+
+msgid "Y-basis y:"
+msgstr "Y-βάση y:"
+
+msgid "Tile Mask"
+msgstr "Μάσκα μοτίβου"
+
+msgid "Reset"
+msgstr "Επαναφορά"
+
+msgid "Use Current Frame"
+msgstr "Χρήση τρέχοντος καρέ"
+
+msgid "Reset Mask"
+msgstr "Επαναφορά μάσκας"
+
+msgid "Window Opacity"
+msgstr "Αδιαφάνεια παραθύρου"
+
+msgid "Window opacity does not work on fullscreen mode."
+msgstr "Η αδιαφάνεια παραθύρου δε λειτουργεί σε λειτουργία πλήρους οθόνης."
+
+msgid "Panel Layout"
+msgstr "Διάταξη Πλαισίου"
+
+msgid "Panels"
+msgstr "Πλαίσια"
+
+msgid "Layouts"
+msgstr "Διατάξεις"
+
+msgid "Moveable Panels"
+msgstr "Κινητά πλαίσια"
+
+msgid "Manage Layouts"
+msgstr "Διαχείριση διατάξεων"
+
+#. Noun, a preview of something
+msgid "Preview"
+msgstr "Προεπισκόπηση"
+
+#. Found in the manage layouts dialog
+msgid "This is a preview, changing this won't change the layout"
+msgstr "Αυτή είναι μια προεπισκόπηση, οι αλλαγές που γίνονται εδώ δεν έχουν κάποιο αποτέλεσμα στη διάταξη"
+
+#. Found in the manage layouts dialog
+msgid "Double click to set as new startup layout"
+msgstr "Διπλό κλικ για ορισμό νέας διάταξης εκκίνησης"
+
+msgid "Add"
+msgstr "Προσθήκη"
+
+msgid "Add Layout"
+msgstr "Προσθήκη διάταξης"
+
+msgid "Edit Layout"
+msgstr "Επεξεργασία διάταξης"
+
+msgid "Are you sure you want to delete this layout?"
+msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτήν τη διάταξη;"
+
+msgid "Auto"
+msgstr "Αυτόματο"
+
+msgid "Widescreen"
+msgstr "Οριζόντια"
+
+msgid "Tallscreen"
+msgstr "Κάθετη"
+
+msgid "Mirror View"
+msgstr "Αναστροφή προβολής"
+
+msgid "Show Grid"
+msgstr "Εμφάνιση πλέγματος"
+
+msgid "Show Pixel Grid"
+msgstr "Εμφάνιση pixel πλέγματος"
+
+msgid "Show Rulers"
+msgstr "Εμφάνιση χαράκων"
+
+msgid "Show Guides"
+msgstr "Εμφάνιση οδηγών"
+
+#. Found under the View menu.
+msgid "Show Mouse Guides"
+msgstr "Εμφάνιση οδηγών ποντικιού"
+
+#. Found under the View menu.
+msgid "Snap To"
+msgstr "Προσκόλληση σε"
+
+#. Found under the View menu.
+msgid "Snap to Rectangular Grid Boundary"
+msgstr "Προσκόλληση στο όριο του ορθογώνιου πλέγματος"
+
+#. Found under the View menu.
+msgid "Snap to Rectangular Grid Center"
+msgstr "Προσκόλληση στο κέντρο του ορθογώνιου πλέγματος"
+
+#. Found under the View menu.
+msgid "Snap to Guides"
+msgstr "Προσκόλληση στους οδηγούς"
+
+#. Found under the View menu.
+msgid "Snap to Perspective Guides"
+msgstr "Προσκόλληση στους οδηγούς προοπτικής"
+
+msgid "Show Animation Timeline"
+msgstr "Εμφάνιση χρονοδιαγράμματος"
+
+msgid "Zen Mode"
+msgstr "Λειτουργία ζεν"
+
+msgid "Fullscreen Mode"
+msgstr "Λειτουργία πλήρους οθόνης"
+
+msgid "Fill with color:"
+msgstr "Γέμισμα με χρώμα:"
+
+msgid "Open a File"
+msgstr "Άνοιγμα αρχείου"
+
+msgid "Open File(s)"
+msgstr "Άνοιγμα αρχείου/ων"
+
+msgid "Import Options"
+msgstr "Επιλογές Εισαγωγής"
+
+msgid "Import as:"
+msgstr "Εισαγωγή ως:"
+
+#. Found in the preview image dialog, which appears when importing an image file.
+msgid "Apply to all"
+msgstr "Εφαρμογή σε όλα"
+
+msgid "Recent projects"
+msgstr "Πρόσφατα έργα"
+
+msgid "New project"
+msgstr "Νέο έργο"
+
+#. Found in the preview image dialog, which appears when importing an image file.
+msgid "Spritesheet (new project)"
+msgstr "Φύλλο καρέ (νέο έργο)"
+
+#. Found in the preview image dialog, which appears when importing an image file.
+msgid "Spritesheet (new layer)"
+msgstr "Φύλλο καρέ (νέα στρώση)"
+
+msgid "New frame"
+msgstr "Νέο καρέ"
+
+#. Found in the preview image dialog, which appears when importing an image file.
+msgid "Replace cel"
+msgstr "Αντικατάσταση cel"
+
+msgid "New layer"
+msgstr "Νέα στρώση"
+
+msgid "New reference image"
+msgstr "Νέα εικόνα αναφοράς"
+
+msgid "New palette"
+msgstr "Νέα παλέτα"
+
+msgid "New brush"
+msgstr "Νέο πινέλο"
+
+msgid "New pattern"
+msgstr "Νέο μοτίβο"
+
+msgid "Horizontal frames:"
+msgstr "Οριζόντια καρέ:"
+
+msgid "Vertical frames:"
+msgstr "Κάθετα καρέ:"
+
+#. Found in the preview image dialog, which appears when importing an image file. This option appears when the image is being imported as a spritesheet. If it's enabled, the software will slice it into frames automatically.
+msgid "Smart Slice"
+msgstr "Έξυπνος τεμαχισμός"
+
+#. A value that is a threshold
+msgid "Threshold:"
+msgstr "Όριο:"
+
+#. Found in the preview image dialog, which appears when importing an image file. This option appears when the image is being imported as a spritesheet, if "smart slice" is enabled. Hint tooltip of the "Threshold" value slider.
+msgid "Images that have any one side smaller than this value will cross the threshold"
+msgstr "Εικόνες που έχουν οποιαδήποτε πλευρά μικρότερη από αυτή την τιμή θα διασχίζουν το όριο"
+
+#. Found in the preview image dialog, which appears when importing an image file. This option appears when the image is being imported as a spritesheet, if "smart slice" is enabled. Merge is an adjective, it refers to the distance where images get merged.
+msgid "Merge distance:"
+msgstr "Απόσταση συγχώνευσης:"
+
+#. Found in the preview image dialog, which appears when importing an image file. This option appears when the image is being imported as a spritesheet, if "smart slice" is enabled. Hint tooltip of the "Merge distance" value slider.
+msgid "Images which crossed the threshold will get merged into a larger image, if they are within this distance"
+msgstr "Εικόνες που διέσχιζαν το όριο θα συγχωνευτούν σε μια μεγαλύτερη εικόνα, αν βρίσκονται μέσα σε αυτή την απόσταση"
+
+#. A button that, when pressed, refreshes something. Used to apply certain settings again after they changed. Currently it's only used in the preview image dialog, which appears when importing an image file. This option appears when the image is being imported as a spritesheet, if "smart slice" is enabled.
+msgid "Refresh"
+msgstr "Ανανέωση"
+
+msgid "Start frame:"
+msgstr "Καρέ έναρξης:"
+
+msgid "End frame:"
+msgstr "Τελικό καρέ:"
+
+msgid "At frame:"
+msgstr "Στο καρέ:"
+
+msgid "At layer:"
+msgstr "Στη στρώση:"
+
+msgid "Brush type:"
+msgstr "Τύπος πινέλου:"
+
+msgid "File brush"
+msgstr "Πινέλο από αρχείο"
+
+msgid "Project brush"
+msgstr "Πινέλο από project"
+
+msgid "Random brush"
+msgstr "Τυχαίο πινέλο"
+
+msgid "Save Sprite as .pxo"
+msgstr "Αποθήκευση εικόνας ως .pxo"
+
+msgid "Export Sprite as .png"
+msgstr "Εξαγωγή εικόνας ως .png"
+
+msgid "Export Sprite"
+msgstr "Εξαγωγή εικόνας"
+
+msgid "File Exists, Overwrite?"
+msgstr "Το άρχειο υπάρχει, να γίνει αντικατάσταση;"
+
+msgid "The following files already exist. Do you wish to overwrite them?\n"
+"%s"
+msgstr "Τα ακόλουθα αρχεία υπάρχουν ήδη. Θέλετε να τα αντικαταστήσετε;\n"
+"%s"
+
+msgid "Directory path is not valid!"
+msgstr "Η διαδρομή του φακέλου δεν είναι έγκυρη!"
+
+msgid "File name is not valid!"
+msgstr "Το όνομα του αρχείου δεν είναι έγκυρο!"
+
+msgid "Directory path and file name are not valid!"
+msgstr "Η διαδρομή του φακέλου και το όνομα του αρχείου δεν είναι έγκυρα!"
+
+msgid "Exporting in progress..."
+msgstr "Εξαγωγή σε εξέλιξη..."
+
+msgid "Can't load file '%s'."
+msgstr "Αδυναμία φόρτωσης του αρχείου '%s'."
+
+msgid "Can't load file '%s'.\n"
+"Error code: %s"
+msgstr "Δεν είναι δυνατή η φόρτωση του αρχείου '%s'.\n"
+"Κωδικός σφάλματος: %s"
+
+msgid "Can't load file '%s'.\n"
+"This is not a valid palette file."
+msgstr "Αδυναμία φόρτωσης του αρχείου '%s'.\n"
+"Αυτό δεν είναι έγκυρο αρχείο παλέτας."
+
+msgid "Frame"
+msgstr "Καρέ"
+
+msgid "Frames:"
+msgstr "Καρέ:"
+
+msgid "All Frames"
+msgstr "Όλα τα καρέ"
+
+msgid "Spritesheet"
+msgstr "Φύλλο καρέ"
+
+msgid "Animation"
+msgstr "Κίνηση"
+
+msgid "Preview:"
+msgstr "Προεπισκόπηση:"
+
+msgid "Frame:"
+msgstr "Καρέ:"
+
+msgid "Orientation:"
+msgstr "Προσανατολισμός:"
+
+msgid "Browse"
+msgstr "Περιήγηση"
+
+msgid "Resize:"
+msgstr "Αλλαγή μεγέθους:"
+
+msgid "Cancel Export"
+msgstr "Ακύρωση Εξαγωγής"
+
+msgid "Alert!"
+msgstr "Προειδοποίηση!"
+
+msgid "Select Current Folder"
+msgstr "Επιλογή του τρέχοντα φακέλου"
+
+msgid "Open a Directory"
+msgstr "Άνοιγμα Φακέλου"
+
+msgid "Background:"
+msgstr "Υπόβαθρο:"
+
+#. Found in the export dialog
+msgid "Selected frames"
+msgstr "Επιλεγμένα καρέ"
+
+msgid "Layers:"
+msgstr "Στρώσεις:"
+
+#. Found in the export dialog
+msgid "Visible layers"
+msgstr "Ορατές στρώσεις"
+
+#. Found in the export dialog
+msgid "Selected layers"
+msgstr "Επιλεγμένες στρώσεις"
+
+#. A type of layer. A pixel layer is the most common type of layer, which stores image data in pixels.
+msgid "Pixel layer:"
+msgstr "Στρώση εικονοστοιχείων:"
+
+#. A type of layer. A group layer stores other layers as its children, similar to how a folder holds files.
+msgid "Group layer:"
+msgstr "Στρώση ομάδας:"
+
+#. A type of layer. A 3D layer contains data of 3D objects that are rasterized automatically by Pixelorama.
+msgid "3D layer:"
+msgstr "Στρώση 3Δ:"
+
+msgid "Direction:"
+msgstr "Κατεύθυνση:"
+
+msgid "Forward"
+msgstr "Μπροστά"
+
+msgid "Backwards"
+msgstr "Ανάποδα"
+
+msgid "Ping-Pong"
+msgstr "Πινγκ-Πονγκ"
+
+msgid "Columns"
+msgstr "Στήλες"
+
+msgid "Columns:"
+msgstr "Στήλες:"
+
+msgid "Rows"
+msgstr "Σειρές"
+
+msgid "Rows:"
+msgstr "Σειρές:"
+
+#. Found in the export dialog. It is a label that says the dimensions (widthxheight) of the exported image(s).
+msgid "Export dimensions:"
+msgstr "Διαστάσεις εξαγωγής:"
+
+msgid "Path:"
+msgstr "Διαδρομή:"
+
+msgid "Directories & Files:"
+msgstr "Φάκελοι & Αρχεία:"
+
+msgid "Create Folder"
+msgstr "Δημιουργία Φακέλου"
+
+msgid "File:"
+msgstr "Αρχείο:"
+
+#. Found in the export dialog. It is a button that when pressed, shows more options.
+msgid "Advanced options"
+msgstr "Σύνθετες επιλογές"
+
+msgid "Interpolation:"
+msgstr "Παρεμβολή:"
+
+msgid "Nearest"
+msgstr "Χωρίς"
+
+msgid "Bilinear"
+msgstr "Διγραμμική"
+
+msgid "Cubic"
+msgstr "Κυβική"
+
+msgid "Trilinear"
+msgstr "Τριγραμμική"
+
+msgid "Constant"
+msgstr "Σταθερή"
+
+msgid "General"
+msgstr "Γενικά"
+
+msgid "Startup"
+msgstr "Εκκίνηση"
+
+msgid "Language"
+msgstr "Γλώσσα"
+
+msgid "Interface"
+msgstr "Περιβάλλον"
+
+msgid "Themes"
+msgstr "Θέματα"
+
+msgid "Canvas"
+msgstr "Καμβάς"
+
+#. Refers to the animation timeline.
+msgid "Timeline"
+msgstr "Χρονοδιάγραμμα"
+
+msgid "Selection"
+msgstr "Επιλογή"
+
+msgid "Shortcuts"
+msgstr "Συντομεύσεις"
+
+msgid "Backup"
+msgstr "Αντίγραφο ασφαλείας"
+
+msgid "Performance"
+msgstr "Επίδοση"
+
+#. Found in the preferences. Refers to device drivers, such as video drivers and tablet drivers.
+msgid "Drivers"
+msgstr "Οδηγοί"
+
+msgid "Extensions"
+msgstr "Επεκτάσεις"
+
+msgid "Cursors"
+msgstr "Κέρσορες"
+
+msgid "Indicators"
+msgstr "Δείκτες"
+
+#. Found in the preferences. Used for options that require restart when they are changed.
+msgid "Pixelorama must be restarted for changes to take effect."
+msgstr "Το Pixelorama πρέπει να επανεκκινηθεί για να τεθούν σε ισχύ οι αλλαγές."
+
+msgid "On"
+msgstr "Ενεργό"
+
+msgid "Restore default value"
+msgstr "Επαναφορά εργοστασιακής τιμής"
+
+#. Found in the preferences, under Canvas.
+msgid "Smooth Zoom"
+msgstr "Ομαλό ζουμ"
+
+#. Found in the preferences, under Canvas. Hint tooltip of "Smooth Zoom".
+msgid "Adds a smoother transition when zooming in or out"
+msgstr "Κάνει την μετάβαση στην μεγέθυνση ή σμίκρυνση πιο ομαλή"
+
+#. Found in the preferences, under Canvas.
+msgid "Integer Zoom"
+msgstr "Ακέραιη μεγέθυνση"
+
+#. Found in the preferences, under Canvas. Hint tooltip of "Integer Zoom".
+msgid "Restricts the value to be an integer multiple of 100%"
+msgstr "Περιορίζει την τιμή ως ακέραιο πολλαπλάσιο του 100%"
+
+msgid "Tablet pressure sensitivity:"
+msgstr "Ευαισθησία πίεσης tablet:"
+
+msgid "None"
+msgstr "Καθόλου"
+
+msgid "Affect Brush's Alpha"
+msgstr "Επηρεάζει την αδιαφάνεια του πινέλου"
+
+msgid "Color:"
+msgstr "Χρώμα:"
+
+msgid "Guide color:"
+msgstr "Χρώμα οδηγών:"
+
+msgid "System Language"
+msgstr "Γλώσσα Συστήματος"
+
+msgid "Display scale:"
+msgstr "Κλίμακα εμφάνισης:"
+
+msgid "Dim interface on dialog popup"
+msgstr "Σκοτείνιασμα περιβάλλοντος όταν εμφανίζεται αναδυόμενο παράθυρο"
+
+msgid "Dark"
+msgstr "Σκούρο"
+
+msgid "Gray"
+msgstr "Γκρι"
+
+msgid "Blue"
+msgstr "Μπλε"
+
+msgid "Caramel"
+msgstr "Καραμέλα"
+
+msgid "Light"
+msgstr "Φωτεινό"
+
+msgid "Purple"
+msgstr "Μωβ"
+
+msgid "Theme"
+msgstr "Θέμα"
+
+msgid "Buttons"
+msgstr "Κουμπιά"
+
+msgid "Icon color from:"
+msgstr "Χρώμα εικονιδίων από:"
+
+msgid "Icon color:"
+msgstr "Χρώμα εικονιδίων:"
+
+msgid "Background"
+msgstr "Υπόβαθρο"
+
+msgid "Background color from:"
+msgstr "Χρώμα υποβάθρου από:"
+
+msgid "Background color:"
+msgstr "Χρώμα υποβάθρου:"
+
+msgid "Left tool color:"
+msgstr "Χρώμα αριστερού εργαλείου:"
+
+msgid "Right tool color:"
+msgstr "Χρώμα δεξιού εργαλείου:"
+
+msgid "Tool button size:"
+msgstr "Μέγεθος κουμπιών εργαλείων:"
+
+msgid "Small"
+msgstr "Μικρά"
+
+msgid "Big"
+msgstr "Μεγάλα"
+
+msgid "Only affect selection"
+msgstr "Επηρεάζει μόνο την επιλογή"
+
+msgid "Selected cels"
+msgstr "Επιλεγμένα cels"
+
+msgid "Current cel"
+msgstr "Τρέχον cel"
+
+msgid "Current frame"
+msgstr "Τρέχον καρέ"
+
+msgid "All frames"
+msgstr "Όλα τα καρέ"
+
+msgid "All projects"
+msgstr "Όλα τα έργα"
+
+msgid "Invert Colors"
+msgstr "Αντιστροφή χρωμάτων"
+
+msgid "Modify Red Channel"
+msgstr "Τροποποίηση Κόκκινου Καναλιού"
+
+msgid "Modify Green Channel"
+msgstr "Τροποποίηση Πράσινου Καναλιού"
+
+msgid "Modify Blue Channel"
+msgstr "Τροποποίηση Μπλε Καναλιού"
+
+msgid "Modify Alpha Channel"
+msgstr "Τροποποίηση Καναλιού Διαφάνειας"
+
+msgid "Desaturation"
+msgstr "Αποκορεσμός"
+
+msgid "Outline"
+msgstr "Περίγραμμα"
+
+msgid "Drop Shadow"
+msgstr "Πίπτουσα σκιά"
+
+msgid "Offset X:"
+msgstr "Μετατόπιση X:"
+
+msgid "Offset Y:"
+msgstr "Μετατόπιση Y:"
+
+msgid "Shadow color:"
+msgstr "Χρώμα σκιάς:"
+
+msgid "Adjust Hue/Saturation/Value"
+msgstr "Ρύθμιση απόχρωσης/κορεσμού/τιμής"
+
+msgid "Gradient"
+msgstr "Διαβάθμιση"
+
+msgid "Gradient Map"
+msgstr "Χάρτης διαβαθμίσεων"
+
+msgid "Divide into equal parts"
+msgstr "Χωρίστε σε ίσα τμήματα"
+
+msgid "Parts:"
+msgstr "Τμήματα:"
+
+msgid "Add point at the end"
+msgstr "Προσθήκη σημείου στο τέλος"
+
+msgid "If this is enabled, the last point gets added at the end of the gradient.\n"
+"Disable this if you wish to convert the gradient to have constant interpolation, so that the last color will be taken into account."
+msgstr "Αν αυτό είναι ενεργοποιημένο, το τελευταίο σημείο προστίθεται στο τέλος της διαβάθμισης.\n"
+"Απενεργοποιήστε το αν θέλετε να μετατρέψετε τη διαβάθμιση για συνεχή παρεμβολή, έτσι ώστε το τελευταίο χρώμα να ληφθεί υπόψη."
+
+msgid "Shape:"
+msgstr "Σχήμα:"
+
+msgid "Linear"
+msgstr "Γραμμική"
+
+msgid "Radial"
+msgstr "Ακτινική"
+
+#. Found in the Gradient dialog, under the image menu. Specifies if the gradient will repeat or not.
+msgid "Repeat:"
+msgstr "Επανάληψη:"
+
+#. Found in the Gradient dialog, under the image menu. Specifies if the gradient will repeat or not.
+msgid "Repeat"
+msgstr "Επανάληψη"
+
+#. Found in the Gradient dialog, under the image menu. It is one of the repeat options.
+msgid "Mirror"
+msgstr "Κατοπτρισμός"
+
+#. Found in the Gradient dialog, under the image menu. It is one of the repeat options. If Truncate is selected, the gradient gets cut at the edges.
+msgid "Truncate"
+msgstr "Περικοπή"
+
+msgid "Transition size:"
+msgstr "Μέγεθος μετάβασης:"
+
+msgid "Center:"
+msgstr "Κέντρο:"
+
+msgid "Dithering pattern:"
+msgstr "Μοτίβο χρωματικής αντιπαράθεσης:"
+
+msgid "Adjust HSV"
+msgstr "Ρύθμιση HSV"
+
+msgid "Type:"
+msgstr "Είδος:"
+
+msgid "Angle:"
+msgstr "Γωνία:"
+
+msgid "Hue:"
+msgstr "Απόχρωση:"
+
+msgid "Saturation:"
+msgstr "Κορεσμός:"
+
+msgid "Value:"
+msgstr "Τιμή:"
+
+msgid "Apply"
+msgstr "Εφαρμογή"
+
+msgid "Diagonal"
+msgstr "Διαγώνιος"
+
+msgid "Place inside image"
+msgstr "Τοποθέτηση μέσα στην εικόνα"
+
+msgid "Thickness:"
+msgstr "Πάχος:"
+
+msgid "Colors:"
+msgstr "Χρώματα:"
+
+msgid "Steps:"
+msgstr "Βαθμίδες:"
+
+#. An image effect. For more details about what it does, you can refer to GIMP's documentation https://docs.gimp.org/2.8/en/gimp-tool-posterize.html
+msgid "Posterize"
+msgstr "Αφίσα"
+
+#. An option for the posterize image effect. For more details about what it does, you can refer to GIMP's documentation https://docs.gimp.org/2.8/en/gimp-tool-posterize.html
+msgid "Posterize levels:"
+msgstr "Επίπεδα αφίσας:"
+
+#. An option for the posterize image effect.
+msgid "Dither intensity:"
+msgstr "Ένταση χρωματικής αντιπαράθεσης:"
+
+msgid "View Splash Screen"
+msgstr "Εμφάνιση οθόνης εκκίνησης"
+
+msgid "Online Docs"
+msgstr "Ηλεκτρονική τεκμηρίωση"
+
+msgid "Issue Tracker"
+msgstr "Καταγραφές προβλημάτων"
+
+msgid "Open Logs Folder"
+msgstr "Άνοιγμα φακέλου αρχείων καταγραφής"
+
+msgid "Changelog"
+msgstr "Καταγραφές αλλαγών"
+
+msgid "About Pixelorama"
+msgstr "Σχετικά με το Pixelorama"
+
+msgid "Pixelorama - Pixelate your dreams!"
+msgstr "Pixelorama - Pixelate your dreams!"
+
+msgid "Developed by Orama Interactive"
+msgstr "Φτιαγμένο από την Orama Interactive"
+
+msgid "©2019-present by Orama Interactive and contributors"
+msgstr "©2019-παρόν από Orama Interactive και συνεισφέροντες"
+
+msgid "Website"
+msgstr "Ιστοσελίδα"
+
+msgid "GitHub Repo"
+msgstr "GitHub Αποθετήριο"
+
+msgid "Donate"
+msgstr "Κάντε μια δωρεά"
+
+msgid "Developers"
+msgstr "Προγραμματιστές"
+
+msgid "Contributors"
+msgstr "Συνεισφέροντες"
+
+msgid "Donors"
+msgstr "Δωρητές"
+
+msgid "Translators"
+msgstr "Μεταφραστές"
+
+msgid "Licenses"
+msgstr "Άδειες"
+
+msgid "English"
+msgstr "Αγγλικά"
+
+msgid "Greek"
+msgstr "Ελληνικά"
+
+msgid "French"
+msgstr "Γαλλικά"
+
+msgid "German"
+msgstr "Γερμανικά"
+
+msgid "Polish"
+msgstr "Πολωνικά"
+
+msgid "Portuguese"
+msgstr "Πορτογαλικά"
+
+msgid "Brazilian Portuguese"
+msgstr "Πορτογαλικά Βραζιλίας"
+
+msgid "Russian"
+msgstr "Ρωσικά"
+
+msgid "Chinese Simplified"
+msgstr "Κινέζικα Απλοποιημένα"
+
+msgid "Chinese Traditional"
+msgstr "Κινεζικά Παραδοσιακά"
+
+msgid "Italian"
+msgstr "Ιταλικά"
+
+msgid "Latvian"
+msgstr "Λετονικά"
+
+msgid "Spanish"
+msgstr "Ισπανικά"
+
+msgid "Catalan"
+msgstr "Καταλανικά"
+
+msgid "Esperanto"
+msgstr "Εσπεράντο"
+
+msgid "Indonesian"
+msgstr "Ινδονησιακά"
+
+msgid "Czech"
+msgstr "Τσεχικά"
+
+msgid "Arabic"
+msgstr "Αραβικά"
+
+msgid "Turkish"
+msgstr "Τουρκικά"
+
+msgid "Norwegian Bokmål"
+msgstr "Νορβηγικά Μποκμάλ"
+
+msgid "Korean"
+msgstr "Κορεάτικα"
+
+msgid "Hungarian"
+msgstr "Ουγγρικά"
+
+msgid "Romanian"
+msgstr "Ρουμανικά"
+
+msgid "Japanese"
+msgstr "Ιαπωνικά"
+
+msgid "Ukrainian"
+msgstr "Ουκρανικά"
+
+msgid "Danish"
+msgstr "Δανικά"
+
+msgid "Swedish"
+msgstr "Σουηδικά"
+
+msgid "Serbian (Cyrillic)"
+msgstr "Σερβικά (Κυριλλικά)"
+
+msgid "Dutch"
+msgstr "Ολλανδικά"
+
+msgid "Belarusian"
+msgstr "Λευκορωσικά"
+
+msgid "Development Team"
+msgstr "Ομάδα Ανάπτυξης"
+
+msgid "Lead Programmer"
+msgstr "Επικεφαλής Προγραμματιστής"
+
+msgid "UI Designer"
+msgstr "Σχεδιαστής UI"
+
+msgid "GitHub Contributors"
+msgstr "Συνεισφέροντες στο GitHub"
+
+msgid "Art by: %s"
+msgstr "Ζωγραφιά από: %s"
+
+msgid "untitled"
+msgstr "άτιτλο"
+
+msgid "imported"
+msgstr "εισαγόμενο"
+
+msgid "copy"
+msgstr "αντίγραφο"
+
+msgid "Are you sure you want to exit Pixelorama?"
+msgstr "Σίγουρα θέλετε να βγείτε από το Pixelorama;"
+
+msgid "Unsaved Image"
+msgstr "Μη αποθηκευμένη εικόνα"
+
+msgid "You have unsaved changes. If you proceed, the progress you have made will be lost."
+msgstr "Έχετε μη αποθηκευμένες αλλαγές. Εάν προχωρήσετε, η πρόοδος που έχετε πραγματοποιήσει θα χαθεί."
+
+msgid "Save before exiting?"
+msgstr "Αποθήκευση πριν την έξοδο;"
+
+msgid "You have unsaved progress. How do you wish to proceed?"
+msgstr "Έχετε μη αποθηκευμένη πρόοδο. Πώς θέλετε να συνεχίσετε;"
+
+msgid "Save & Exit"
+msgstr "Αποθήκευση & έξοδος"
+
+msgid "Exit without saving"
+msgstr "Έξοδος χωρίς αποθήκευση"
+
+msgid "Rectangular Selection\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button"
+msgstr "Ορθογώνια επιλογή\n\n"
+"%s για το αριστερό κουμπί ποντικιού\n"
+"%s για το δεξί κουμπί ποντικιού"
+
+msgid "Elliptical Selection\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button"
+msgstr "Ελλειπτική επιλογή\n\n"
+"%s για το αριστερό κουμπί ποντικιού\n"
+"%s για το δεξί κουμπί ποντικιού"
+
+msgid "Polygonal Selection\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button\n\n"
+"Double-click to connect the last point to the starting point"
+msgstr "Πολυγωνική επιλογή\n\n"
+"%s για αριστερό πλήκτρο του ποντικιού\n"
+"%s για δεξί πλήκτρο του ποντικιού\n\n"
+"Διπλό κλικ για σύνδεση του τελευταίου σημείου στο σημείο εκκίνησης"
+
+msgid "Select By Color\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button"
+msgstr "Επιλογή κατά χρώμα\n\n"
+"%s για το αριστερό κουμπί ποντικιού\n"
+"%s για το δεξί κουμπί ποντικιού"
+
+msgid "Magic Wand\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button"
+msgstr "Μαγικό ραβδί\n\n"
+"%s για το αριστερό κουμπί ποντικιού\n"
+"%s για το δεξί κουμπί ποντικιού"
+
+msgid "Lasso / Free Select Tool\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button"
+msgstr "Ελεύθερη επιλογή\n\n"
+"%s για το αριστερό κουμπί ποντικιού\n"
+"%s για το δεξί κουμπί ποντικιού"
+
+msgid "Move\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button"
+msgstr "Μετακίνηση\n\n"
+"%s για το αριστερό κουμπί ποντικιού\n"
+"%s για το δεξί κουμπί ποντικιού"
+
+msgid "Zoom\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button"
+msgstr "Ζουμ (Μεγέθυνση)\n\n"
+"%s για το αριστερό κουμπί ποντικιού\n"
+"%s για το δεξί κουμπί ποντικιού"
+
+msgid "Pan\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button"
+msgstr "Μετακίνηση κάμερας\n\n"
+"%s για το αριστερό κουμπί ποντικιού\n"
+"%s για το δεξί κουμπί ποντικιού"
+
+msgid "Color Picker\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button\n\n"
+"Select a color from a pixel of the sprite"
+msgstr "Επιλογέας χρωμάτων\n\n"
+"%s για αριστερό πλήκτρο του ποντικιού\n"
+"%s για δεξί πλήκτρο του ποντικιού\n\n"
+"Επιλέξτε ένα χρώμα από ένα εικονοστοιχείο του αντικειμένου"
+
+msgid "Pencil\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button\n\n"
+"Hold %s to make a line"
+msgstr "Μολύβι\n\n"
+"%s για το αριστερό κουμπί ποντικιού\n"
+"%s για το δεξί κουμπί ποντικιού\n\n"
+"Κρατήστε %s για να τραβήξετε μια γραμμή"
+
+msgid "Eraser\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button\n\n"
+"Hold %s to make a line"
+msgstr "Γόμα\n\n"
+"%s για το αριστερό κουμπί ποντικιού\n"
+"%s για το δεξί κουμπί ποντικιού\n\n"
+"Κρατήστε %s για να τραβήξετε μια γραμμή"
+
+msgid "Bucket\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button"
+msgstr "Κουβάς\n\n"
+"%s για το αριστερό κουμπί ποντικιού\n"
+"%s για το δεξί κουμπί ποντικιού"
+
+msgid "Shading Tool\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button"
+msgstr "Εργαλείο σκίασης\n\n"
+"%s για το αριστερό κουμπί ποντικιού\n"
+"%s για το δεξί κουμπί ποντικιού"
+
+msgid "Line Tool\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button\n\n"
+"Hold %s to snap the angle of the line\n"
+"Hold %s to center the shape on the click origin\n"
+"Hold %s to displace the shape's origin"
+msgstr "Εργαλείο γραμμής\n\n"
+"%s για το αριστερό πλήκτρο του ποντικιού\n"
+"%s για το δεξί πλήκτρο του ποντικιού\n\n"
+"Κρατήστε το %s για να περιορίσετε τη γωνία της γραμμής\n"
+"Κρατήστε το %s για να κεντράρετε το σχήμα στην αρχή του κλικ\n"
+"Κρατήστε το %s για να μετακινήσετε την προέλευση του σχήματος"
+
+msgid "Rectangle Tool\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button\n\n"
+"Hold %s to create a 1:1 shape\n"
+"Hold %s to center the shape on the click origin\n"
+"Hold %s to displace the shape's origin"
+msgstr "Ορθογώνιο εργαλείο\n\n"
+"%s για το αριστερό πλήκτρο του ποντικιού\n"
+"%s για το δεξί πλήκτρο του ποντικιού\n\n"
+"Κρατήστε το %s για να δημιουργηθεί ένα 1:1 σχήμα\n"
+"Κρατήστε το %s για να κεντράρετε το σχήμα στην αρχή του κλικ\n"
+"Κρατήστε το %s για να μετακινήσετε την προέλευση του σχήματος"
+
+msgid "Ellipse Tool\n\n"
+"%s for left mouse button\n"
+"%s for right mouse button\n\n"
+"Hold %s to create a 1:1 shape\n"
+"Hold %s to center the shape on the click origin\n"
+"Hold %s to displace the shape's origin"
+msgstr "Εργαλείο έλλειψης\n\n"
+"%s για το αριστερό πλήκτρο του ποντικιού\n"
+"%s για το δεξί πλήκτρο του ποντικιού\n\n"
+"Κρατήστε το %s για να δημιουργηθεί ένα 1:1 σχήμα\n"
+"Κρατήστε το %s για να κεντράρετε το σχήμα στην αρχή του κλικ\n"
+"Κρατήστε το %s για να μετακινήσετε την προέλευση του σχήματος"
+
+msgid "Rectangle"
+msgstr "Ορθογώνιο"
+
+msgid "Ellipse"
+msgstr "Έλλειψη"
+
+msgid "Choose a color for the left tool"
+msgstr "Επιλέξτε ένα χρώμα για το αριστερό εργαλείο"
+
+msgid "Choose a color for the right tool"
+msgstr "Επιλέξτε ένα χρώμα για το δεξί εργαλείο"
+
+msgid "Switch left and right colors\n"
+"(%s)"
+msgstr "Εναλλαγή μεταξύ αριστερού και δεξιού χρώματος\n"
+"(%s)"
+
+msgid "Reset the colors to their default state (black for left, white for right)"
+msgstr "Επαναφορά των χρωμάτων στην αρχική τους κατάσταση (μαύρο για το αριστερό, άσπρο για το δεξί)"
+
+msgid "Left tool"
+msgstr "Αριστερό εργαλείο"
+
+msgid "Right tool"
+msgstr "Δεξί εργαλείο"
+
+msgid "Left pixel indicator"
+msgstr "Δείκτης αριστερού πιξελ"
+
+msgid "Show left mouse pixel indicator or brush on the canvas when drawing"
+msgstr "Εμφάνιση δείκτη για το εικονοστοιχείο ή το πινέλο πάνω στον καμβά που αντιστοιχεί στο αριστερό κουμπί του ποντικιού"
+
+msgid "Right pixel indicator"
+msgstr "Δείκτης δεξιού πιξελ"
+
+msgid "Show right mouse pixel indicator or brush on the canvas when drawing"
+msgstr "Εμφάνιση δείκτη για το εικονοστοιχείο ή το πινέλο πάνω στον καμβά που αντιστοιχεί στο δεξί κουμπί του ποντικιού"
+
+msgid "Show left tool icon"
+msgstr "Εμφάνιση αριστερού εικονιδίου εργαλείου"
+
+msgid "Displays an icon of the selected left tool next to the cursor on the canvas"
+msgstr "Εμφανίζει ένα εικονίδιο του επιλεγμένου αριστερού εργαλείου δίπλα στο κέρσορα στον καμβά"
+
+msgid "Show right tool icon"
+msgstr "Εμφάνιση δεξιού εικονιδίου εργαλείου"
+
+msgid "Displays an icon of the selected right tool next to the cursor on the canvas"
+msgstr "Εμφανίζει ένα εικονίδιο του επιλεγμένου δεξιού εργαλείου δίπλα στο κέρσορα στον καμβά"
+
+msgid "Use native mouse cursors"
+msgstr "Χρήση κερσόρων του λειτουργικού συστήματος"
+
+msgid "Use cross cursor for the canvas"
+msgstr "Χρήση σταυρού κέρσορα για τον καμβά"
+
+msgid "Guides"
+msgstr "Οδηγοί"
+
+msgid "Guides color:"
+msgstr "Χρώμα οδηγών:"
+
+msgid "A color of ruler guides displayed on the canvas"
+msgstr "Το χρώμα των οδηγών που φαίνεται στο καμβά"
+
+#. Found in the Preferences, in the Canvas tab. Refers to grid and guide snapping.
+msgid "Snapping"
+msgstr "Προσκόλληση"
+
+#. Found in the Preferences, in the Canvas tab. Refers to grid and guide snapping.
+msgid "Snapping distance:"
+msgstr "Απόσταση προσκόλλησης:"
+
+#. Found in the Preferences, in the Canvas tab. Refers to grid and guide snapping. Hint tooltip of the snapping distance slider.
+msgid "This is the distance in screen pixels where guide and grid snapping gets activated."
+msgstr "Αυτή είναι η απόσταση σε εικονοστοιχεία οθόνης όπου ενεργοποιείται η προσκόλληση στους οδηγούς και στο πλέγμα."
+
+msgid "Grid"
+msgstr "Πλέγμα"
+
+msgid "Grid type:"
+msgstr "Είδος πλέγματος:"
+
+msgid "Sets the type of the grid between rectangular, isometric or both"
+msgstr "Ορίζει το είδος του πλέγματος ανάμεσα σε ορθογωνικό, ισομετρικό ή και τα δύο"
+
+msgid "Rectangular"
+msgstr "Ορθογωνικό"
+
+msgid "Isometric"
+msgstr "Ισομετρικό"
+
+msgid "All"
+msgstr "Όλα"
+
+#. Found in the Preferences, in the Canvas tab.
+msgid "Rectangular grid size:"
+msgstr "Μέγεθος ορθογώνιου πλέγματος:"
+
+#. Found in the Preferences, in the Canvas tab.
+msgid "Isometric grid size:"
+msgstr "Μέγεθος ισομετρικού πλέγματος:"
+
+#. Found in the Preferences, in the Canvas tab.
+msgid "Grid offset:"
+msgstr "Μετατόπιση πλέγματος:"
+
+#. Found in the Preferences, in the Canvas tab. Hint tooltip of the grid offset value sliders.
+msgid "Sets grid's offset from the canvas origin (top left corner of the image)"
+msgstr "Ορίζει τη μετατόπιση του πλέγματος από την προέλευση του καμβά (πάνω αριστερή γωνία της εικόνας)"
+
+msgid "Draw over Tile Mode:"
+msgstr "Εμφάνιση πάνω από τη λειτουργία μοτίβου:"
+
+msgid "If disabled, the grid will be drawn only over the original image"
+msgstr "Εάν είναι απενεργοποιημένο, το πλέγμα θα εμφανίζεται μόνο πάνω από την αρχική εικόνα"
+
+msgid "Grid color:"
+msgstr "Χρώμα πλέγματος:"
+
+msgid "A color of the grid"
+msgstr "Το χρώμα του πλέγματος που φαίνεται στον καμβά"
+
+msgid "Pixel Grid"
+msgstr "Pixel πλέγμα"
+
+msgid "Show at zoom:"
+msgstr "Εμφάνιση στο επίπεδο μεγέθυνσης:"
+
+msgid "Sets the minimal zoom at which pixel grid will be shown"
+msgstr "Ορίζει το ελάχιστο επίπεδο μεγέθυνσης (ζουμ) στο οποίο θα εμφανίζεται το pixel πλέγμα"
+
+msgid "Pixel grid color:"
+msgstr "Χρώμα pixel πλέγματος:"
+
+msgid "A color of the pixel grid"
+msgstr "Το χρώμα του pixel πλέγματος που φαίνεται στον καμβά"
+
+msgid "Transparency"
+msgstr "Διαφάνεια"
+
+msgid "Checker size:"
+msgstr "Μέγεθος σκακιέρας:"
+
+msgid "Size of the transparent checker background"
+msgstr "Μέγεθος του διάφανου υποβάθρου - σκακιέρα"
+
+msgid "Checker color 1:"
+msgstr "Χρώμα σκακιέρας 1:"
+
+msgid "First color of the transparent checker background"
+msgstr "Πρώτο χρώμα του διάφανου υποβάθρου - σκακιέρα"
+
+msgid "Checker color 2:"
+msgstr "Χρώμα σκακιέρας 2:"
+
+msgid "Second color of the transparent checker background"
+msgstr "Δεύτερο χρώμα του διάφανου υποβάθρου - σκακιέρα"
+
+msgid "Follow Canvas Movement"
+msgstr "Να ακολουθεί τη κίνηση του καμβά"
+
+msgid "The transparent checker follow the movement of canvas"
+msgstr "Το διάφανο υπόβαθρο - σκακιέρα να ακολουθεί τη κίνηση του καμβά"
+
+msgid "Follow Canvas Zoom Level"
+msgstr "Να ακολουθεί το επίπεδο μεγέθυνσης (ζουμ) του καμβά"
+
+msgid "The transparent checker follow the zoom level of canvas"
+msgstr "Το διάφανο υπόβαθρο - σκακιέρα να ακολουθεί το επίπεδο μεγέθυνσης (ζουμ) του καμβά"
+
+#. Found in the Preferences, under Timeline. If this is enabled, clicking on the layer buttons (such as lock, invisible etc) will automatically select that layer.
+msgid "Select layer when clicking on one of its buttons:"
+msgstr "Επιλογή στρώσης όταν πατιέται ένα από τα κουμπιά της:"
+
+#. Found in the Preferences, under Timeline. Changes the color of the past (previous) frames in onion skinning, if color mode is enabled.
+msgid "Onion skinning past color:"
+msgstr "Παρελθοντικό χρώμα onion skinning:"
+
+#. Found in the Preferences, under Timeline. Changes the color of the past (previous) frames in onion skinning, if color mode is enabled.
+msgid "Onion skinning future color:"
+msgstr "Μελλοντικό χρώμα onion skinning:"
+
+msgid "Animated selection borders"
+msgstr "Κίνηση περιγράμματος επιλογής"
+
+msgid "Border color 1:"
+msgstr "Χρώμα περιγράμματος 1:"
+
+msgid "Border color 2:"
+msgstr "Χρώμα περιγράμματος 2:"
+
+msgid "Only custom preset can be modified"
+msgstr "Μόνο η προσαρμοσμένη προεπιλογή μπορεί να τροποποιηθεί"
+
+msgid "Set application FPS limit:"
+msgstr "Ορισμός ορίου FPS εφαρμογής:"
+
+msgid "Pause application when it loses focus"
+msgstr "Παύση εφαρμογής όταν χάνει την εστίαση"
+
+msgid "Sets the limit of the application's frames per second. The lower the number, the lower the CPU usage, but the application gets slower, choppier and unresponsive. 0 means that there is no limit."
+msgstr "Ορίζει το όριο των καρέ της εφαρμογής ανά δευτερόλεπτο. Όσο μικρότερος είναι ο αριθμός, τόσο χαμηλότερη είναι η χρήση της CPU, αλλά η εφαρμογή γίνεται πιο αργή, ασταθής και λιγότερο ανταποκρινόμενη. 0 σημαίνει ότι δεν υπάρχει όριο."
+
+msgid "If this is toggled on, when the application's window loses focus, it gets paused. This helps lower CPU usage when idle. The application gets unpaused when the mouse enters the application's window."
+msgstr "Αν είναι ενεργοποιημένο, όταν το παράθυρο της εφαρμογής χάνει την εστίαση του, γίνεται παύση της εφαρμογής. Αυτό βοηθά στη μείωση της χρήσης του επεξεργαστή (CPU) όταν βρίσκεται σε αδράνεια. Η εφαρμογή συνεχίζεται όταν το ποντίκι εισέρχεται στο παράθυρο της."
+
+#. Found in the Preferences, under Drivers. Specifies the renderer/video driver being used.
+msgid "Renderer:"
+msgstr "Οδηγός βίντεο:"
+
+#. Found in the Preferences, under Drivers. Hint tooltip of the renderer option.
+msgid "Specifies the renderer/video driver being used. GLES2 is better for older and low-end devices, but GLES3 may offer more features."
+msgstr "Καθορίζει το πρόγραμμα οδήγησης βίντεο που χρησιμοποιείται. Το GLES2 είναι καλύτερο για παλαιότερες και χαμηλού επιπέδου συσκευές, αλλά το GLES3 μπορεί να προσφέρει περισσότερες δυνατότητες."
+
+#. Found in the Preferences, under Drivers. Specifies the tablet driver being used on Windows.
+msgid "Tablet driver:"
+msgstr "Οδηγός ταμπλέτας:"
+
+#. Found in the Preferences, under Drivers. Hint tooltip of the tablet driver option.
+msgid "Specifies the tablet driver being used on Windows. If you have Windows Ink enabled, select winink."
+msgstr "Καθορίζει το πρόγραμμα οδήγησης ταμπλέτας που χρησιμοποιείται στα Windows. Εάν έχετε ενεργοποιημένο το Windows Ink, επιλέξτε winink."
+
+msgid "Add Extension"
+msgstr "Προσθήκη επέκτασης"
+
+msgid "Enable"
+msgstr "Ενεργοποίηση"
+
+msgid "Disable"
+msgstr "Απενεργοποίηση"
+
+msgid "Uninstall"
+msgstr "Απεγκατάσταση"
+
+msgid "Open Folder"
+msgstr "Άνοιγμα φακέλου"
+
+#. Hint tooltip of a button in the Global Tool Settings. "Dynamics" let users affect certain brush parameters, such as their size and alpha, based on the pressure of the tablet pen, the velocity of the mouse or the pen, and more in the future.
+msgid "Dynamics"
+msgstr "Δυναμικές"
+
+#. Found in the Dynamics options menu. Pressure refers to tablet pen pressure.
+msgid "Pressure"
+msgstr "Πίεση"
+
+#. Found in the Dynamics options menu. Velocity refers to mouse or tablet pen velocity, meaning how fast it moves.
+msgid "Velocity"
+msgstr "Ταχύτητα"
+
+#. Refers to the alpha channel of the colors, in the RGBA color model. The alpha channel is responsible for the transparency of the color.
+msgid "Alpha"
+msgstr "Διαφάνεια"
+
+#. Refers to the size of a value, for example the size of a brush.
+msgid "Size"
+msgstr "Μέγεθος"
+
+#. Found in the Dynamics options menu. Sets the limits of the brush property values, such as the minimum and maximum values of alpha and size.
+msgid "Value limits"
+msgstr "Όρια τιμών"
+
+#. Found in the Dynamics options menu. Sets the thresholds of the dynamic properties, such as the minimum and maximum values of pressure and velocity.
+msgid "Thresholds"
+msgstr "Όρια"
+
+#. Noun, the start of something.
+msgid "Start"
+msgstr "Αρχή"
+
+#. Noun, the end of something.
+msgid "End"
+msgstr "Τέλος"
+
+msgid "Brush:"
+msgstr "Πινέλο:"
+
+msgid "Select a brush"
+msgstr "Επιλέξτε ένα πινέλο"
+
+msgid "Pixel brush"
+msgstr "Πινέλο εικονοστοιχείου"
+
+msgid "Circle brush"
+msgstr "Πινέλο κύκλου"
+
+msgid "Filled circle brush"
+msgstr "Πινέλου κύκλου με γέμισμα"
+
+msgid "Custom brush"
+msgstr "Προσαρμοσμένο πινέλο"
+
+msgid "Brush size:"
+msgstr "Μέγεθος πινέλου:"
+
+msgid "Overwrite color"
+msgstr "Αντικατάσταση χρώματος"
+
+msgid "Overwrites color instead of blending it. This option is only relevant with colors that are not fully opaque"
+msgstr "Αντικαθιστά το χρώμα αντί να το συνδυάζει. Αυτή η επιλογή σχετίζεται μόνο με χρώματα που δεν είναι πλήρως αδιαφανή"
+
+msgid "Pixel Perfect"
+msgstr "Pixel Perfect"
+
+msgid "Fill inside"
+msgstr "Εσωτερικό γέμισμα"
+
+#. Found in the tool options of the Pencil tool, and refers to the spacing between brush strokes.
+msgid "Spacing"
+msgstr "Απόσταση"
+
+#. Found in the tool options of the Pencil tool if "Spacing" is enabled, and refers to the horizontal gap between brush strokes.
+msgid "Gap X:"
+msgstr "Κενό X:"
+
+#. Found in the tool options of the Pencil tool if "Spacing" is enabled, and refers to the vertical gap between brush strokes.
+msgid "Gap Y:"
+msgstr "Κενό Y:"
+
+msgid "Pixel Perfect\n"
+"Makes lines smooth by removing the extra pixels on the edges"
+msgstr "Pixel Perfect\n"
+"Κάνει τις γραμμές ομαλές αφαιρώντας τα επιπλέον εικονοστοιχεία στα άκρα"
+
+msgid "Fill Shape"
+msgstr "Γέμισμα Σχήματος"
+
+msgid "Fills the drawn shape with color, instead of drawing a hollow shape"
+msgstr "Γεμίζει το σχεδιασμένο σχήμα με χρώμα, αντί να σχεδιαστεί ένα άδειο σχήμα"
+
+msgid "Brush color from"
+msgstr "Χρώμα πινέλου από"
+
+msgid "0: Color from the brush itself, 100: the currently selected color"
+msgstr "0: Χρώμα από το πινέλο, 100: επιλεγμένο χρώμα"
+
+#. Found in the bucket tool options.
+msgid "Fill area:"
+msgstr "Περιοχή γεμίσματος:"
+
+#. Found in the bucket tool options, one of the fill area options.
+msgid "Similar area"
+msgstr "Παρόμοια περιοχή"
+
+#. Found in the bucket tool options, one of the fill area options.
+msgid "Similar colors"
+msgstr "Παρόμοια χρώματα"
+
+#. Found in the bucket tool options, one of the fill area options.
+msgid "Whole selection"
+msgstr "Ολόκληρη επιλογή"
+
+msgid "Fill with:"
+msgstr "Γέμισμα με:"
+
+#. Found in the bucket tool options, one of the fill with options.
+msgid "Selected color"
+msgstr "Επιλεγμένο χρώμα"
+
+#. Found in the bucket tool options, one of the fill with options.
+msgid "Pattern"
+msgstr "Μοτίβο"
+
+msgid "Offset"
+msgstr "Μετατόπιση"
+
+msgid "Simple Shading"
+msgstr "Απλή Σκίαση"
+
+msgid "Hue Shifting"
+msgstr "Μετατόπιση Απόχρωσης"
+
+msgid "Lighten"
+msgstr "Φώτισμα"
+
+msgid "Darken"
+msgstr "Σκούρημα"
+
+msgid "Amount:"
+msgstr "Ποσό:"
+
+msgid "Lighten/Darken amount"
+msgstr "Ποσό φωτίσματος ή σκουρήματος"
+
+msgid "Pick for:"
+msgstr "Επιλογή για το:"
+
+msgid "Left Color"
+msgstr "Αριστερό Χρώμα"
+
+msgid "Right Color"
+msgstr "Δεξί Χρώμα"
+
+msgid "Mode:"
+msgstr "Λειτουργία:"
+
+msgid "Zoom in"
+msgstr "Μεγέθυνση"
+
+msgid "Zoom out"
+msgstr "Σμίκρυνση"
+
+msgid "Options:"
+msgstr "Επιλογές:"
+
+msgid "Fit to frame"
+msgstr "Προσαρμογή στην οθόνη"
+
+msgid "100% Zoom"
+msgstr "100% Ζουμ"
+
+#. One of the modes of a selection tool. Found in the tool options, when a selection tool is active.
+msgid "Replace selection"
+msgstr "Αντικατάσταση επιλογής"
+
+#. One of the modes of a selection tool. Found in the tool options, when a selection tool is active.
+msgid "Add to selection"
+msgstr "Προσθήκη στην επιλογή"
+
+#. One of the modes of a selection tool. Found in the tool options, when a selection tool is active.
+msgid "Subtract from selection"
+msgstr "Αφαίρεση από την επιλογή"
+
+#. One of the modes of a selection tool. Found in the tool options, when a selection tool is active.
+msgid "Intersection of selections"
+msgstr "Διασύνδεση των επιλογών"
+
+msgid "Mirroring"
+msgstr "Κατοπτρισμός"
+
+msgid "Horizontal"
+msgstr "Οριζόντια"
+
+msgid "Enable horizontal mirrored drawing"
+msgstr "Ενεργοποίηση ζωγραφικής με οριζόντιο κατοπτρισμό"
+
+msgid "Enable vertical mirrored drawing"
+msgstr "Ενεργοποίηση ζωγραφικής με κάθετο κατοπτρισμό"
+
+msgid "Vertical"
+msgstr "Κάθετα"
+
+msgid "Current frame:"
+msgstr "Τρέχον καρέ:"
+
+msgid "Animation mode:"
+msgstr "Λειτουργία κίνησης:"
+
+msgid "Current frame as spritesheet"
+msgstr "Τρέχον πλαίσιο ως φύλλο καρέ"
+
+msgid "Jump to the first frame\n"
+"(%s)"
+msgstr "Μετάβαση στο πρώτο καρέ\n"
+"(%s)"
+
+msgid "Go to the previous frame\n"
+"(%s)"
+msgstr "Μετάβαση στο προηγούμενο καρέ\n"
+"(%s)"
+
+msgid "Play the animation backwards (from end to beginning)\n"
+"(%s)"
+msgstr "Αναπαραγωγή της κίνησης ανάποδα (από το τέλος προς την αρχή)\n"
+"(%s)"
+
+msgid "Play the animation forward (from beginning to end)\n"
+"(%s)"
+msgstr "Αναπαραγωγή της κίνησης κανονικά (από την αρχή προς το τέλος)\n"
+"(%s)"
+
+msgid "Go to the next frame\n"
+"(%s)"
+msgstr "Μετάβαση στο επόμενο καρέ\n"
+"(%s)"
+
+msgid "Jump to the last frame\n"
+"(%s)"
+msgstr "Μετάβαση στο τελευταίο καρέ\n"
+"(%s)"
+
+msgid "Onion Skinning settings"
+msgstr "Ρυθμίσεις Onion Skinning"
+
+msgid "Enable/disable Onion Skinning"
+msgstr "Ενεργοποίηση/απενεργοποίηση Onion Skinning"
+
+msgid "How many frames per second should the animation preview be?\n"
+"The more FPS, the faster the animation plays."
+msgstr "Πόσα καρέ ανά δευτερόλεπτο (FPS) να είναι η προεπισκόπηση της κίνησης;\n"
+"Όσο περισσότερα FPS, τόσο πιο γρήγορα παίζει η κίνηση."
+
+msgid "No loop"
+msgstr "Καμία επανάληψη"
+
+msgid "Cycle loop"
+msgstr "Κυκλική επανάληψη"
+
+msgid "Ping-pong loop"
+msgstr "Επανάληψη πινγκ-πονγκ"
+
+msgid "Onion Skinning:"
+msgstr "Onion Skinning:"
+
+msgid "Past Frames"
+msgstr "Παρελθοντικά καρέ"
+
+msgid "Future Frames"
+msgstr "Μελλοντικά καρέ"
+
+msgid "Manage frame tags"
+msgstr "Διαχείριση ετικετών καρέ"
+
+msgid "Frame Tag Properties"
+msgstr "Ιδιότητες ετικετών καρέ"
+
+msgid "Add a new frame tag"
+msgstr "Προσθήκη νέας ετικέτας καρέ"
+
+msgid "Name:"
+msgstr "Όνομα:"
+
+msgid "From:"
+msgstr "Από:"
+
+msgid "To:"
+msgstr "Έως:"
+
+msgid "Animation plays only on frames of the same tag"
+msgstr "Η κίνηση παίζει μόνο σε καρέ της ίδιας καρτέλας"
+
+msgid "Tag %s (Frame %s)"
+msgstr "Ετικέτα %s (Καρέ %s)"
+
+msgid "Tag %s (Frames %s-%s)"
+msgstr "Ετικέτα %s (Καρέ %s-%s)"
+
+msgid "If it's selected, the animation plays only on the frames that have the same tag.\n"
+"If it's not, the animation will play for all frames, ignoring tags."
+msgstr "Αν είναι επιλεγμένο, η κίνηση παίζει μόνο σε καρέ που έχουν την ίδια καρτέλα.\n"
+"Αλλιώς, η κίνηση θα παίζει σε όλα τα καρέ, αγνοώντας τις καρτέλες."
+
+#. Found in the timeline, inside the onion skinning settings. If this is enabled, the past and future frames will have appear tinted.
+msgid "Color mode"
+msgstr "Λειτουργία χρώματος"
+
+msgid "Show past frames:"
+msgstr "Εμφάνιση προηγούμενων καρέ:"
+
+msgid "Show future frames:"
+msgstr "Εμφάνιση επόμενων καρέ:"
+
+msgid "Above canvas"
+msgstr "Πάνω από καμβά"
+
+msgid "Below canvas"
+msgstr "Κάτω από καμβά"
+
+msgid "If you want a layer to ignore onion skinning simply add the \"_io\" suffix in its name."
+msgstr "Αν θέλετε ένα στρώμα να αγνοήσει το onion skinning απλά προσθέστε το επίθημα \"_io\" στο όνομά του."
+
+msgid "Add a new frame"
+msgstr "Προσθήκη νέου καρέ"
+
+msgid "Remove Frame"
+msgstr "Διαγραφή Καρέ"
+
+msgid "Clone Frame"
+msgstr "Κλωνοποίηση Καρέ"
+
+msgid "Move Left"
+msgstr "Μετακίνηση Αριστερά"
+
+msgid "Move Right"
+msgstr "Μετακίνηση Δεξιά"
+
+msgid "Add Frame Tag"
+msgstr "Προσθήκη Ετικέτας Καρέ"
+
+msgid "Link Cels to"
+msgstr "Σύνδεση cels με"
+
+msgid "Unlink Cels"
+msgstr "Αποσύνδεση cels"
+
+msgid "Frame Properties"
+msgstr "Ιδιότητες Καρέ"
+
+msgid "Frame properties"
+msgstr "Ιδιότητες καρέ"
+
+#. Found on the popup menu that appears when a user right-clicks on a frame button. When clicked, the order of the selected frames is being reversed.
+msgid "Reverse Frames"
+msgstr "Αντιστροφή Καρέ"
+
+msgid "Layer"
+msgstr "Στρώση"
+
+msgid "Group"
+msgstr "Ομάδα"
+
+msgid "Layers"
+msgstr "Στρώσεις"
+
+#. Hint tooltip of the create new layer button, found on the left side of the timeline.
+msgid "Create a new layer"
+msgstr "Δημιουργία νέας στρώσης"
+
+#. One of the options of the create new layer button.
+msgid "Add Pixel Layer"
+msgstr "Προσθήκη στρώσης εικονοστοιχείων"
+
+#. One of the options of the create new layer button.
+msgid "Add Group Layer"
+msgstr "Προσθήκη στρώσης ομάδας"
+
+#. One of the options of the create new layer button.
+msgid "Add 3D Layer"
+msgstr "Προσθήκη τρισδιάστατης στρώσης"
+
+msgid "Remove current layer"
+msgstr "Διαγραφή της τρέχουσας στρώσης"
+
+msgid "Move up the current layer"
+msgstr "Μετακίνηση της τρέχουσας στρώσης προς τα πάνω"
+
+msgid "Move down the current layer"
+msgstr "Μετακίνηση της τρέχουσας στρώσης προς τα κάτω"
+
+msgid "Clone current layer"
+msgstr "Κλωνοποίηση της τρέχουσας στρώσης"
+
+msgid "Merge current layer with the one below"
+msgstr "Συγχώνευση της τρέχουσας στρώσης με την από κάτω"
+
+msgid "Opacity:"
+msgstr "Αδιαφάνεια:"
+
+msgid "Tile mode opacity:"
+msgstr "Αδιαφάνεια λειτουργίας μοτίβου:"
+
+msgid "Toggle layer's visibility"
+msgstr "Εναλλαγή της ορατότητας της στρώσης"
+
+msgid "Lock/unlock layer"
+msgstr "Κλείδωμα/ξεκλείδωμα της στρώσης"
+
+msgid "Frame: %s, Layer: %s"
+msgstr "Καρέ: %s, Στρώση: %s"
+
+msgid "Enable/disable automatic linking of new cels when creating new frames\n\n"
+"Linked cels share content across multiple frames"
+msgstr "Ενεργοποίηση/απενεργοποίηση αυτόματης σύνδεσης νέων cels κατά τη δημιουργία νέων καρέ\n\n"
+"Τα συνδεδεμένα cels κάνουν κοινή χρήση περιεχομένου σε πολλαπλά καρέ"
+
+msgid "Expand/collapse group"
+msgstr "Ανάπτυξη/σύμπτυξη ομάδας"
+
+msgid "Palette"
+msgstr "Παλέτα"
+
+msgid "Palettes"
+msgstr "Παλέτες"
+
+msgid "Add a new palette"
+msgstr "Νέα παλέτα"
+
+msgid "Edit currently selected palette"
+msgstr "Επεξεργασία παλέτας"
+
+msgid "Choose a palette"
+msgstr "Επιλογή παλέτας"
+
+msgid "Undo: Draw"
+msgstr "Αναίρεση: Ζωγραφική"
+
+msgid "Redo: Draw"
+msgstr "Ακύρωση αναίρεσης: Ζωγραφική"
+
+msgid "Undo: Select"
+msgstr "Αναίρεση: Επιλογή"
+
+msgid "Redo: Select"
+msgstr "Ακύρωση αναίρεσης: Επιλογή"
+
+msgid "Undo: Scale"
+msgstr "Αναίρεση: Κλιμάκωση"
+
+msgid "Redo: Scale"
+msgstr "Ακύρωση αναίρεσης: Κλιμάκωση"
+
+msgid "Undo: Add Layer"
+msgstr "Αναίρεση: Προσθήκη στρώσης"
+
+msgid "Redo: Add Layer"
+msgstr "Ακύρωση αναίρεσης: Προσθήκη στρώσης"
+
+msgid "Undo: Remove Layer"
+msgstr "Αναίρεση: Διαγραφή στρώσης"
+
+msgid "Redo: Remove Layer"
+msgstr "Ακύρωση αναίρεσης: Διαγραφή στρώσης"
+
+msgid "Undo: Merge Layer"
+msgstr "Αναίρεση: Συγχώνευση στρώσης"
+
+msgid "Redo: Merge Layer"
+msgstr "Ακύρωση αναίρεσης: Συγχώνευση στρώσης"
+
+msgid "Undo: Change Layer Order"
+msgstr "Αναίρεση: Αλλαγή σειράς στρώσης"
+
+msgid "Redo: Change Layer Order"
+msgstr "Ακύρωση αναίρεσης: Αλλαγή σειράς στρώσης"
+
+msgid "Undo: Add Frame"
+msgstr "Αναίρεση: Προσθήκη καρέ"
+
+msgid "Redo: Add Frame"
+msgstr "Ακύρωση αναίρεσης: Προσθήκη καρέ"
+
+msgid "Undo: Remove Frame"
+msgstr "Αναίρεση: Διαγραφή καρέ"
+
+msgid "Redo: Remove Frame"
+msgstr "Ακύρωση αναίρεσης: Διαγραφή καρέ"
+
+msgid "Undo: Change Frame Order"
+msgstr "Αναίρεση: Αλλαγή σειράς καρέ"
+
+msgid "Redo: Change Frame Order"
+msgstr "Ακύρωση αναίρεσης: Αλλαγή σειράς καρέ"
+
+msgid "Undo: Delete Custom Brush"
+msgstr "Αναίρεση: Διαγραφή προσαρμοσμένου πινέλου"
+
+msgid "Redo: Delete Custom Brush"
+msgstr "Ακύρωση αναίρεσης: Διαγραφή προσαρμοσμένου πινέλου"
+
+msgid "Undo: Modify Frame Tag"
+msgstr "Αναίρεση: Τροποποίηση ετικέτας καρέ"
+
+msgid "Redo: Modify Frame Tag"
+msgstr "Ακύρωση αναίρεσης: Τροποποίηση ετικέτας καρέ"
+
+msgid "Undo: Delete Frame Tag"
+msgstr "Αναίρεση: Διαγραφή ετικέτας καρέ"
+
+msgid "Redo: Delete Frame Tag"
+msgstr "Ακύρωση αναίρεσης: Διαγραφή ετικέτας καρέ"
+
+msgid "Undo: Change frame duration"
+msgstr "Αναίρεση: Αλλαγή διάρκειας καρέ"
+
+msgid "Redo: Change frame duration"
+msgstr "Ακύρωση αναίρεσης: Αλλαγή διάρκειας καρέ"
+
+msgid "Move Guide"
+msgstr "Μετακίνηση βοηθού"
+
+msgid "File saved"
+msgstr "Το αρχείο αποθηκεύτηκε"
+
+msgid "File autosaved"
+msgstr "Το αρχείο αποθηκεύτηκε αυτόματα"
+
+msgid "File failed to open. Error code %s"
+msgstr "Απέτυχε το άνοιγμα του αρχείου. Κωδικός σφάλματος %s"
+
+msgid "File failed to save. Error code %s"
+msgstr "Απέτυχε η αποθήκευση του αρχείου. Κωδικός σφάλματος %s"
+
+msgid "File(s) exported"
+msgstr "Έγινε εξαγωγή αρχείων"
+
+msgid "New Empty Palette"
+msgstr "Νέα Κενή Παλέτα"
+
+msgid "Import Palette"
+msgstr "Εισαγωγή Παλέτας"
+
+msgid "Create Palette From Current Sprite"
+msgstr "Δημιουργία παλέτας από την τρέχουσα εικόνα"
+
+msgid "Palette Name:"
+msgstr "Όνομα Παλέτας:"
+
+msgid "Color Name:"
+msgstr "Όνομα Χρώματος:"
+
+msgid "Use current left & right colors"
+msgstr "Χρήση των επιλεγμένων χρωμάτων (αριστερού & δεξιού)"
+
+msgid "Create a new empty palette?"
+msgstr "Δημιουργία νέας κενής παλέτας;"
+
+msgid "Error"
+msgstr "Σφάλμα"
+
+msgid "Error: Palette must have a valid name."
+msgstr "Σφάλμα: Η παλέτα πρέπει να έχει έγκυρο όνομα."
+
+msgid "Invalid Palette file!"
+msgstr "Μη έγκυρο αρχείο παλέτας!"
+
+msgid "Edit Palette"
+msgstr "Επεξεργασία Παλέτας"
+
+msgid "Create colors with alpha component"
+msgstr "Δημιουργία χρωμάτων με στοιχεία αδιαφάνειας"
+
+msgid "Get colors only from selection"
+msgstr "Χρώματα μόνο από την επιλογή"
+
+msgid "Get colors from"
+msgstr "Χρώματα από"
+
+msgid "Patrons:"
+msgstr "Patrons:"
+
+msgid "Want your name or your company to be shown on the splash screen?"
+msgstr "Θέλετε το όνομά σας ή της εταιρείας σας να φαίνεται στην οθόνη εκκίνησης;"
+
+msgid "Become a Platinum Sponsor"
+msgstr "Γίνετε Πλατινένιος Χορηγός"
+
+msgid "Become a Gold Sponsor"
+msgstr "Γίνετε Χρυσός Χορηγός"
+
+msgid "Become a Patron"
+msgstr "Γίνετε Χορηγός"
+
+msgid "Don't show again"
+msgstr "Να μην εμφανιστεί ξανά"
+
+msgid "Image Options"
+msgstr "Επιλογές εικόνας"
+
+msgid "Default width:"
+msgstr "Προεπιλεγμένο πλάτος:"
+
+msgid "A default width of a new image"
+msgstr "Το προεπιλεγμένο πλάτος των καινούριων εικόνων"
+
+msgid "Default height:"
+msgstr "Προεπιλεγμένο ύψος:"
+
+msgid "A default height of a new image"
+msgstr "Το προεπιλεγμένο ύψος των καινούριων εικόνων"
+
+msgid "Default fill color:"
+msgstr "Προεπιλεγμένο γέμισμα με χρώμα:"
+
+msgid "A default background color of a new image"
+msgstr "Το προεπιλεγμένο χρώμα των καινούριων εικόνων"
+
+msgid "Lock aspect ratio"
+msgstr "Κλείδωμα αναλογίας διαστάσεων"
+
+msgid "Portrait"
+msgstr "Κατακόρυφος προσανατολισμός"
+
+msgid "Landscape"
+msgstr "Οριζόντιος προσανατολισμός"
+
+msgid "Templates:"
+msgstr "Πρότυπα:"
+
+msgid "Preset"
+msgstr "Προκαθορισμένο"
+
+msgid "Preset:"
+msgstr "Προκαθορισμένο:"
+
+msgid "Default"
+msgstr "Προεπιλογή"
+
+msgid "Custom"
+msgstr "Προσαρμοσμένο"
+
+msgid "Rectangular Selection"
+msgstr "Ορθογώνια επιλογή"
+
+msgid "Elliptical Selection"
+msgstr "Ελλειπτική επιλογή"
+
+msgid "Polygonal Selection"
+msgstr "Πολυγωνική επιλογή"
+
+msgid "Select By Color"
+msgstr "Επιλογή κατά χρώμα"
+
+msgid "Magic Wand"
+msgstr "Μαγικό ραβδί"
+
+msgid "Lasso / Free Select Tool"
+msgstr "Ελεύθερη επιλογή"
+
+msgid "Move"
+msgstr "Μετακίνηση"
+
+msgid "Zoom"
+msgstr "Ζουμ"
+
+msgid "Pan"
+msgstr "Μετακίνηση κάμερας"
+
+msgid "Color Picker"
+msgstr "Επιλογέας χρωμάτων"
+
+msgid "Pencil"
+msgstr "Μολύβι"
+
+msgid "Eraser"
+msgstr "Γόμα"
+
+msgid "Bucket"
+msgstr "Κουβάς"
+
+msgid "Shading Tool"
+msgstr "Εργαλείο σκίασης"
+
+msgid "Line Tool"
+msgstr "Εργαλείο γραμμής"
+
+msgid "Rectangle Tool"
+msgstr "Ορθογώνιο εργαλείο"
+
+msgid "Ellipse Tool"
+msgstr "Εργαλείο έλλειψης"
+
+msgid "Switch Colors"
+msgstr "Εναλλαγή χρωμάτων"
+
+msgid "Set the shortcut"
+msgstr "Επιλέξτε μια συντόμευση"
+
+msgid "Press a key or a key combination to set the shortcut"
+msgstr "Πατήστε ένα πλήκτρο ή συνδυασμό πλήκτρων για να ορίσετε τη συντόμευση"
+
+msgid "Already assigned"
+msgstr "Έχει ήδη εκχωρηθεί"
+
+msgid "Left Tool:"
+msgstr "Αριστερό εργαλείο:"
+
+msgid "A tool assigned to the left mouse button"
+msgstr "Το εργαλείο που έχει εκχωρηθεί στο αριστερό κουμπί του ποντικιού"
+
+msgid "Right Tool:"
+msgstr "Δεξί εργαλείο:"
+
+msgid "A tool assigned to the right mouse button"
+msgstr "Το εργαλείο που έχει εκχωρηθεί στο δεξί κουμπί του ποντικιού"
+
+msgid "Cannot find last project file."
+msgstr "Δεν είναι δυνατή η εύρεση του τελευταίου αρχείου έργου."
+
+msgid "Cannot find project file."
+msgstr "Δεν είναι δυνατή η εύρεση του αρχείου έργου."
+
+msgid "You haven't saved or opened any project in Pixelorama yet!"
+msgstr "Δεν έχετε αποθηκεύσει ούτε ανοίξει κανένα έργο στο Pixelorama ακόμη!"
+
+msgid "Open Last Project"
+msgstr "Άνοιγμα τελευταίου έργου"
+
+msgid "Open last project..."
+msgstr "Άνοιγμα τελευταίου έργου..."
+
+msgid "Open last project on startup"
+msgstr "Άνοιγμα τελευταίου έργου κατά την εκκίνηση"
+
+msgid "Opens last opened project on startup"
+msgstr "Ανοίγει το τελευταίο έργο κατά την εκκίνηση"
+
+msgid "Quit confirmation"
+msgstr "Επιβεβαίωση εξόδου"
+
+msgid "Enable autosave"
+msgstr "Ενεργοποίηση αυτόματης αποθήκευσης"
+
+msgid "Autosave interval:"
+msgstr "Χρονικό διάστημα αυτόματης αποθήκευσης:"
+
+msgid "minute(s)"
+msgstr "λεπτό(ά)"
+
+#. Found in the export dialog.
+msgid "Include frame tags in the file name"
+msgstr "Συμπερίληψη ετικετών καρέ στο όνομα αρχείου"
+
+#. Found in the export dialog.
+msgid "Create new folder for each frame tag"
+msgstr "Δημιουργία νέου φακέλου για κάθε ετικέτα καρέ"
+
+#. Found in the export dialog, as a hint tooltip of the "Create new folder for each frame tag" button
+msgid "Creates multiple files but every file is stored in different folder that corresponds to its frame tag"
+msgstr "Δημιουργεί πολλά αρχεία, αλλά κάθε αρχείο αποθηκεύεται σε διαφορετικό φάκελο που αντιστοιχεί σε κάθε ετικέτα καρέ"
+
+#. Found in the export dialog. Refers to text characters that acts as separators between text. For example, the "_" in "name_0001".
+msgid "Separator character(s):"
+msgstr "Διαχωριστικοί χαρακτήρες:"
+
+#. Found in the export dialog, as a hint tooltip of the separator character(s) text field.
+msgid "The character(s) that separate the file name and the frame number"
+msgstr "Οι χαρακτήρες που διαχωρίζουν το όνομα του αρχείου και τον αριθμό του καρέ"
+
+msgid "Close"
+msgstr "Κλείσιμο"
+
+msgid "Discard All"
+msgstr "Απόρριψη όλων"
+
+msgid "Autosaved project(s) from a crashed session were found.\n"
+"Do you want to recover the data?"
+msgstr "Βρέθηκαν αυτόματα αποθηκευμένα έργα από μια συνεδρία που είχε καταρρεύσει.\n"
+"Θέλετε να ανακτήσετε τα δεδομένα;"
+
+msgid "Backup reloaded"
+msgstr "Το αντίγραφο ασφαλείας επαναφορτώθηκε"
+
+msgid "Remove currently selected palette"
+msgstr "Διαγραφή παλέτας"
+
+msgid "Are you sure you want to remove this palette? (Cannot be undone)"
+msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτή τη παλέτα; (Δεν είναι δυνατή η αναίρεση αυτής της ενέργειας)"
+
+msgid "You can't remove more palettes!"
+msgstr "Δεν μπορείτε να διαγράψετε άλλες παλέτες!"
+
+msgid "Cannot remove the palette, because it doesn't exist!"
+msgstr "Δεν γίνεται να διαγραφεί η παλέτα, επειδή δεν υπάρχει!"
+
+msgid "and"
+msgstr "και"
+
+msgid "Move the selected frame to the left."
+msgstr "Μετακίνηση του επιλεγμένου καρέ προς τα αριστερά."
+
+msgid "Move the selected frame to the right."
+msgstr "Μετακίνηση του επιλεγμένου καρέ προς τα δεξιά."
+
+msgid "Frame duration"
+msgstr "Διάρκεια καρέ"
+
+msgid "Duration"
+msgstr "Διάρκεια"
+
+msgid "Tiled In Both Axis"
+msgstr "Επανάληψη και στους 2 άξονες"
+
+msgid "Tiled In X Axis"
+msgstr "Επανάληψη στον άξονα Χ"
+
+msgid "Tiled In Y Axis"
+msgstr "Επανάληψη στον άξονα Y"
+
+msgid "Create a new palette"
+msgstr "Δημιουργία νέας παλέτας"
+
+msgid "Comment:"
+msgstr "Σχόλια:"
+
+msgid "Empty"
+msgstr "Κενή"
+
+msgid "From Current Palette"
+msgstr "Από την τρέχουσα παλέτα"
+
+msgid "From Current Sprite"
+msgstr "Από την τρέχουσα εικόνα"
+
+msgid "From Current Selection"
+msgstr "Από την τρέχουσα επιλογή"
+
+msgid "Add a new color"
+msgstr "Προσθήκη νέου χρώματος"
+
+msgid "Remove a selected color"
+msgstr "Αφαίρεση επιλεγμένου χρώματος"
+
+msgid "Palette with the same name and path already exists!"
+msgstr "Υπάρχει ήδη παλέτα με το ίδιο όνομα και διαδρομή!"
+
+msgid "Palette name is required!"
+msgstr "Απαιτείται όνομα παλέτας!"
+
+msgid "Reducing palette size will reset positions of colors. Colors that don't fit in new palette size will be lost!"
+msgstr "Η μείωση του μεγέθους της παλέτας θα επηρεάσει τις θέσεις των χρωμάτων. Τα χρώματα που δεν χωρούν στο νέο μέγεθος της παλέτας θα χαθούν!"
+
+msgid "Position:"
+msgstr "Θέση:"
+
+msgid "Tools"
+msgstr "Εργαλεία"
+
+msgid "Main Canvas"
+msgstr "Κύριος καμβάς"
+
+msgid "Second Canvas"
+msgstr "Δεύτερος καμβάς"
+
+msgid "Animation Timeline"
+msgstr "Χρονοδιάγραμμα"
+
+msgid "Canvas Preview"
+msgstr "Προεπισκόπηση καμβά"
+
+msgid "Color Pickers"
+msgstr "Επιλογείς χρωμάτων"
+
+msgid "Global Tool Options"
+msgstr "Καθολικές επιλογές εργαλείων"
+
+msgid "Left Tool Options"
+msgstr "Επιλογές αριστερού εργαλείου"
+
+msgid "Right Tool Options"
+msgstr "Επιλογές δεξιού εργαλείου"
+
+msgid "Reference Images"
+msgstr "Εικόνες αναφοράς"
+
+msgid "Perspective Editor"
+msgstr "Επεξεργαστής προοπτικής"
+
+#. A UI panel. It is used to record the software in order to show the progress of art, usually in form of time lapses.
+msgid "Recorder"
+msgstr "Καταγραφή"
+
+msgid "Crop"
+msgstr "Περικοπή"
+
+msgid "Resize the canvas"
+msgstr "Αλλαγή μεγέθους καμβά"
+
+msgid "Margins"
+msgstr "Περιθώρια"
+
+msgid "Position + Size"
+msgstr "Θέση και μέγεθος"
+
+msgid "Locked Aspect Ratio"
+msgstr "Κλείδωμα αναλογίας διαστάσεων"
+
+msgid "Margins:"
+msgstr "Περιθώρια:"
+
+msgid "Aspect Ratio:"
+msgstr "Αναλογία διαστάσεων:"
+
+msgid "Top:"
+msgstr "Πάνω:"
+
+msgid "Bottom:"
+msgstr "Κάτω:"
+
+msgid "Left:"
+msgstr "Αριστερά:"
+
+msgid "Right:"
+msgstr "Δεξιά:"
+
+msgid "Locked size\n\n"
+"When enabled using the tool on the canvas will only move the cropping rectangle.\n\n"
+"When disabled using the tool on the canvas will draw the rectangle."
+msgstr "Κλειδωμένο μέγεθος\n\n"
+"Όταν είναι ενεργοποιημένο, η χρήση του εργαλείου στον καμβά μετακινεί το ορθογώνιο περικοπής.\n\n"
+"Όταν είναι απενεργοποιημένο, η χρήση του εργαλείου στον καμβά σχεδιάζει το ορθογώνιο."
+
+#. A tool used in 3D layers, that edits 3D objects.
+msgid "3D Shape Edit"
+msgstr "Επεξεργασία 3Δ σχημάτων"
+
+#. Used in 3D layers. A type of 3D object.
+msgid "Box"
+msgstr "Κουτί"
+
+#. Used in 3D layers. A type of 3D object.
+msgid "Sphere"
+msgstr "Σφαίρα"
+
+#. Used in 3D layers. A type of 3D object.
+msgid "Capsule"
+msgstr "Κάψουλα"
+
+#. Used in 3D layers. A type of 3D object.
+msgid "Cylinder"
+msgstr "Κύλινδρος"
+
+#. Used in 3D layers. A type of 3D object.
+msgid "Prism"
+msgstr "Πρίσμα"
+
+#. Used in 3D layers. A type of 3D object.
+msgid "Torus"
+msgstr "Τόρος"
+
+#. Used in 3D layers. A type of 3D object.
+msgid "Plane"
+msgstr "Επίπεδο"
+
+msgid "Text"
+msgstr "Κείμενο"
+
+#. Used in 3D layers. A type of light.
+msgid "Directional light"
+msgstr "Κατευθυντήριο φως"
+
+#. Used in 3D layers. A type of light.
+msgid "Spotlight"
+msgstr "Φακός"
+
+#. Used in 3D layers. A type of light.
+msgid "Point light"
+msgstr "Φως σημείου"
+
+#. Used in 3D layers. A type of 3D object.
+msgid "Custom model"
+msgstr "Προσαρμοσμένο μοντέλο"
+
+msgid "Selected object:"
+msgstr "Επιλεγμένο αντικείμενο:"
+
+msgid "Add new object"
+msgstr "Προσθήκη αντικειμένου"
+
+msgid "Remove object"
+msgstr "Αφαίρεση αντικειμένου"
+
+msgid "Camera"
+msgstr "Κάμερα"
+
+#. Found in the tool options of the 3D Shape Edit tool. Refers to camera projection mode.
+msgid "Projection:"
+msgstr "Προβολή:"
+
+#. Found in the tool options of the 3D Shape Edit tool. One of the modes of camera projection.
+msgid "Perspective"
+msgstr "Προοπτική"
+
+#. Found in the tool options of the 3D Shape Edit tool. One of the modes of camera projection.
+msgid "Orthogonal"
+msgstr "Ορθογώνια"
+
+#. Found in the tool options of the 3D Shape Edit tool. One of the modes of camera projection.
+msgid "Frustum"
+msgstr "Frustum"
+
+msgid "Rotation:"
+msgstr "Περιστροφή:"
+
+msgid "Scale:"
+msgstr "Κλιμάκωση:"
+
+#. Found in the tool options of the 3D Shape Edit tool.
+msgid "Environment"
+msgstr "Περιβάλλον"
+
+#. Found in the tool options of the 3D Shape Edit tool, under the Environment category.
+msgid "Ambient color:"
+msgstr "Χρώμα περιβάλλοντος:"
+
+#. Found in the tool options of the 3D Shape Edit tool, under the Environment category.
+msgid "Ambient color energy:"
+msgstr "Ενέργεια χρώματος περιβάλλοντος:"
+
+#. An option that toggles the visibility of something on or off. Found in the format of "Visible: on/off"
+msgid "Visible:"
+msgstr "Ορατό:"
+
+#. Refers to the transformation options of an object, such as its position, rotation and scale. For technical details, see https://docs.godotengine.org/en/stable/tutorials/math/matrices_and_transforms.html
+msgid "Transform"
+msgstr "Μετασχηματισμός"
+
+#. Found in the tool options of the 3D Shape Edit tool. A category with mesh-related options.
+msgid "Mesh"
+msgstr "Πλέγμα"
+
+#. Found in the tool options of the 3D Shape Edit tool, under the Mesh category if a Prism is selected. Refers to the displacement of the upper edge along the X axis.
+msgid "Left to right:"
+msgstr "Αριστερά προς δεξιά:"
+
+#. Radius of a circle/spherical object.
+msgid "Radius:"
+msgstr "Ακτίνα:"
+
+#. Found in the tool options of the 3D Shape Edit tool, under the Mesh category if a spherical object is selected.
+msgid "Radial segments:"
+msgstr "Ακτινικά τμήματα:"
+
+#. Found in the tool options of the 3D Shape Edit tool, under the Mesh category if a spherical object is selected. Refers to the number of segments along the height of the sphere.
+msgid "Rings:"
+msgstr "Δακτύλιοι:"
+
+#. Found in the tool options of the 3D Shape Edit tool, under the Mesh category if a Sphere is selected. If true, a hemisphere is created rather than a full sphere.
+msgid "Is hemisphere:"
+msgstr "Είναι ημισφαίριο:"
+
+#. Found in the tool options of the 3D Shape Edit tool, under the Mesh category if a Cylinder is selected.
+msgid "Top radius:"
+msgstr "Πάνω ακτίνα:"
+
+#. Found in the tool options of the 3D Shape Edit tool, under the Mesh category if a Cylinder is selected.
+msgid "Bottom radius:"
+msgstr "Κάτω ακτίνα:"
+
+msgid "Text:"
+msgstr "Κείμενο:"
+
+#. Found in the tool options of the 3D Shape Edit tool, under the Mesh category if a Text object is selected. Refers to the size of one pixel's width on the text to scale it in 3D.
+msgid "Pixel size:"
+msgstr "Μέγεθος εικονοστοιχείου:"
+
+#. Found in the tool options of the 3D Shape Edit tool, under the Mesh category if a Text object is selected. Step (in pixels) used to approximate Bézier curves.
+msgid "Curve step:"
+msgstr "Βήμα καμπυλότητας:"
+
+msgid "Horizontal alignment:"
+msgstr "Οριζόντια στοίχιση:"
+
+msgid "Left"
+msgstr "Αριστερά"
+
+msgid "Right"
+msgstr "Δεξιά"
+
+#. Found in the tool options of the 3D Shape Edit tool, under the Light category if a light is selected. Refers to the energy of the light. The more energy, the brighter it shines.
+msgid "Energy:"
+msgstr "Ενέργεια:"
+
+#. Found in the tool options of the 3D Shape Edit tool, under the Light category if a light is selected. If true, the light's effect is reversed, darkening areas and casting bright shadows.
+msgid "Negative:"
+msgstr "Αρνητικό:"
+
+msgid "Shadow:"
+msgstr "Σκιά:"
+
+#. Refers to the range of something, like the range of a spotlight.
+msgid "Range:"
+msgstr "Εμβέλεια:"
+
+#. Found under certain image effects that support properties that can be animated.
+msgid "Animatable Properties"
+msgstr "Κινούμενες Ιδιότητες"
+
+#. Found under certain image effects that support properties that can be animated. Refers to the frame that is currently being previewed.
+msgid "Preview frame:"
+msgstr "Προεπισκόπηση καρέ:"
+
+#. Found under certain image effects that support properties that can be animated. It is a checkbox that toggles whether a property should be animated or not.
+msgid "Animate"
+msgstr "Κίνηση"
+
+#. Found under certain image effects that support properties that can be animated. Refers to the initial value of the property.
+msgid "Initial value:"
+msgstr "Αρχική τιμή:"
+
+#. Found under certain image effects that support properties that can be animated. Refers to the final value of the property.
+msgid "Final value:"
+msgstr "Τελική τιμή:"
+
+#. Found under certain image effects that support properties that can be animated. Refers to the easing function that should be used to animate the property. https://easings.net/
+msgid "Ease type:"
+msgstr "Τύπος ομαλής μετάβασης:"
+
+#. Found under certain image effects that support properties that can be animated. A type of easing function.
+msgid "Starts slowly and speeds up towards the end"
+msgstr "Ξεκινά αργά και επιταχύνει προς το τέλος"
+
+#. Found under certain image effects that support properties that can be animated. A type of easing function.
+msgid "Starts quickly and slows down towards the end"
+msgstr "Ξεκινά γρήγορα και επιβραδύνει προς το τέλος"
+
+#. Found under certain image effects that support properties that can be animated. A type of easing function.
+msgid "Slowest at both ends, fast at middle"
+msgstr "Χαμηλότερο και στα δύο άκρα, γρήγορα στη μέση"
+
+#. Found under certain image effects that support properties that can be animated. A type of easing function.
+msgid "Fast at both ends, slow at middle"
+msgstr "Γρήγορα και στα δύο άκρα, αργά στη μέση"
+
+#. Found under certain image effects that support properties that can be animated. A type of interpolation.
+msgid "Quadratic (power of 2)"
+msgstr "Τετραγωνική (δύναμη του 2)"
+
+#. Found under certain image effects that support properties that can be animated. A type of interpolation.
+msgid "Cubic (power of 3)"
+msgstr "Κυβική (δύναμη του 3)"
+
+#. Found under certain image effects that support properties that can be animated. A type of interpolation.
+msgid "Quartic (power of 4)"
+msgstr "Δύναμη του 4"
+
+#. Found under certain image effects that support properties that can be animated. A type of interpolation.
+msgid "Quintic (power of 5)"
+msgstr "Δύναμη του 5"
+
+#. Found under certain image effects that support properties that can be animated. A type of interpolation.
+msgid "Exponential (power of x)"
+msgstr "Εκθετική (δύναμη του x)"
+
+#. Found under certain image effects that support properties that can be animated. A type of interpolation.
+msgid "Square root"
+msgstr "Τετραγωνική ρίζα"
+
+#. Found under certain image effects that support properties that can be animated. A type of interpolation.
+msgid "Sine"
+msgstr "Ημίτονο"
+
+#. Found under certain image effects that support properties that can be animated. A type of interpolation.
+msgid "Wiggling around the edges"
+msgstr "Κίνηση γύρω από τις άκρες"
+
+#. Found under certain image effects that support properties that can be animated. A type of interpolation.
+msgid "Bouncing at the end"
+msgstr "Αναπήδηση στο τέλος"
+
+#. Found under certain image effects that support properties that can be animated. A type of interpolation.
+msgid "Backing out at ends"
+msgstr "Υποχώρηση στα άκρα"
+
+msgid "Silhouette"
+msgstr "Σιλουέτα"
+
+msgid "Blacks out the image and makes all opaque pixels a dark color."
+msgstr "Μαυρίζει την εικόνα και κάνει όλα τα αδιαφανή εικονοστοιχεία ένα σκούρο χρώμα."
+

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cltlo2whtiejd"]
+
+[node name="SaveSpriteHTML5" type="ConfirmationDialog"]
+exclusive = false
+
+[node name="FileNameContainer" type="HBoxContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 34.0
+
+[node name="FileNameLabel" type="Label" parent="FileNameContainer"]
+layout_mode = 2
+text = "File Name:"
+
+[node name="FileNameLineEdit" type="LineEdit" parent="FileNameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "untitled"
