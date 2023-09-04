@@ -323,7 +323,6 @@ func _ready() -> void:
 		_slots[MOUSE_BUTTON_RIGHT].kname, "color", Color.WHITE
 	)
 	assign_color(color_value, MOUSE_BUTTON_RIGHT, false)
-	update_tool_cursors()
 	var layer: BaseLayer = Global.current_project.layers[Global.current_project.current_layer]
 	var layer_type := layer.get_layer_type()
 	_show_relevant_tools(layer_type)
@@ -381,7 +380,6 @@ func assign_tool(tool_name: String, button: int) -> void:
 
 	set_tool(tool_name, button)
 	update_tool_buttons()
-	update_tool_cursors()
 	Global.config_cache.set_value(slot.kname, "tool", tool_name)
 
 
@@ -435,18 +433,8 @@ func update_hint_tooltips() -> void:
 		t.button_node.tooltip_text = t.generate_hint_tooltip()
 
 
-func update_tool_cursors() -> void:
-	var left_tool: Tool = tools[_slots[MOUSE_BUTTON_LEFT].tool_node.name]
-	Global.control.left_cursor.texture = left_tool.cursor_icon
-	var right_tool: Tool = tools[_slots[MOUSE_BUTTON_RIGHT].tool_node.name]
-	Global.control.right_cursor.texture = right_tool.cursor_icon
-
-
 func draw_indicator() -> void:
-	if Global.right_square_indicator_visible:
-		_slots[MOUSE_BUTTON_RIGHT].tool_node.draw_indicator(false)
-	if Global.left_square_indicator_visible:
-		_slots[MOUSE_BUTTON_LEFT].tool_node.draw_indicator(true)
+	_slots[MOUSE_BUTTON_LEFT].tool_node.draw_indicator(true)
 
 
 func draw_preview() -> void:

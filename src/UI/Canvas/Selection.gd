@@ -168,9 +168,7 @@ func _input(event: InputEvent) -> void:
 		if gizmo_hover:
 			Global.main_viewport.mouse_default_cursor_shape = gizmo_hover.get_cursor()
 		else:
-			var cursor := Control.CURSOR_ARROW
-			if Global.cross_cursor:
-				cursor = Control.CURSOR_CROSS
+			var cursor := Control.CURSOR_CROSS
 			var layer: BaseLayer = project.layers[project.current_layer]
 			if not layer.can_layer_get_drawn():
 				cursor = Control.CURSOR_FORBIDDEN

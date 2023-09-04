@@ -51,7 +51,6 @@ func _setup_file_menu() -> void:
 	var file_menu_items := {
 		"New...": "new_file",
 		"Open...": "open_file",
-		"Open last project...": "open_last_project",
 		"Recent projects": "",
 		"Save...": "save_file",
 		"Save as...": "save_file_as",
@@ -72,7 +71,6 @@ func _setup_file_menu() -> void:
 	file_menu.id_pressed.connect(file_menu_id_pressed)
 
 	if OS.get_name() == "Web":
-		file_menu.set_item_disabled(Global.FileMenu.OPEN_LAST_PROJECT, true)
 		file_menu.set_item_disabled(Global.FileMenu.RECENT, true)
 
 
@@ -377,8 +375,6 @@ func file_menu_id_pressed(id: int) -> void:
 			_on_new_project_file_menu_option_pressed()
 		Global.FileMenu.OPEN:
 			_open_project_file()
-		Global.FileMenu.OPEN_LAST_PROJECT:
-			_on_open_last_project_file_menu_option_pressed()
 		Global.FileMenu.SAVE:
 			_save_project_file()
 		Global.FileMenu.SAVE_AS:
@@ -404,14 +400,6 @@ func _open_project_file() -> void:
 	else:
 		_popup_dialog(Global.open_sprites_dialog)
 		Global.control.opensprite_file_selected = false
-
-
-func _on_open_last_project_file_menu_option_pressed() -> void:
-	if Global.config_cache.has_section_key("preferences", "last_project_path"):
-		Global.control.load_last_project()
-	else:
-		Global.error_dialog.set_text("You haven't saved or opened any project in Pixelorama yet!")
-		_popup_dialog(Global.error_dialog)
 
 
 func _save_project_file() -> void:

@@ -1,12 +1,6 @@
 extends AcceptDialog
 
 var preferences: Array[Preference] = [
-	Preference.new(
-		"open_last_project", "Startup/StartupContainer/OpenLastProject", "button_pressed"
-	),
-	Preference.new(
-		"quit_confirmation", "Startup/StartupContainer/QuitConfirmation", "button_pressed"
-	),
 	Preference.new("shrink", "%ShrinkSlider", "value"),
 	Preference.new("font_size", "Interface/InterfaceOptions/FontSizeSlider", "value"),
 	Preference.new("dim_on_popup", "Interface/InterfaceOptions/DimCheckBox", "button_pressed"),
@@ -17,30 +11,12 @@ var preferences: Array[Preference] = [
 	Preference.new(
 		"tool_button_size", "Interface/ButtonOptions/ToolButtonSizeOptionButton", "selected"
 	),
-	Preference.new(
-		"show_left_tool_icon", "Cursors/CursorsContainer/LeftToolIconCheckbox", "button_pressed"
-	),
-	Preference.new(
-		"show_right_tool_icon", "Cursors/CursorsContainer/RightToolIconCheckbox", "button_pressed"
-	),
-	Preference.new(
-		"left_square_indicator_visible",
-		"Cursors/CursorsContainer/LeftIndicatorCheckbox",
-		"button_pressed"
-	),
-	Preference.new(
-		"right_square_indicator_visible",
-		"Cursors/CursorsContainer/RightIndicatorCheckbox",
-		"button_pressed"
-	),
+
+
 	Preference.new(
 		"native_cursors", "Cursors/CursorsContainer/NativeCursorsCheckbox", "button_pressed"
 	),
-	Preference.new(
-		"cross_cursor", "Cursors/CursorsContainer/CrossCursorCheckbox", "button_pressed"
-	),
-	Preference.new("autosave_interval", "Backup/AutosaveContainer/AutosaveInterval", "value"),
-	Preference.new("enable_autosave", "Backup/AutosaveContainer/EnableAutosave", "button_pressed"),
+	
 	Preference.new("default_width", "Image/ImageOptions/ImageDefaultWidth", "value"),
 	Preference.new("default_height", "Image/ImageOptions/ImageDefaultHeight", "value"),
 	Preference.new("default_fill_color", "Image/ImageOptions/DefaultFillColor", "color"),
@@ -90,9 +66,6 @@ var preferences: Array[Preference] = [
 	Preference.new(
 		"pause_when_unfocused", "Performance/PerformanceContainer/PauseAppFocus", "button_pressed"
 	),
-	#	Preference.new(
-	#		"renderer", "Drivers/DriversContainer/Renderer", "selected", true, OS.VIDEO_DRIVER_GLES2
-	#	),
 	Preference.new("tablet_driver", "Drivers/DriversContainer/TabletDriver", "selected", true, 0)
 ]
 
@@ -101,14 +74,11 @@ var selected_item := 0
 
 @onready var list: ItemList = $HSplitContainer/List
 @onready var right_side: VBoxContainer = $"%RightSide"
-@onready var autosave_container: Container = right_side.get_node("Backup/AutosaveContainer")
-@onready var autosave_interval: SpinBox = autosave_container.get_node("AutosaveInterval")
 @onready var shrink_slider: ValueSlider = $"%ShrinkSlider"
 @onready var themes: BoxContainer = right_side.get_node("Interface/Themes")
 @onready var shortcuts: Control = right_side.get_node("Shortcuts/ShortcutEdit")
 @onready var tablet_driver_label: Label = $"%TabletDriverLabel"
 @onready var tablet_driver: OptionButton = $"%TabletDriver"
-@onready var extensions: BoxContainer = right_side.get_node("Extensions")
 @onready var must_restart: BoxContainer = $"%MustRestart"
 
 
@@ -272,7 +242,6 @@ func add_tabs(changed_language := false) -> void:
 
 	var language_index := content_list.find("Language")
 	list.select(language_index if changed_language else selected_item)
-	autosave_interval.suffix = tr("minute(s)")
 
 
 func _on_PreferencesDialog_visibility_changed() -> void:

@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3hkjj3s6pe4x"]
+[gd_scene load_steps=8 format=3 uid="uid://b3hkjj3s6pe4x"]
 
 [ext_resource type="Script" path="res://src/Preferences/PreferencesDialog.gd" id="1"]
-[ext_resource type="Script" path="res://src/Preferences/HandleExtensions.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://bq7ibhm0txl5p" path="res://addons/keychain/ShortcutEdit.tscn" id="3"]
 [ext_resource type="Script" path="res://src/Preferences/HandleLanguages.gd" id="4"]
 [ext_resource type="Script" path="res://src/Preferences/HandleThemes.gd" id="5"]
@@ -23,7 +22,7 @@ anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = -8.0
-offset_bottom = -36.0
+offset_bottom = -49.0
 size_flags_horizontal = 3
 theme_override_constants/separation = 20
 theme_override_constants/autohide = 0
@@ -47,47 +46,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Startup" type="VBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide"]
-layout_mode = 2
-
-[node name="StartupHeader" type="HBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Startup"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Startup/StartupHeader"]
-layout_mode = 2
-theme_type_variation = &"HeaderSmall"
-text = "Startup"
-
-[node name="HSeparator" type="HSeparator" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Startup/StartupHeader"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="StartupContainer" type="GridContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Startup"]
-layout_mode = 2
-columns = 3
-
-[node name="OpenLastProjectLabel" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Startup/StartupContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Open last project on startup"
-
-[node name="OpenLastProject" type="CheckBox" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Startup/StartupContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "Opens last opened project on startup"
-mouse_default_cursor_shape = 2
-text = "On"
-
-[node name="QuitConfirmationLabel" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Startup/StartupContainer"]
-layout_mode = 2
-text = "Quit confirmation"
-
-[node name="QuitConfirmation" type="CheckBox" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Startup/StartupContainer"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "On"
 
 [node name="Language" type="VBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide"]
 visible = false
@@ -920,55 +878,6 @@ size_flags_horizontal = 3
 [node name="ShortcutEdit" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Shortcuts" instance=ExtResource("3")]
 layout_mode = 2
 
-[node name="Backup" type="VBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide"]
-visible = false
-layout_mode = 2
-
-[node name="BackupHeader" type="HBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Backup"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Backup/BackupHeader"]
-layout_mode = 2
-theme_type_variation = &"HeaderSmall"
-text = "Backup"
-
-[node name="HSeparator" type="HSeparator" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Backup/BackupHeader"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="AutosaveContainer" type="GridContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Backup"]
-layout_mode = 2
-columns = 3
-
-[node name="Label" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Backup/AutosaveContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Enable autosave"
-
-[node name="EnableAutosave" type="CheckBox" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Backup/AutosaveContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_default_cursor_shape = 2
-button_pressed = true
-text = "On"
-
-[node name="AutosaveIntervalLabel" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Backup/AutosaveContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Autosave interval:"
-
-[node name="AutosaveInterval" type="SpinBox" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Backup/AutosaveContainer"]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_default_cursor_shape = 2
-min_value = 0.1
-max_value = 30.0
-step = 0.25
-value = 1.1
-suffix = "minute(s)"
-
 [node name="Performance" type="VBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide"]
 visible = false
 layout_mode = 2
@@ -1074,55 +983,7 @@ size_flags_horizontal = 3
 tooltip_text = "Specifies the tablet driver being used on Windows. If you have Windows Ink enabled, select winink."
 mouse_default_cursor_shape = 2
 
-[node name="Extensions" type="VBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide"]
-visible = false
-layout_mode = 2
-script = ExtResource("2")
-
-[node name="ExtensionsHeader" type="HBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions/ExtensionsHeader"]
-layout_mode = 2
-theme_type_variation = &"HeaderSmall"
-text = "Extensions"
-
-[node name="HSeparator" type="HSeparator" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions/ExtensionsHeader"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="InstalledExtensions" type="ItemList" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions"]
-layout_mode = 2
-auto_height = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions"]
-layout_mode = 2
-
-[node name="AddExtensionButton" type="Button" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions/HBoxContainer"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Add Extension"
-
-[node name="EnableButton" type="Button" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions/HBoxContainer"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-disabled = true
-text = "Enable"
-
-[node name="UninstallButton" type="Button" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions/HBoxContainer"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-disabled = true
-text = "Uninstall"
-
-[node name="OpenFolderButton" type="Button" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions/HBoxContainer"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Open Folder"
-
 [node name="Cursors" type="VBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide"]
-visible = false
 layout_mode = 2
 
 [node name="CursorsHeader" type="HBoxContainer" parent="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Cursors"]
@@ -1305,10 +1166,3 @@ show_hidden_files = true
 [connection signal="item_selected" from="HSplitContainer/List" to="." method="_on_List_item_selected"]
 [connection signal="pressed" from="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Language/System Language" to="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Language" method="_on_Language_pressed" binds= [1]]
 [connection signal="pressed" from="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Interface/InterfaceOptions/ShrinkContainer/ShrinkApplyButton" to="." method="_on_ShrinkApplyButton_pressed"]
-[connection signal="empty_clicked" from="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions/InstalledExtensions" to="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions" method="_on_InstalledExtensions_empty_clicked"]
-[connection signal="item_selected" from="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions/InstalledExtensions" to="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions" method="_on_InstalledExtensions_item_selected"]
-[connection signal="pressed" from="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions/HBoxContainer/AddExtensionButton" to="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions" method="_on_AddExtensionButton_pressed"]
-[connection signal="pressed" from="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions/HBoxContainer/EnableButton" to="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions" method="_on_EnableButton_pressed"]
-[connection signal="pressed" from="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions/HBoxContainer/UninstallButton" to="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions" method="_on_UninstallButton_pressed"]
-[connection signal="pressed" from="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions/HBoxContainer/OpenFolderButton" to="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions" method="_on_OpenFolderButton_pressed"]
-[connection signal="files_selected" from="Popups/AddExtensionFileDialog" to="HSplitContainer/VBoxContainer/ScrollContainer/RightSide/Extensions" method="_on_AddExtensionFileDialog_files_selected"]

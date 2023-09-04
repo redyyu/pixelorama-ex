@@ -2,8 +2,6 @@
 extends Node
 
 var current_save_paths: PackedStringArray = []
-## Stores a filename of a backup file in user:// until user saves manually
-var backup_save_paths: PackedStringArray = []
 var preview_dialog_tscn := preload("res://src/UI/Dialogs/PreviewDialog.tscn")
 var preview_dialogs := []  ## Array of preview dialogs
 var last_dialog_option := 0
@@ -11,11 +9,7 @@ var autosave_timer: Timer
 
 
 func _ready() -> void:
-	autosave_timer = Timer.new()
-	autosave_timer.one_shot = false
-	autosave_timer.timeout.connect(_on_Autosave_timeout)
-	add_child(autosave_timer)
-	update_autosave()
+	pass
 
 
 func handle_loading_file(file: String) -> void:
@@ -192,9 +186,6 @@ func open_pxo_file(path: String, untitled_backup := false, replace_empty := true
 		current_save_paths[Global.current_project_index] = path
 		Global.main_window.title = path.get_file() + " - Pixelorama " + Global.current_version
 		Global.save_sprites_dialog.current_path = path
-		# Set last opened project path and save
-		Global.config_cache.set_value("preferences", "last_project_path", path)
-		Global.config_cache.save("user://cache.ini")
 		new_project.directory_path = path.get_base_dir()
 		new_project.file_name = path.get_file().trim_suffix(".pxo")
 		new_project.was_exported = false
@@ -281,25 +272,19 @@ func save_pxo_file(
 		var browser_dir := DirAccess.open(path)
 		browser_dir.remove(path)
 
-	if autosave:
-		Global.notification_label("File autosaved")
-	else:
-		# First remove backup then set current save path
-		if project.has_changed:
-			project.has_changed = false
-		remove_backup(Global.current_project_index)
-		Global.notification_label("File saved")
-		Global.main_window.title = path.get_file() + " - Pixelorama " + Global.current_version
 
-		# Set last opened project path and save
-		Global.config_cache.set_value("preferences", "last_project_path", path)
-		Global.config_cache.save("user://cache.ini")
-		if !project.was_exported:
-			project.file_name = path.get_file().trim_suffix(".pxo")
-			project.directory_path = path.get_base_dir()
-		Global.top_menu_container.file_menu.set_item_text(
-			Global.FileMenu.SAVE, tr("Save") + " %s" % path.get_file()
-		)
+		
+	if project.has_changed:
+		project.has_changed = false
+	Global.notification_label("File saved")
+	Global.main_window.title = path.get_file() + " - Pixelorama " + Global.current_version
+
+	if !project.was_exported:
+		project.file_name = path.get_file().trim_suffix(".pxo")
+		project.directory_path = path.get_base_dir()
+	Global.top_menu_container.file_menu.set_item_text(
+		Global.FileMenu.SAVE, tr("Save") + " %s" % path.get_file()
+	)
 
 	save_project_to_recent_list(path)
 
@@ -670,98 +655,9 @@ func set_new_imported_tab(project: Project, path: String) -> void:
 		Global.tabs.delete_tab(prev_project_pos)
 
 
-func update_autosave() -> void:
-	autosave_timer.stop()
-	# Interval parameter is in minutes, wait_time is seconds
-	autosave_timer.wait_time = Global.autosave_interval * 60
-	if Global.enable_autosave:
-		autosave_timer.start()
-
-
-func _on_Autosave_timeout() -> void:
-	for i in range(backup_save_paths.size()):
-		if backup_save_paths[i] == "":
-			# Create a new backup file if it doesn't exist yet
-			backup_save_paths[i] = (
-				"user://backup-" + str(Time.get_unix_time_from_system()) + "-%s" % i
-			)
-
-		store_backup_path(i)
-		save_pxo_file(backup_save_paths[i], true, true, Global.projects[i])
-
-
-## Backup paths are stored in two ways:
-## 1) User already manually saved and defined a save path -> {current_save_path, backup_save_path}
-## 2) User didn't manually save, "untitled" backup is stored -> {backup_save_path, backup_save_path}
-func store_backup_path(i: int) -> void:
-	if current_save_paths[i] != "":
-		# Remove "untitled" backup if it existed on this project instance
-		if Global.config_cache.has_section_key("backups", backup_save_paths[i]):
-			Global.config_cache.erase_section_key("backups", backup_save_paths[i])
-
-		Global.config_cache.set_value("backups", current_save_paths[i], backup_save_paths[i])
-	else:
-		Global.config_cache.set_value("backups", backup_save_paths[i], backup_save_paths[i])
-
-	Global.config_cache.save("user://cache.ini")
-
-
-func remove_backup(i: int) -> void:
-	# Remove backup file
-	if backup_save_paths[i] != "":
-		if current_save_paths[i] != "":
-			remove_backup_by_path(current_save_paths[i], backup_save_paths[i])
-		else:
-			# If manual save was not yet done - remove "untitled" backup
-			remove_backup_by_path(backup_save_paths[i], backup_save_paths[i])
-		backup_save_paths[i] = ""
-
-
-func remove_backup_by_path(project_path: String, backup_path: String) -> void:
-	DirAccess.open("user://").remove(backup_path)
-	if Global.config_cache.has_section_key("backups", project_path):
-		Global.config_cache.erase_section_key("backups", project_path)
-	elif Global.config_cache.has_section_key("backups", backup_path):
-		Global.config_cache.erase_section_key("backups", backup_path)
-	Global.config_cache.save("user://cache.ini")
-
-
-func reload_backup_file(project_paths: Array, backup_paths: Array) -> void:
-	assert(project_paths.size() == backup_paths.size())
-	# Clear non-existent backups
-	var existing_backups_count := 0
-	for i in range(backup_paths.size()):
-		var dir := DirAccess.open("user://")
-		if dir.file_exists(backup_paths[i]):
-			project_paths[existing_backups_count] = project_paths[i]
-			backup_paths[existing_backups_count] = backup_paths[i]
-			existing_backups_count += 1
-		else:
-			if Global.config_cache.has_section_key("backups", backup_paths[i]):
-				Global.config_cache.erase_section_key("backups", backup_paths[i])
-				Global.config_cache.save("user://cache.ini")
-	project_paths.resize(existing_backups_count)
-	backup_paths.resize(existing_backups_count)
-
-	# Load the backup files
-	for i in range(project_paths.size()):
-		open_pxo_file(backup_paths[i], project_paths[i] == backup_paths[i], i == 0)
-		backup_save_paths[i] = backup_paths[i]
-
-		# If project path is the same as backup save path -> the backup was untitled
-		if project_paths[i] != backup_paths[i]:  # If the user has saved
-			current_save_paths[i] = project_paths[i]
-			Global.main_window.title = (
-				project_paths[i].get_file() + " - Pixelorama(*) " + Global.current_version
-			)
-			Global.current_project.has_changed = true
-
-	Global.notification_label("Backup reloaded")
-
-
 func save_project_to_recent_list(path: String) -> void:
 	var top_menu_container := Global.top_menu_container
-	if path.get_file().substr(0, 7) == "backup-" or path == "":
+	if path == "":
 		return
 
 	if top_menu_container.recent_projects.has(path):

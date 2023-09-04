@@ -79,7 +79,6 @@ func _init(_frames: Array[Frame] = [], _name := tr("untitled"), _size := Vector2
 
 	Global.tabs.add_tab(name)
 	OpenSave.current_save_paths.append("")
-	OpenSave.backup_save_paths.append("")
 
 	x_symmetry_point = size.x - 1
 	y_symmetry_point = size.y - 1

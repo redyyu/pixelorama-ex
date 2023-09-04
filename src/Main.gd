@@ -6,11 +6,8 @@ var is_quitting_on_save := false
 var cursor_image: Texture2D = preload("res://assets/graphics/cursor.png")
 
 @onready var ui := $MenuAndUI/UI/DockableContainer as DockableContainer
-@onready var backup_confirmation: ConfirmationDialog = $Dialogs/BackupConfirmation
 @onready var quit_dialog: ConfirmationDialog = $Dialogs/QuitDialog
 @onready var quit_and_save_dialog: ConfirmationDialog = $Dialogs/QuitAndSaveDialog
-@onready var left_cursor: Sprite2D = $LeftCursor
-@onready var right_cursor: Sprite2D = $RightCursor
 
 
 func _init() -> void:
@@ -58,8 +55,6 @@ func _ready() -> void:
 	zstd_checkbox.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	Global.save_sprites_dialog.get_vbox().add_child(zstd_checkbox)
 
-	_handle_backup()
-
 	_handle_cmdline_arguments()
 	get_tree().root.files_dropped.connect(_on_files_dropped)
 
@@ -70,8 +65,6 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	left_cursor.position = get_global_mouse_position() + Vector2(-32, 32)
-	right_cursor.position = get_global_mouse_position() + Vector2(32, 32)
 
 	if event is InputEventKey and (event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER):
 		if get_viewport().gui_get_focus_owner() is LineEdit:
@@ -155,35 +148,6 @@ func _show_splash_screen() -> void:
 		Global.can_draw = true
 
 
-func _handle_backup() -> void:
-	# If backup file exists, Pixelorama was not closed properly (probably crashed) - reopen backup
-	backup_confirmation.add_button("Discard All", false, "discard")
-	if Global.config_cache.has_section("backups"):
-		var project_paths = Global.config_cache.get_section_keys("backups")
-		if project_paths.size() > 0:
-			# Get backup paths
-			var backup_paths := []
-			for p_path in project_paths:
-				backup_paths.append(Global.config_cache.get_value("backups", p_path))
-			# Temporatily stop autosave until user confirms backup
-			OpenSave.autosave_timer.stop()
-			backup_confirmation.confirmed.connect(
-				_on_BackupConfirmation_confirmed.bind(project_paths, backup_paths)
-			)
-			backup_confirmation.custom_action.connect(
-				_on_BackupConfirmation_custom_action.bind(project_paths, backup_paths)
-			)
-			backup_confirmation.popup_centered()
-			Global.can_draw = false
-			modulate = Color(0.5, 0.5, 0.5)
-		else:
-			if Global.open_last_project:
-				load_last_project()
-	else:
-		if Global.open_last_project:
-			load_last_project()
-
-
 func _handle_cmdline_arguments() -> void:
 	var args := OS.get_cmdline_args()
 	if args.is_empty():
@@ -229,26 +193,6 @@ func _on_files_dropped(files: PackedStringArray) -> void:
 	var splash_dialog = Global.control.get_node("Dialogs/SplashDialog")
 	if splash_dialog.visible:
 		splash_dialog.hide()
-
-
-func load_last_project() -> void:
-	if OS.get_name() == "Web":
-		return
-	# Check if any project was saved or opened last time
-	if Global.config_cache.has_section_key("preferences", "last_project_path"):
-		# Check if file still exists on disk
-		var file_path = Global.config_cache.get_value("preferences", "last_project_path")
-		if FileAccess.file_exists(file_path):  # If yes then load the file
-			OpenSave.open_pxo_file(file_path)
-			# Sync file dialogs
-			Global.save_sprites_dialog.current_dir = file_path.get_base_dir()
-			Global.open_sprites_dialog.current_dir = file_path.get_base_dir()
-			Global.config_cache.set_value("data", "current_dir", file_path.get_base_dir())
-		else:
-			# If file doesn't exist on disk then warn user about this
-			Global.error_dialog.set_text("Cannot find last project file.")
-			Global.error_dialog.popup_centered()
-			Global.dialog_open(true)
 
 
 func load_recent_project_file(path: String) -> void:
@@ -319,10 +263,7 @@ func show_quit_dialog() -> void:
 
 	if !quit_dialog.visible:
 		if !changed_project:
-			if Global.quit_confirmation:
-				quit_dialog.call_deferred("popup_centered")
-			else:
-				_quit()
+			quit_dialog.call_deferred("popup_centered")
 		else:
 			quit_and_save_dialog.call_deferred("popup_centered")
 
@@ -353,38 +294,6 @@ func _quit() -> void:
 	get_tree().quit()
 
 
-func _on_BackupConfirmation_confirmed(project_paths: Array, backup_paths: Array) -> void:
-	OpenSave.reload_backup_file(project_paths, backup_paths)
-	Global.current_project.file_name = OpenSave.current_save_paths[0].get_file().trim_suffix(".pxo")
-	Global.current_project.directory_path = OpenSave.current_save_paths[0].get_base_dir()
-	Global.current_project.was_exported = false
-	Global.top_menu_container.file_menu.set_item_text(
-		Global.FileMenu.SAVE, tr("Save") + " %s" % OpenSave.current_save_paths[0].get_file()
-	)
-	Global.top_menu_container.file_menu.set_item_text(Global.FileMenu.EXPORT, tr("Export"))
-
-
-func _on_BackupConfirmation_custom_action(
-	action: String, project_paths: Array, backup_paths: Array
-) -> void:
-	backup_confirmation.hide()
-	if action != "discard":
-		return
-	for i in range(project_paths.size()):
-		OpenSave.remove_backup_by_path(project_paths[i], backup_paths[i])
-	# Reopen last project
-	if Global.open_last_project:
-		load_last_project()
-
-
-func _on_backup_confirmation_visibility_changed() -> void:
-	if backup_confirmation.visible:
-		return
-	if Global.enable_autosave:
-		OpenSave.autosave_timer.start()
-	Global.dialog_open(false)
-
-
 func _exit_tree() -> void:
 	Global.config_cache.set_value("window", "layout", Global.top_menu_container.selected_layout)
 	Global.config_cache.set_value("window", "screen", get_window().current_screen)
@@ -411,5 +320,4 @@ func _exit_tree() -> void:
 	var i := 0
 	for project in Global.projects:
 		project.remove()
-		OpenSave.remove_backup(i)
 		i += 1

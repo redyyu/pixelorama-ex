@@ -8,7 +8,7 @@ enum GridTypes { CARTESIAN, ISOMETRIC, ALL }
 enum ColorFrom { THEME, CUSTOM }
 enum ButtonSize { SMALL, BIG }
 
-enum FileMenu { NEW, OPEN, OPEN_LAST_PROJECT, RECENT, SAVE, SAVE_AS, EXPORT, EXPORT_AS, QUIT }
+enum FileMenu { NEW, OPEN, RECENT, SAVE, SAVE_AS, EXPORT, EXPORT_AS, QUIT }
 enum EditMenu { UNDO, REDO, COPY, CUT, PASTE, PASTE_IN_PLACE, DELETE, NEW_BRUSH, PREFERENCES }
 enum ViewMenu {
 	TILE_MODE,
@@ -78,8 +78,6 @@ var show_x_symmetry_axis := false
 var show_y_symmetry_axis := false
 
 # Preferences
-var open_last_project := false
-var quit_confirmation := false
 var smooth_zoom := true
 var integer_zoom := false:
 	set(value):
@@ -246,17 +244,7 @@ var fps_limit := 0:
 		fps_limit = value
 		Engine.max_fps = fps_limit
 
-var autosave_interval := 1.0:
-	set(value):
-		autosave_interval = value
-		OpenSave.update_autosave()
-var enable_autosave := true:
-	set(value):
-		enable_autosave = value
-		OpenSave.update_autosave()
-		preferences_dialog.autosave_interval.editable = enable_autosave
-var renderer := 0:
-	set = _renderer_changed
+		
 var tablet_driver := 0:
 	set(value):
 		tablet_driver = value
@@ -267,10 +255,6 @@ var tablet_driver := 0:
 		ProjectSettings.save_custom(OVERRIDE_FILE)
 
 # Tools & options
-var show_left_tool_icon := true
-var show_right_tool_icon := true
-var left_square_indicator_visible := true
-var right_square_indicator_visible := true
 var native_cursors := false:
 	set(value):
 		native_cursors = value
@@ -278,13 +262,7 @@ var native_cursors := false:
 			Input.set_custom_mouse_cursor(null, Input.CURSOR_CROSS, Vector2(15, 15))
 		else:
 			control.set_custom_cursor()
-var cross_cursor := true:
-	set(value):
-		cross_cursor = value
-		if cross_cursor:
-			main_viewport.mouse_default_cursor_shape = Control.CURSOR_CROSS
-		else:
-			main_viewport.mouse_default_cursor_shape = Control.CURSOR_ARROW
+
 
 # View menu options
 var greyscale_view := false
@@ -424,7 +402,6 @@ func _initialize_keychain() -> void:
 	Keychain.actions = {
 		"new_file": Keychain.InputAction.new("", "File menu", true),
 		"open_file": Keychain.InputAction.new("", "File menu", true),
-		"open_last_project": Keychain.InputAction.new("", "File menu", true),
 		"save_file": Keychain.InputAction.new("", "File menu", true),
 		"save_file_as": Keychain.InputAction.new("", "File menu", true),
 		"export_file": Keychain.InputAction.new("", "File menu", true),
@@ -632,21 +609,6 @@ func undo_or_redo(
 		project.has_changed = true
 		if project == current_project:
 			main_window.title = main_window.title + "(*)"
-
-
-func _renderer_changed(value: int) -> void:
-	renderer = value
-
-
-#	if OS.has_feature("editor"):
-#		return
-#
-#	# Sets GLES2 as the default value in `override.cfg`.
-#	# Without this, switching to GLES3 does not work, because it will default to GLES2.
-#	ProjectSettings.set_initial_value("rendering/quality/driver/driver_name", "GLES2")
-#	var renderer_name := OS.get_video_driver_name(renderer)
-#	ProjectSettings.set_setting("rendering/quality/driver/driver_name", renderer_name)
-#	ProjectSettings.save_custom(OVERRIDE_FILE)
 
 
 func dialog_open(open: bool) -> void:
