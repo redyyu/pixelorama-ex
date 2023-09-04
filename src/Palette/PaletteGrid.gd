@@ -145,6 +145,7 @@ func convert_grid_index_to_palette_index(index: int) -> int:
 
 func convert_palette_index_to_grid_index(palette_index: int) -> int:
 	var x := palette_index % current_palette.width
+	@warning_ignore("integer_division")
 	var y := palette_index / current_palette.width
 	return int((x - grid_window_origin.x) + (y - grid_window_origin.y) * grid_size.x)
 

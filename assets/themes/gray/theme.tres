@@ -1,10 +1,10 @@
 [gd_resource type="Theme" load_steps=64 format=3 uid="uid://bcfsxuu6eykiq"]
 
-[ext_resource type="Texture2D" uid="uid://c7u0yofrpm50a" path="res://assets/graphics/misc/value_slider.png" id="3"]
-[ext_resource type="FontFile" uid="uid://cvc4lelf6hl7x" path="res://assets/fonts/Roboto-Regular.ttf" id="3_3yr54"]
-[ext_resource type="Texture2D" uid="uid://bq8h66v4ie8xl" path="res://assets/graphics/misc/value_arrow_hover.svg" id="4"]
-[ext_resource type="Texture2D" uid="uid://hhxenhteahv6" path="res://assets/graphics/misc/value_arrow_press.svg" id="5"]
-[ext_resource type="Texture2D" uid="uid://ct8wn8m6x4m54" path="res://assets/graphics/misc/value_arrow.svg" id="6"]
+[ext_resource type="Texture2D" uid="uid://fna211vybbko" path="res://assets/graphics/misc/value_slider.png" id="3"]
+[ext_resource type="FontFile" uid="uid://b3e6s8saoybre" path="res://assets/fonts/Roboto-Regular.ttf" id="3_3yr54"]
+[ext_resource type="Texture2D" uid="uid://3hujghj0kuxa" path="res://assets/graphics/misc/value_arrow_hover.svg" id="4"]
+[ext_resource type="Texture2D" uid="uid://cxqw6ehrfa1n1" path="res://assets/graphics/misc/value_arrow_press.svg" id="5"]
+[ext_resource type="Texture2D" uid="uid://cefqodgf1bys1" path="res://assets/graphics/misc/value_arrow.svg" id="6"]
 
 [sub_resource type="StyleBoxFlat" id="23"]
 content_margin_left = 6.0
