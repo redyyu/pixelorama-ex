@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgplgmd5f2j76"]
-
-[ext_resource type="Script" path="res://src/UI/PerspectiveEditor/PerspectiveLine.gd" id="1"]
-
-[node name="PerspectiveLine" type="Line2D"]
-points = PackedVector2Array(0, 0, 64, 0)
-script = ExtResource("1")
