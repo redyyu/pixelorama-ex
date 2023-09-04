@@ -32,8 +32,7 @@ func _convert(image: Image, colors: Array) -> PackedByteArray:
 
 	var mat_rid = RenderingServer.material_create()
 	RenderingServer.material_set_shader(mat_rid, _shader.get_rid())
-	var lut = Image.new()
-	lut.create(256, 1, false, Image.FORMAT_RGB8)
+	var lut = Image.create(256, 1, false, Image.FORMAT_RGB8)
 	lut.fill(Color8(colors[0][0], colors[0][1], colors[0][2]))
 	false # lut.lock() # TODOConverter3To4, Image no longer requires locking, `false` helps to not break one line if/else, so it can freely be removed
 	for i in colors.size():

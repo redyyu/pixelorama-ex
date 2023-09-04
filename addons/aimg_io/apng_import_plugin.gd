@@ -19,7 +19,7 @@ func _get_resource_type() -> String:
 	return "AnimatedTexture"
 
 
-func _get_recognized_extensions() -> Array:
+func _get_recognized_extensions() -> PackedStringArray:
 	return ["png"]
 
 
@@ -31,7 +31,7 @@ func _get_preset_name(_i):
 	return "Default"
 
 
-func _get_import_options(_i):
+func _get_import_options(_String, _int) -> Array[Dictionary]:
 	# GDLint workaround - it really does not want this string to exist due to length.
 	var hint = "Mipmaps,Repeat,Filter,Anisotropic Filter,Convert To Linear,Mirrored Repeat"
 	return [
@@ -53,7 +53,7 @@ func _get_import_options(_i):
 	]
 
 
-func _get_option_visibility(_option, _options):
+func _get_option_visibility(_String, _StringName, _Dictnoary):
 	return true
 
 
@@ -77,4 +77,4 @@ func import(load_path: String, save_path: String, options, _platform_variants, _
 		tx.lossy_quality = options["image_texture_lossy_quality"]
 		tx.create_from_image(f.content) #,flags
 		root.set_frame_texture(i, tx)
-	return ResourceSaver.save(save_path + ".res", root)
+	return ResourceSaver.save(root, save_path + ".res")

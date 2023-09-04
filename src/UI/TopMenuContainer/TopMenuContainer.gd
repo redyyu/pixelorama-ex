@@ -33,8 +33,7 @@ var zen_mode := false
 
 
 func _ready() -> void:
-	var dir := DirAccess.new()
-	dir.make_dir("user://layouts")
+	DirAccess.make_dir_absolute("user://layouts")
 	_setup_file_menu()
 	_setup_edit_menu()
 	_setup_view_menu()
@@ -240,15 +239,16 @@ func _setup_panels_submenu(item: String) -> void:
 
 
 func _setup_layouts_submenu(item: String) -> void:
-	var dir := DirAccess.new()
-	var path := "user://layouts"
-	if dir.open(path) == OK:
+	var path = "user://layouts"
+	var dir = DirAccess.open(path)
+	if dir == OK:
 		dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		var file_name = dir.get_next()
 		while file_name != "":
 			if !dir.current_is_dir():
 				var file_name_no_tres: String = file_name.get_basename()
-				layouts.append([file_name_no_tres, ResourceLoader.load(path.path_join(file_name))])
+				layouts.append([file_name_no_tres,
+								ResourceLoader.load(path.path_join(file_name))])
 			file_name = dir.get_next()
 
 	layouts_submenu.set_name("layouts_submenu")
@@ -339,8 +339,8 @@ func _handle_metadata(id: int, menu_button: MenuButton) -> void:
 				metadata.call("menu_item_clicked")
 
 
-func _popup_dialog(dialog: Popup, size := Vector2.ZERO) -> void:
-	dialog.popup_centered(size)
+func _popup_dialog(dialog, dialog_size := Vector2.ZERO) -> void:
+	dialog.popup_centered(dialog_size)
 	Global.dialog_open(true)
 
 
@@ -729,8 +729,8 @@ func help_menu_id_pressed(id: int) -> void:
 		Global.HelpMenu.ISSUE_TRACKER:
 			OS.shell_open("https://github.com/Orama-Interactive/Pixelorama/issues")
 		Global.HelpMenu.OPEN_LOGS_FOLDER:
-			var dir = DirAccess.new()
-			dir.make_dir_recursive("user://logs")  # In case someone deleted it
+			DirAccess.make_dir_recursive_absolute("user://logs") 
+			# In case someone deleted it
 			OS.shell_open(ProjectSettings.globalize_path("user://logs"))
 		Global.HelpMenu.CHANGELOG:
 			OS.shell_open(

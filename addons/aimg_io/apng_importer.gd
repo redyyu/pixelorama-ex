@@ -78,7 +78,7 @@ static func load_from_buffer(buffer: PackedByteArray) -> Array:
 			if len(frames) > 0:
 				var f: BFrame = frames[len(frames) - 1]
 				if len(stream.chunk_data) >= 4:
-					var data := stream.chunk_data.subarray(4, len(stream.chunk_data) - 1)
+					var data := stream.chunk_data.slice(4, len(stream.chunk_data) - 1)
 					f.add_data(data)
 	# theoretically we *could* store the default frame somewhere, but *why*?
 	# just use Image functions if you want that
@@ -143,8 +143,8 @@ static func load_from_buffer(buffer: PackedByteArray) -> Array:
 # Imports an APNG file into an animation as an array of frames.
 # Returns null on error.
 static func load_from_file(path: String) -> Array:
-	var o := File.new()
-	if o.open(path, File.READ) != OK:
+	var o = FileAccess.open(path, FileAccess.READ)
+	if o != OK:
 		return [null, "Unable to open file: " + path]
 	var l = o.get_length()
 	var data = o.get_buffer(l)

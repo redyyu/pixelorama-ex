@@ -63,9 +63,7 @@ func deserialize(d: Dictionary) -> void:
 		image_path = d["image_path"]
 		var img := Image.new()
 		if img.load(image_path) == OK:
-			var itex := ImageTexture.new()
-			# don't do FLAG_REPEAT - it could cause visual issues
-			itex.create_from_image(img) #,Texture2D.FLAG_MIPMAPS
+			var itex := ImageTexture.create_from_image(img) #,Texture2D.FLAG_MIPMAPS
 			texture = itex
 		# Apply the silhouette shader
 		var mat = ShaderMaterial.new()
@@ -102,8 +100,6 @@ func deserialize(d: Dictionary) -> void:
 
 # Useful for HTML5
 func create_from_image(image: Image) -> void:
-	var itex := ImageTexture.new()
-	# don't do FLAG_REPEAT - it could cause visual issues
-	itex.create_from_image(image) #,Texture2D.FLAG_MIPMAPS | Texture2D.FLAG_FILTER
+	var itex := ImageTexture.create_from_image(image)
 	texture = itex
 	position_reset()

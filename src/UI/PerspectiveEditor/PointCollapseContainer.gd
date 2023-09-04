@@ -8,7 +8,7 @@ extends Button
 
 
 func _ready() -> void:
-	_set_visible(pressed)
+	_set_visible(button_pressed)
 	content.connect("visibility_changed", Callable(self, "_child_visibility_changed"))
 
 
@@ -19,19 +19,20 @@ func _set_text(value: String) -> void:
 
 func _set_visible_content(value: bool) -> void:
 	visible_content = value
-	pressed = value
+	button_pressed = value
 
 
-func _on_Button_toggled(button_pressed: bool) -> void:
+func _on_Button_toggled(value: bool) -> void:
+	button_pressed = value
 	_set_visible(button_pressed)
 
 
-func _set_visible(pressed: bool) -> void:
-	if pressed:
+func _set_visible(btn_pressed: bool) -> void:
+	if btn_pressed:
 		$TextureRect.rotation = 0
 	else:
 		$TextureRect.rotation = -90
-	content.visible = pressed
+	content.visible = btn_pressed
 
 
 # Checks if a child becomes visible from another source and ensures

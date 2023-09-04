@@ -116,14 +116,12 @@ func ensure_xdg_user_dirs_exist() -> void:
 	if !OS.has_feature("standalone"):  # Don't execute if we're in the editor
 		return
 
-	var base_dir := DirAccess.new()
-	base_dir.open(raw_xdg_data_home)
+	var base_dir := DirAccess.open(raw_xdg_data_home)
 	# Ensure the main config directory exists.
 	if not base_dir.dir_exists(xdg_data_home):
 		base_dir.make_dir(xdg_data_home)
 
-	var actual_data_dir := DirAccess.new()
-	actual_data_dir.open(xdg_data_home)
+	var actual_data_dir = DirAccess.open(xdg_data_home)
 	var palette_writing_dir := get_palette_write_path()
 	var brushes_writing_dir := get_brushes_write_path()
 	var pattern_writing_dir := get_patterns_write_path()
