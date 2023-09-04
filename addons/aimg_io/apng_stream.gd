@@ -1,13 +1,17 @@
 @tool
 class_name AImgIOAPNGStream
 extends RefCounted
-# APNG IO context. To be clear, this is still effectively magic.
+## APNG IO context. To be clear, this is still effectively magic.
+## It's also decently internal to AImgIO, though it's not likely to change.
 
-# Quite critical we preload this. Preloading creates static variables.
-# (Which GDScript doesn't really have, but we need since we have no tree access)
+## Quite critical we preload this. Preloading creates static variables.
+## (Which GDScript doesn't really have, but we need since we have no tree access)
 var crc32: AImgIOCRC32 = preload("apng_crc32.tres")
 
+## PNG type of the chunk we just read (via `read_chunk`). 4 bytes.
+## Represented as a string for convenience.
 var chunk_type: String
+## Data of the chunk we just read (via `read_chunk`).
 var chunk_data: PackedByteArray
 
 # The reason this must be a StreamPeerBuffer is simple:
@@ -31,7 +35,7 @@ func _init(t: PackedByteArray = PackedByteArray()):
 # Reading
 
 
-# Reads the magic number. Returns the method of failure or null for success.
+## Reads the magic number. Returns the method of failure as a string, or null for success.
 func read_magic():
 	if _target.get_available_bytes() < 8:
 		return "Not enough bytes in magic number"
@@ -44,7 +48,7 @@ func read_magic():
 	return null
 
 
-# Reads a chunk into chunk_type and chunk_data. Returns an error code.
+## Reads a chunk into `chunk_type` and `chunk_data`. Returns an error code.
 func read_chunk() -> int:
 	if _target.get_available_bytes() < 8:
 		return ERR_FILE_EOF
@@ -66,20 +70,20 @@ func read_chunk() -> int:
 # Writing
 
 
-# Writes the PNG magic number.
+## Writes the PNG magic number.
 func write_magic():
 	_target.put_32(0x89504E47)
 	_target.put_32(0x0D0A1A0A)
 
 
-# Creates a big-endian StreamPeerBuffer for writing PNG data into.
+## Creates a big-endian StreamPeerBuffer for writing PNG data into.
 func start_chunk() -> StreamPeerBuffer:
 	var result := StreamPeerBuffer.new()
 	result.big_endian = true
 	return result
 
 
-# Writes a PNG chunk.
+## Writes a PNG chunk.
 func write_chunk(type: String, data: PackedByteArray):
 	_target.put_32(len(data))
 	var at := type.to_ascii_buffer()
@@ -90,6 +94,6 @@ func write_chunk(type: String, data: PackedByteArray):
 	_target.put_32(crc)
 
 
-# Returns the data_array of the stream (to be used when you're done writing the file)
+## Returns the `data_array` of the stream (to be used when you're done writing the file)
 func finish() -> PackedByteArray:
 	return _target.data_array
