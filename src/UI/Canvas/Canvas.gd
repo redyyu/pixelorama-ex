@@ -77,10 +77,7 @@ func _input(event: InputEvent) -> void:
 		for action in MOVE_ACTIONS:
 			if event.is_action(action):
 				get_velocity = true
-		if (
-			!get_velocity
-			and !(event.is_action("activate_left_tool") or event.is_action("activate_right_tool"))
-		):
+		if !get_velocity and !event.is_action("activate_left_tool"):
 			return
 
 	var tmp_position: Vector2 = Global.main_viewport.get_local_mouse_position()

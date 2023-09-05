@@ -322,8 +322,6 @@ func set_tool(tool_name: String, button: int) -> void:
 		else:
 			Global.move_guides_on_canvas = false
 	node.name = tool_name
-	if node.name == 'Pencil':
-		print(node.name, node.test_name)
 	node.tool_slot = slot
 	slot.tool_node = node
 	slot.button = button
@@ -417,12 +415,6 @@ func handle_draw(position: Vector2i, event: InputEvent) -> void:
 		_active_button = MOUSE_BUTTON_LEFT
 		_slots[_active_button].tool_node.draw_start(draw_pos)
 	elif event.is_action_released("activate_left_tool") and _active_button == MOUSE_BUTTON_LEFT:
-		_slots[_active_button].tool_node.draw_end(draw_pos)
-		_active_button = -1
-	elif event.is_action_pressed("activate_right_tool") and _active_button == -1:
-		_active_button = MOUSE_BUTTON_RIGHT
-		_slots[_active_button].tool_node.draw_start(draw_pos)
-	elif event.is_action_released("activate_right_tool") and _active_button == MOUSE_BUTTON_RIGHT:
 		_slots[_active_button].tool_node.draw_end(draw_pos)
 		_active_button = -1
 

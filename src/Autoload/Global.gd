@@ -449,7 +449,6 @@ func _initialize_keychain() -> void:
 		"camera_down": Keychain.InputAction.new("", "Canvas"),
 		"pan": Keychain.InputAction.new("", "Canvas"),
 		"activate_left_tool": Keychain.InputAction.new("", "Canvas"),
-		"activate_right_tool": Keychain.InputAction.new("", "Canvas"),
 		"move_mouse_left": Keychain.InputAction.new("", "Cursor movement"),
 		"move_mouse_right": Keychain.InputAction.new("", "Cursor movement"),
 		"move_mouse_up": Keychain.InputAction.new("", "Cursor movement"),
