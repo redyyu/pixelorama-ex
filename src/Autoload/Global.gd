@@ -133,8 +133,8 @@ var mouse_tool_color := Color("0086cf"):
 	set(value):
 		mouse_tool_color = value
 		for child in Tools._tool_buttons.get_children():
-			var background: NinePatchRect = child.get_node("Background")
-			background.modulate = value
+			var btn_background: NinePatchRect = child.get_node("Background")
+			btn_background.modulate = value
 		Tools._slots[MOUSE_BUTTON_LEFT].tool_node.color_rect.color = value
 
 

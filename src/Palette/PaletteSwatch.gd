@@ -50,8 +50,6 @@ func show_selected_highlight(new_value: bool, mouse_button: int) -> void:
 		match mouse_button:
 			MOUSE_BUTTON_LEFT:
 				show_left_highlight = new_value
-			MOUSE_BUTTON_RIGHT:
-				show_right_highlight = new_value
 		queue_redraw()
 
 

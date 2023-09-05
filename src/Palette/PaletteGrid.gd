@@ -92,8 +92,6 @@ func find_and_select_color(mouse_button: int, target_color: Color) -> void:
 			match mouse_button:
 				MOUSE_BUTTON_LEFT:
 					Palettes.left_selected_color = color_ind
-				MOUSE_BUTTON_RIGHT:
-					Palettes.right_selected_color = color_ind
 			break
 
 

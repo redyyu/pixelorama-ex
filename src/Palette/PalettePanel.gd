@@ -59,9 +59,7 @@ func select_palette(palette_path: String) -> void:
 		palette_scroll.set_sliders(Palettes.get_current_palette(), palette_grid.grid_window_origin)
 
 		var left_selected := Palettes.current_palette_get_selected_color_index(MOUSE_BUTTON_LEFT)
-		var right_selected := Palettes.current_palette_get_selected_color_index(MOUSE_BUTTON_RIGHT)
 		palette_grid.select_swatch(MOUSE_BUTTON_LEFT, left_selected, left_selected)
-		palette_grid.select_swatch(MOUSE_BUTTON_RIGHT, right_selected, right_selected)
 
 		toggle_add_delete_buttons()
 
@@ -110,13 +108,8 @@ func _on_PaletteSelect_item_selected(index: int) -> void:
 
 func _on_AddColor_gui_input(event: InputEvent) -> void:
 	if Palettes.is_any_palette_selected():
-		if (
-			event is InputEventMouseButton
-			and event.pressed
-			and (
-				event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT
-			)
-		):
+		if (event is InputEventMouseButton and event.pressed
+			and event.button_index == MOUSE_BUTTON_LEFT):
 			# Gets the grid index that corresponds to the top left of current grid window
 			# Color will be added at the start of the currently scrolled part of palette
 			# - not the absolute beginning of palette
@@ -229,8 +222,5 @@ func _color_changed(_color: Color, button: int) -> void:
 		if button == MOUSE_BUTTON_LEFT:
 			swatch_to_unselect = Palettes.left_selected_color
 			Palettes.left_selected_color = -1
-		elif button == MOUSE_BUTTON_RIGHT:
-			swatch_to_unselect = Palettes.right_selected_color
-			Palettes.right_selected_color = -1
 
 		palette_grid.unselect_swatch(button, swatch_to_unselect)

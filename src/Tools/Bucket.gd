@@ -513,9 +513,4 @@ func _pick_color(pos: Vector2i) -> void:
 		return
 
 	var color := image.get_pixelv(pos)
-	var button := (
-		MOUSE_BUTTON_LEFT
-		if Tools._slots[MOUSE_BUTTON_LEFT].tool_node == self
-		else MOUSE_BUTTON_RIGHT
-	)
 	Tools.assign_color(color, MOUSE_BUTTON_LEFT, false)

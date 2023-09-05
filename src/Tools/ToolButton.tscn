@@ -12,21 +12,16 @@ tooltip_text = "Rectangular Selection
 %s for left mouse button
 %s for right mouse button"
 mouse_default_cursor_shape = 2
-button_mask = 3
 
 [node name="Background" type="NinePatchRect" parent="."]
-visible = false
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 12.0
+grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1")
-patch_margin_left = 2
-patch_margin_top = 1
-patch_margin_right = 10
-patch_margin_bottom = 1
 
 [node name="ToolIcon" type="TextureRect" parent="."]
 layout_mode = 1

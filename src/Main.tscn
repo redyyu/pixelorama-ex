@@ -90,12 +90,6 @@ dialog_text = "You have unsaved progress. How do you wish to proceed?"
 exclusive = false
 dialog_text = "This is an error message!"
 
-[node name="BackupConfirmation" type="ConfirmationDialog" parent="Dialogs"]
-exclusive = false
-dialog_text = "Autosaved project(s) from a crashed session were found.
-Do you want to recover the data?"
-dialog_autowrap = true
-
 [node name="FrameProperties" parent="Dialogs" instance=ExtResource("9")]
 
 [node name="WindowOpacityDialog" parent="Dialogs" instance=ExtResource("10")]
@@ -104,12 +98,6 @@ dialog_autowrap = true
 
 [node name="Extensions" type="Control" parent="."]
 anchors_preset = 0
-
-[node name="LeftCursor" type="Sprite2D" parent="."]
-visible = false
-
-[node name="RightCursor" type="Sprite2D" parent="."]
-visible = false
 
 [connection signal="visibility_changed" from="Dialogs/SplashDialog" to="." method="_can_draw_true"]
 [connection signal="visibility_changed" from="Dialogs/CreateNewImage" to="." method="_can_draw_true"]
@@ -127,4 +115,3 @@ visible = false
 [connection signal="custom_action" from="Dialogs/QuitAndSaveDialog" to="." method="_on_QuitAndSaveDialog_custom_action"]
 [connection signal="visibility_changed" from="Dialogs/QuitAndSaveDialog" to="." method="_can_draw_true"]
 [connection signal="visibility_changed" from="Dialogs/ErrorDialog" to="." method="_can_draw_true"]
-[connection signal="visibility_changed" from="Dialogs/BackupConfirmation" to="." method="_on_backup_confirmation_visibility_changed"]

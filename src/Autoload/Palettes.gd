@@ -273,8 +273,6 @@ func current_palette_get_selected_color_index(mouse_button: int) -> int:
 	match mouse_button:
 		MOUSE_BUTTON_LEFT:
 			return left_selected_color
-		MOUSE_BUTTON_RIGHT:
-			return right_selected_color
 		_:
 			return -1
 
@@ -287,8 +285,6 @@ func current_palette_select_color(mouse_button: int, index: int) -> void:
 	match mouse_button:
 		MOUSE_BUTTON_LEFT:
 			Tools.assign_color(color, mouse_button)
-		MOUSE_BUTTON_RIGHT:
-			Tools.assign_color(color, mouse_button)
 
 	_select_color(mouse_button, index)
 
@@ -297,8 +293,6 @@ func _select_color(mouse_button: int, index: int) -> void:
 	match mouse_button:
 		MOUSE_BUTTON_LEFT:
 			left_selected_color = index
-		MOUSE_BUTTON_RIGHT:
-			right_selected_color = index
 
 
 func _clear_selected_colors() -> void:

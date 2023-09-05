@@ -51,13 +51,7 @@ gdscript/warnings/narrowing_conversion=false
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
-window/size/window_width_override=1280
-window/size/window_height_override=720
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
-window/stretch/scale=2.0
+window/dpi/allow_hidpi=false
 window/per_pixel_transparency/allowed=true
 window/per_pixel_transparency/allowed.android=false
 window/per_pixel_transparency/allowed.web=false
