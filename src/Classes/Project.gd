@@ -697,7 +697,6 @@ func swap_frame(a_index: int, b_index: int) -> void:
 
 func reverse_frames(frame_indices: Array) -> void:
 	Global.canvas.selection.transform_content_confirm()
-	@warning_ignore("integer_division")
 	var frame_indices_size = frame_indices.size() / 2
 	for i in frame_indices_size:
 		var index: int = frame_indices[i]

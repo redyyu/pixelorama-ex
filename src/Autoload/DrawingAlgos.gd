@@ -29,7 +29,6 @@ func get_ellipse_points(pos: Vector2i, size: Vector2i) -> Array[Vector2i]:
 	if y0 > y1:
 		y0 = y1
 
-	@warning_ignore("integer_division")
 	y0 += (b + 1) / 2
 	y1 = y0 - b1
 	a *= 8 * a
@@ -191,7 +190,6 @@ func rotxel(sprite: Image, angle: float, pivot: Vector2) -> void:
 			var found_pixel := false
 			for k in range(9):
 				var modk := -1 + k % 3
-				@warning_ignore("integer_division")
 				var divk := -1 + int(k / 3)
 				var dir := atan2(dy + divk, dx + modk)
 				var mag := sqrt(pow(dx + modk, 2) + pow(dy + divk, 2))
@@ -371,7 +369,7 @@ func fake_rotsprite(sprite: Image, angle: float, pivot: Vector2) -> void:
 	selected_sprite.copy_from(sprite)
 	selected_sprite.copy_from(scale_3x(selected_sprite))
 	nn_rotate(selected_sprite, angle, pivot * 3)
-	@warning_ignore("integer_division")
+
 	selected_sprite.resize(
 		selected_sprite.get_width() / 3, 
 		selected_sprite.get_height() / 3, 

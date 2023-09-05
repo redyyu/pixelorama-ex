@@ -46,6 +46,7 @@ ExtensionsApi="*res://src/Autoload/ExtensionsAPI.gd"
 [debug]
 
 gdscript/warnings/return_value_discarded=false
+gdscript/warnings/integer_division=0
 gdscript/warnings/narrowing_conversion=false
 
 [display]
