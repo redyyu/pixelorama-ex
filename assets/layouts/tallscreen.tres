@@ -33,7 +33,7 @@ current_tab = 0
 [sub_resource type="Resource" id="Resource_tube0"]
 resource_name = "Tabs"
 script = ExtResource("1_uy50t")
-names = PackedStringArray("Left Tool Options")
+names = PackedStringArray("Main Tool Options")
 current_tab = 0
 
 [sub_resource type="Resource" id="Resource_37h2m"]

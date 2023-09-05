@@ -109,7 +109,7 @@ second = SubResource("Resource_u1u2a")
 [sub_resource type="Resource" id="Resource_6pwxm"]
 resource_name = "Tabs"
 script = ExtResource("1_5ntxi")
-names = PackedStringArray("Left Tool Options")
+names = PackedStringArray("Main Tool Options")
 current_tab = 0
 
 [sub_resource type="Resource" id="Resource_24rfh"]
