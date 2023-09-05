@@ -37,32 +37,37 @@ func setup_palettes_selector() -> void:
 	palettes_path_id.clear()
 	palettes_id_path.clear()
 	palette_select.clear()
-
+	
 	var id := 0
 	for palette_path in Palettes.get_palettes():
 		# Add palette selector item
 		palette_select.add_item(Palettes.get_palettes()[palette_path].name, id)
-
 		# Map palette paths to item id's and otherwise
 		palettes_path_id[palette_path] = id
 		palettes_id_path[id] = palette_path
 		id += 1
 
 
-func select_palette(palette_path: String) -> void:
+func select_palette(palette_path: String = '') -> void:
 	var palette_id = palettes_path_id.get(palette_path)
 	if palette_id != null:
+		palette_grid.show()
+		palette_scroll.show()
 		palette_select.selected = palette_id
 		Palettes.select_palette(palette_path)
 		palette_grid.set_palette(Palettes.get_current_palette())
 		palette_scroll.resize_grid()
 		palette_scroll.set_sliders(Palettes.get_current_palette(), palette_grid.grid_window_origin)
 
-		var left_selected := Palettes.current_palette_get_selected_color_index(MOUSE_BUTTON_LEFT)
-		palette_grid.select_swatch(MOUSE_BUTTON_LEFT, left_selected, left_selected)
+		var last_selected := Palettes.current_palette_get_selected_color_index(MOUSE_BUTTON_LEFT)
+		palette_grid.select_swatch(MOUSE_BUTTON_LEFT, last_selected, last_selected)
 
 		toggle_add_delete_buttons()
-
+	else:
+		palette_grid.hide()
+		palette_scroll.hide()
+		
+		
 
 ## Has to be called on every Pixelorama theme change
 func reset_empty_palette_swatches_color() -> void:
@@ -77,6 +82,7 @@ func redraw_current_palette() -> void:
 		add_color_button.show()
 		delete_color_button.show()
 	else:
+		select_palette()
 		add_color_button.hide()
 		delete_color_button.hide()
 
@@ -125,7 +131,7 @@ func _on_DeleteColor_gui_input(event: InputEvent) -> void:
 			var selected_color_index = Palettes.current_palette_get_selected_color_index(
 				event.button_index
 			)
-
+		
 			if selected_color_index != -1:
 				Palettes.current_palette_delete_color(selected_color_index)
 				redraw_current_palette()
@@ -220,7 +226,7 @@ func _color_changed(_color: Color, button: int) -> void:
 		var swatch_to_unselect := -1
 
 		if button == MOUSE_BUTTON_LEFT:
-			swatch_to_unselect = Palettes.left_selected_color
-			Palettes.left_selected_color = -1
+			swatch_to_unselect = Palettes.current_selected_color
+			Palettes.current_selected_color = -1
 
 		palette_grid.unselect_swatch(button, swatch_to_unselect)

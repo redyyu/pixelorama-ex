@@ -23,9 +23,9 @@ func _ready() -> void:
 
 func set_palette(new_palette: Palette) -> void:
 	# Only display valid palette objects
+	
 	if not new_palette:
 		return
-
 	current_palette = new_palette
 	grid_window_origin = Vector2.ZERO
 
@@ -49,7 +49,6 @@ func setup_swatches() -> void:
 			var swatch: PaletteSwatch = swatches.pop_back()
 			remove_child(swatch)
 			swatch.queue_free()
-
 		for i in range(0, swatches.size()):
 			init_swatch(swatches[i])
 
@@ -57,7 +56,6 @@ func setup_swatches() -> void:
 func init_swatch(swatch: PaletteSwatch) -> void:
 	swatch.color = PaletteSwatch.DEFAULT_COLOR
 	swatch.show_left_highlight = false
-	swatch.show_right_highlight = false
 	swatch.empty = true
 	swatch.set_swatch_size(swatch_size)
 
@@ -68,8 +66,7 @@ func draw_palette() -> void:
 			var grid_index := i + grid_size.x * j
 			var index := convert_grid_index_to_palette_index(grid_index)
 			var swatch = swatches[grid_index]
-			swatch.show_left_highlight = false
-			swatch.show_right_highlight = false
+#			swatch.show_left_highlight = false
 			var color = current_palette.get_color(index)
 			if color != null:
 				swatch.color = color
@@ -91,7 +88,7 @@ func find_and_select_color(mouse_button: int, target_color: Color) -> void:
 			select_swatch(mouse_button, color_ind, old_index)
 			match mouse_button:
 				MOUSE_BUTTON_LEFT:
-					Palettes.left_selected_color = color_ind
+					Palettes.current_selected_color = color_ind
 			break
 
 

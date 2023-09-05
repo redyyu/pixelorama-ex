@@ -9,7 +9,6 @@ const DEFAULT_COLOR := Color(0.0, 0.0, 0.0, 0.0)
 
 var index := -1
 var show_left_highlight := false
-var show_right_highlight := false
 var empty := true:
 	set(value):
 		empty = value
@@ -35,14 +34,6 @@ func _draw() -> void:
 		draw_rect(Rect2(Vector2.ZERO, size), Color.WHITE, false, 1)
 		draw_rect(Rect2(Vector2.ONE, size - Vector2(2, 2)), Color.BLACK, false, 1)
 
-	if show_right_highlight:
-		# Display inner border highlight
-		var margin := size / 4
-		draw_rect(Rect2(margin, size - margin * 2), Color.BLACK, false, 1)
-		draw_rect(
-			Rect2(margin - Vector2.ONE, size - margin * 2 + Vector2(2, 2)), Color.WHITE, false, 1
-		)
-
 
 ## Enables drawing of highlights which indicate selected swatches
 func show_selected_highlight(new_value: bool, mouse_button: int) -> void:
@@ -58,7 +49,6 @@ func _get_drag_data(_position: Vector2):
 	if not empty:
 		var drag_icon: PaletteSwatch = self.duplicate()
 		drag_icon.show_left_highlight = false
-		drag_icon.show_right_highlight = false
 		drag_icon.empty = false
 		set_drag_preview(drag_icon)
 		data = {source_index = index}

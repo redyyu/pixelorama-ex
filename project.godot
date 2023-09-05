@@ -10,11 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Pixelorama"
+config/name="PixeloramaEx"
 config/description="A free & open-source 2D sprite editor"
 run/main_scene="res://src/Main.tscn"
 config/use_custom_user_dir=true
-config/custom_user_dir_name="pixelorama"
+config/custom_user_dir_name="pixelorama-ex"
 config/features=PackedStringArray("4.1")
 run/low_processor_mode=true
 boot_splash/bg_color=Color(0.145098, 0.145098, 0.164706, 1)

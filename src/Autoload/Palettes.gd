@@ -18,8 +18,7 @@ var current_palette: Palette = null
 
 # Indexes of colors that are selected in palette
 # by left and right mouse button
-var left_selected_color := -1
-var right_selected_color := -1
+var current_selected_color := -1
 
 
 func _ready() -> void:
@@ -214,7 +213,7 @@ func current_palette_edit(palette_name: String, comment: String, width: int, hei
 
 
 func _delete_palette(path: String) -> void:
-	var dir = DirAccess.open(path)
+	var dir = DirAccess.open(palettes_write_path)
 	if dir:
 		dir.remove(path)
 		palettes.erase(path)
@@ -272,7 +271,7 @@ func current_palette_insert_color(from: int, to: int) -> void:
 func current_palette_get_selected_color_index(mouse_button: int) -> int:
 	match mouse_button:
 		MOUSE_BUTTON_LEFT:
-			return left_selected_color
+			return current_selected_color
 		_:
 			return -1
 
@@ -292,12 +291,11 @@ func current_palette_select_color(mouse_button: int, index: int) -> void:
 func _select_color(mouse_button: int, index: int) -> void:
 	match mouse_button:
 		MOUSE_BUTTON_LEFT:
-			left_selected_color = index
+			current_selected_color = index
 
 
 func _clear_selected_colors() -> void:
-	left_selected_color = -1
-	right_selected_color = -1
+	current_selected_color = -1
 
 
 func current_palette_is_empty() -> bool:
