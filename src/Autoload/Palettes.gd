@@ -214,8 +214,10 @@ func current_palette_edit(palette_name: String, comment: String, width: int, hei
 
 
 func _delete_palette(path: String) -> void:
-	DirAccess.open(path).remove(path)
-	palettes.erase(path)
+	var dir = DirAccess.open(palettes_write_path)
+	if dir:
+		dir.remove(path)
+		palettes.erase(path)
 
 
 func current_palete_delete() -> void:
