@@ -19,13 +19,11 @@ const DEFAULT_HEIGHT := 8
 @export var colors_max := 0
 
 
-func _init(
-	init_name: String = "Custom Palette",
-	init_width: int = DEFAULT_WIDTH,
-	init_height: int = DEFAULT_HEIGHT,
-	init_comment: String = ""
+func _init(init_name: String = "", init_comment: String = "",
+		   init_width: int = DEFAULT_WIDTH, init_height: int = DEFAULT_HEIGHT,
 ) -> void:
-	name = init_name
+	if init_name:
+		name = init_name
 	comment = init_comment
 	width = init_width
 	height = init_height

@@ -17,12 +17,48 @@ var palettes := {}
 var current_palette: Palette = null
 
 # Indexes of colors that are selected in palette
-# by left and right mouse button
 var current_selected_color := -1
 
 
 func _ready() -> void:
-	_load_palettes()
+	_ensure_palette_directory_exists()
+	var search_locations := Global.path_join_array(Global.data_directories, "Palettes")
+	var priority_ordered_files := _get_palette_priority_file_map(search_locations)
+
+	# Iterate backwards, so any palettes defined in default files
+	# get overwritten by those of the same name in user files
+	search_locations.reverse()
+	priority_ordered_files.reverse()
+	var default_palette_name = Global.config_cache.get_value(
+		"data", "last_palette", DEFAULT_PALETTE_NAME
+	)
+	for i in range(search_locations.size()):
+		# If palette is not in palettes write path - make its copy in the write path
+		var make_copy := false
+		if search_locations[i] != palettes_write_path:
+			make_copy = true
+
+		var base_directory := search_locations[i]
+		var palette_files: Array = priority_ordered_files[i]
+		for file_name in palette_files:
+			var palette := load(base_directory.path_join(file_name)) as Palette
+			if palette:
+				if make_copy:
+					_save_palette(palette)  # Makes a copy of the palette
+				var _file = palette.resource_path.get_file()
+				palette.resource_name = _file.trim_suffix(".tres")
+				# On Windows for some reason paths can contain
+				# "res://" in front of them which breaks saving
+				
+				palette.resource_path = palette.resource_path.trim_prefix("res://")
+				palettes[palette.resource_path] = palette
+
+				# Store index of the default palette
+				if palette.name == default_palette_name:
+					select_palette(palette.resource_path)
+
+	if not current_palette && palettes.size() > 0:
+		select_palette(palettes.keys()[0])
 
 
 func get_palettes() -> Dictionary:
@@ -115,7 +151,7 @@ func create_new_palette(
 func _create_new_empty_palette(
 	palette_name: String, comment: String, width: int, height: int
 ) -> void:
-	var new_palette: Palette = Palette.new(palette_name, width, height, comment)
+	var new_palette: Palette = Palette.new(palette_name, comment, width, height)
 	var palette_path := _save_palette(new_palette)
 	palettes[palette_path] = new_palette
 	select_palette(palette_path)
@@ -141,7 +177,7 @@ func _create_new_palette_from_current_selection(
 	add_alpha_colors: bool,
 	get_colors_from: int
 ):
-	var new_palette := Palette.new(palette_name, width, height, comment)
+	var new_palette := Palette.new(palette_name, comment, width, height)
 	var current_project := Global.current_project
 	var pixels: Array[Vector2i] = []
 	for x in current_project.size.x:
@@ -160,7 +196,7 @@ func _create_new_palette_from_current_sprite(
 	add_alpha_colors: bool,
 	get_colors_from: int
 ):
-	var new_palette := Palette.new(palette_name, width, height, comment)
+	var new_palette := Palette.new(palette_name, comment, width, height)
 	var current_project := Global.current_project
 	var pixels: Array[Vector2i] = []
 	for x in current_project.size.x:
@@ -312,44 +348,6 @@ func _check_palette_settings_values(palette_name: String, width: int, height: in
 		printerr("Palette width, height and name length must be greater than 0!")
 		return false
 	return true
-
-
-func _load_palettes() -> void:
-	_ensure_palette_directory_exists()
-	var search_locations := Global.path_join_array(Global.data_directories, "Palettes")
-	var priority_ordered_files := _get_palette_priority_file_map(search_locations)
-
-	# Iterate backwards, so any palettes defined in default files
-	# get overwritten by those of the same name in user files
-	search_locations.reverse()
-	priority_ordered_files.reverse()
-	var default_palette_name = Global.config_cache.get_value(
-		"data", "last_palette", DEFAULT_PALETTE_NAME
-	)
-	for i in range(search_locations.size()):
-		# If palette is not in palettes write path - make its copy in the write path
-		var make_copy := false
-		if search_locations[i] != palettes_write_path:
-			make_copy = true
-
-		var base_directory := search_locations[i]
-		var palette_files: Array = priority_ordered_files[i]
-		for file_name in palette_files:
-			var palette := load(base_directory.path_join(file_name)) as Palette
-			if palette:
-				if make_copy:
-					_save_palette(palette)  # Makes a copy of the palette
-				palette.resource_name = palette.resource_path.get_file().trim_suffix(".tres")
-				# On Windows for some reason paths can contain "res://" in front of them which breaks saving
-				palette.resource_path = palette.resource_path.trim_prefix("res://")
-				palettes[palette.resource_path] = palette
-
-				# Store index of the default palette
-				if palette.name == default_palette_name:
-					select_palette(palette.resource_path)
-
-	if not current_palette && palettes.size() > 0:
-		select_palette(palettes.keys()[0])
 
 
 # This returns an array of arrays, with priorities.
@@ -509,7 +507,7 @@ func _import_gpl(path: String, text: String) -> Palette:
 
 	if line_number > 0:
 		var height := ceili(colors.size() / 8.0)
-		result = Palette.new(palette_name, 8, height, comments)
+		result = Palette.new(palette_name, comments, 8, height)
 		for color in colors:
 			result.add_color(color)
 
@@ -536,7 +534,7 @@ func _import_pal_palette(path: String, text: String) -> Palette:
 		colors.append(color)
 
 	var height := ceili(colors.size() / 8.0)
-	result = Palette.new(path.get_basename().get_file(), 8, height)
+	result = Palette.new(path.get_basename().get_file(), '', 8, height)
 	for color in colors:
 		result.add_color(color)
 	return result
@@ -555,7 +553,7 @@ func _import_image_palette(path: String, image: Image) -> Palette:
 				colors.append(color)
 
 	var palette_height := ceili(colors.size() / 8.0)
-	var result: Palette = Palette.new(path.get_basename().get_file(), 8, palette_height)
+	var result: Palette = Palette.new(path.get_basename().get_file(), '', 8, palette_height)
 	for color in colors:
 		result.add_color(color)
 

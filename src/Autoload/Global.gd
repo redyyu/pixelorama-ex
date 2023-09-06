@@ -639,7 +639,8 @@ func change_button_texturerect(texture_button: TextureRect, new_file_name: Strin
 	texture_button.texture = load(directory_path.path_join(new_file_name))
 
 
-func path_join_array(basepaths: PackedStringArray, subpath: String) -> PackedStringArray:
+func path_join_array(basepaths: PackedStringArray, 
+					 subpath: String) -> PackedStringArray:
 	var res := PackedStringArray()
 	for _path in basepaths:
 		res.append(_path.path_join(subpath))

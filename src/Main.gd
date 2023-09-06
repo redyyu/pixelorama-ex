@@ -263,7 +263,7 @@ func show_quit_dialog() -> void:
 
 	if !quit_dialog.visible:
 		if !changed_project:
-			quit_dialog.call_deferred("popup_centered")
+			_quit()
 		else:
 			quit_and_save_dialog.call_deferred("popup_centered")
 

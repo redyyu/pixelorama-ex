@@ -55,7 +55,7 @@ func setup_swatches() -> void:
 
 func init_swatch(swatch: PaletteSwatch) -> void:
 	swatch.color = PaletteSwatch.DEFAULT_COLOR
-	swatch.show_left_highlight = false
+	swatch.current_selected_highlight = false
 	swatch.empty = true
 	swatch.set_swatch_size(swatch_size)
 
@@ -66,7 +66,7 @@ func draw_palette() -> void:
 			var grid_index := i + grid_size.x * j
 			var index := convert_grid_index_to_palette_index(grid_index)
 			var swatch = swatches[grid_index]
-#			swatch.show_left_highlight = false
+			swatch.current_selected_highlight = false
 			var color = current_palette.get_color(index)
 			if color != null:
 				swatch.color = color
@@ -92,7 +92,7 @@ func find_and_select_color(mouse_button: int, target_color: Color) -> void:
 			break
 
 
-## Displays a left/right highlight over a swatch
+## Displays a highlight over a swatch
 func select_swatch(mouse_button: int, palette_index: int, old_palette_index: int) -> void:
 	var index = convert_palette_index_to_grid_index(palette_index)
 	var old_index = convert_palette_index_to_grid_index(old_palette_index)
@@ -100,14 +100,15 @@ func select_swatch(mouse_button: int, palette_index: int, old_palette_index: int
 		# Remove highlight from old index swatch and add to index swatch
 		if old_index >= 0 and old_index < swatches.size():
 			# Old index could be undefined when no swatch was previously selected
-			swatches[old_index].show_selected_highlight(false, mouse_button)
-		swatches[index].show_selected_highlight(true, mouse_button)
+			swatches[old_index].show_selected(false)
+		swatches[index].show_selected(true)
+		print('current: ', swatches[index].current_selected_highlight if index >=0 else '')
 
 
 func unselect_swatch(mouse_button: int, palette_index: int) -> void:
 	var index = convert_palette_index_to_grid_index(palette_index)
 	if index >= 0 and index < swatches.size():
-		swatches[index].show_selected_highlight(false, mouse_button)
+		swatches[index].show_selected(false)
 
 
 func set_swatch_color(palette_index: int, color: Color) -> void:
