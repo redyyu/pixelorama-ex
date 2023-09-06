@@ -50,6 +50,7 @@ mouse_filter = 2
 [node name="ImageEffects" parent="Dialogs" instance=ExtResource("7")]
 
 [node name="BrushesPopup" parent="Dialogs" instance=ExtResource("6")]
+visible = false
 
 [node name="PatternsPopup" parent="Dialogs" instance=ExtResource("5")]
 
